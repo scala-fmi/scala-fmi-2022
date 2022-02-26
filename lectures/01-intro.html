@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <title>Функционално програмиране за напреднали със Scala</title>
+  <title>За курса</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -26,11 +26,332 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Функционално програмиране за напреднали със Scala</h1>
+  <h1 class="title">За курса</h1>
 </section>
 
-<section class="slide level6">
-
+<section id="функционално-програмиране-за-напреднали-със-scala" class="slide level1">
+<h1>Функционално програмиране за напреднали със Scala</h1>
+<p>2021/2022</p>
+<p><img data-src="images/scala-logo.png" /></p>
+</section>
+<section id="днес" class="slide level1">
+<h1>Днес :)</h1>
+<p><img data-src="images/01-intro/pretending-to-write.gif" height="180" /></p>
+<div>
+<ul>
+<li class="fragment">Кои сме ние?</li>
+<li class="fragment">Административни неща за курса</li>
+<li class="fragment">Защо функционално? Кратка история на функционалното</li>
+<li class="fragment">Защо Scala?</li>
+<li class="fragment">Kакво ще учим?</li>
+<li class="fragment">Ресурси</li>
+<li class="fragment">Инсталиране и инструменти</li>
+<li class="fragment">Начало на първа тема: Въведение във ФП със Scala</li>
+</ul>
+</div>
+</section>
+<section id="ние" class="slide level1">
+<h1>Ние?</h1>
+<ul style="display: grid; grid-template-columns: repeat(2, 1fr); list-style: none">
+<li>
+<a href="https://www.linkedin.com/in/boyan-bonev-ams/"><img data-src="images/01-intro/boyan.jpg" style="vertical-align: middle; border-radius: 50%" height="100" /> Боян Бонев</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/zdravko-stoychev-46414758/"><img data-src="images/01-intro/zdravko.jpg" style="vertical-align: middle; border-radius: 50%" height="100" /> Здравко Стойчев</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/viktor-marinov-07374512b/"><img data-src="images/01-intro/viktor.jpg" style="vertical-align: middle; border-radius: 50%" height="100" /> Виктор Маринов</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/vdichev/"><img data-src="images/01-intro/vassil.jpg" style="vertical-align: middle; border-radius: 50%" height="100" /> Васил Дичев</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/dany-yanev/"><img data-src="images/01-intro/dany.jpg" style="vertical-align: middle; border-radius: 50%" height="100" /> Дани Янев</a>
+</li>
+</ul>
+</section>
+<section id="сбирки-и-админастративни-неща" class="slide level1">
+<h1>Сбирки и админастративни неща</h1>
+<div>
+<ul>
+<li class="fragment">Всяка сряда от 18:15 до 21:00</li>
+<li class="fragment">Онлайн (поне засега)</li>
+<li class="fragment">Платформа? Или Google Meet или Microsoft Teams (ще я фиксираме тези дни)</li>
+<li class="fragment">Slack – най-лесно може да ни намерите там. Ще постваме всичко ново там</li>
+<li class="fragment">Материали в GitHub: <a href="https://github.com/scala-fmi/scala-fmi-2022">https://github.com/scala-fmi/scala-fmi-2022</a></li>
+<li class="fragment">Домашни и финален проект – GitHub Classroom</li>
+</ul>
+</div>
+</section>
+<section id="оценяване" class="slide level1">
+<h1>Оценяване?</h1>
+<div class="fragment">
+<ul>
+<li>Домашни през семестъра: 50 точки</li>
+<li>Два теста: 50 точки</li>
+<li>Финален проект: 50 точки</li>
+<li>Бонус точки</li>
+<li>Общо: 150+</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Скала</strong> за оценяване (pun intended):</p>
+<table style="width:47%;">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 15%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Оценка</td>
+<td>Точки</td>
+<td>Дял</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>≥ 120</td>
+<td>80%</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>103–119</td>
+<td>69%</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>86–102</td>
+<td>57%</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>68–85</td>
+<td>45%</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>&lt; 68</td>
+<td>&lt; 45%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="представете-ни-се-за-бонус-точки" class="slide level1">
+<h1>Представете ни се за бонус точки</h1>
+<div class="fragment">
+<p>Споделете няколко думи за себе си и своите интереси и качете снимка с инсталирана и работеща Scala в <a href="https://scalafmi.slack.com/archives/C01P1KBSF54"><strong>#да-се-представим</strong></a> в Slack за <strong>2 бонус точки</strong>.</p>
+</div>
+</section>
+<section id="функционално-кратка-история" class="slide level1">
+<h1>Функционално? Кратка история</h1>
+<ul>
+<li>1930–1940 – Ламбда смятане от Алонсо Чърч
+<ul>
+<li>модел на изчисление, базиран на композиция на анонимни функции</li>
+</ul></li>
+<li>1958 – LISP от Джон МакКартни – първи език за ФП
+<ul>
+<li>Повлиян от математиката</li>
+<li>Рекурсия като цел</li>
+<li>Въвежда garbage collection</li>
+<li>Кодът е данни</li>
+</ul></li>
+<li>1973 – ML от Робин Милнър
+<ul>
+<li>статично типизиране</li>
+<li>type inference. Типова система на Хиндли-Милнър</li>
+<li>Параметричен полиморфизъм (Generics)</li>
+<li>Pattern matching</li>
+</ul></li>
+<li>1980-те – допълнително развитие, Standard ML, Miranda (lazy evaluation)</li>
+</ul>
+</section>
+<section id="функционално-кратка-история-1" class="slide level1">
+<h1>Функционално? Кратка история</h1>
+<ul>
+<li>1986 – Erlang от Джо Армстронг и Ериксън
+<ul>
+<li>фокус на телекоми и толерантни на грешки дистрибутирани системи</li>
+</ul></li>
+<li>1990 – Haskell, отворен стандард за ФП език
+<ul>
+<li>абстракция чрез type classes</li>
+<li>контролиран монаден вход/изход</li>
+</ul></li>
+<li>2000-те – Scala от Мартин Одерски (2004-та), Clojure от Рич Хики (2007-ма)
+<ul>
+<li>Неизменими структури от данни</li>
+<li>Средства за конкурентни и дистрибутирани системи</li>
+<li>Комбинация на практики от различни езици (напр. ООП + ФП в Scala)</li>
+</ul></li>
+<li>Края на 2000-те до наши дни – ФП елементи се появяват в почти всеки език. Защо?</li>
+</ul>
+</section>
+<section id="мартин-одерски" class="slide level1">
+<h1>Мартин Одерски</h1>
+<div style="width: 45%; float: left">
+<img src="images/01-intro/odersky.JPG" />
+</div>
+<div style="width: 50%; float: right">
+<ul>
+<li>Професор в EPFL, Лозана</li>
+<li>Възхитен от ФП във време, в което Java изплува като платформа</li>
+<li>Решава да ги обедини в нов език – Pizza 🍕 – като добави елементи към Java
+<ul>
+<li>Параметричен полиформизъм (Generics)</li>
+<li>Функции от по-висок ред</li>
+<li>Pattern matching</li>
+</ul></li>
+<li>Имплементацията му на generics и изцяло новият компилатор, който написва, стават част от Java</li>
+</ul>
+</div>
+</section>
+<section id="стъпка-назад" class="slide level1">
+<h1>Стъпка назад</h1>
+<ul>
+<li>Java има много ограничения</li>
+<li>Как би изглеждал език, комбиниращ ФП и ООП, ако го дизайнваме в момента?</li>
+</ul>
+</section>
+<section id="scalable-language-scala-януари-2004-та" class="slide level1">
+<h1>SCAlable LAnguage (Scala) – Януари 2004-та</h1>
+<div>
+<ul>
+<li class="fragment">Без (твърде) много feature-и в самия език</li>
+<li class="fragment">Вместо това малко, но пълно множество от мощни езикови конструкции</li>
+<li class="fragment">Имплементиране на feature-и в библиотеки, използвайки тези конструкции</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Език, който скалира според нуждите</p>
+</div>
+</section>
+<section id="малка-граматика" class="slide level1">
+<h1><a href="https://docs.scala-lang.org/scala3/reference/syntax.html">Малка граматика</a></h1>
+<p><img data-src="./images/01-intro/grammar-size.png" height="480" /></p>
+<div class="fragment">
+<p>Малко, но мощни езикови средства,<br />които се комбинират добре едно с друго</p>
+</div>
+</section>
+<section id="детайлна-типова-система" class="slide level1">
+<h1>Детайлна типова система</h1>
+<p><img data-src="./images/01-intro/static-type-system.jpeg" height="560" /></p>
+</section>
+<section id="section" class="slide level1">
+<h1></h1>
+<p>Симбиоза на ФП и ООП</p>
+</section>
+<section id="scala-3" class="slide level1">
+<h1>Scala 3</h1>
+<ul>
+<li>Чакахме го 8 години :)</li>
+<li>DOT – математически модел за <a href="https://www.scala-lang.org/blog/2016/02/03/essence-of-scala.html">есенцията на Scala</a> на ниво типова система</li>
+<li>Dotty – изцяло нов компилатор с модерен дизайн, базиран на DOT</li>
+<li>Опростяване, изчистване и допълване на езика (<a href="https://docs.scala-lang.org/scala3/new-in-scala3.html">списък на какво ново</a>)</li>
+</ul>
+</section>
+<section id="scala-3-1" class="slide level1">
+<h1>Scala 3</h1>
+<div>
+<ul>
+<li class="fragment"><p>Курсът ни ще се базира на Scala 3</p>
+<p><img data-src="images/01-intro/cheering-minions.gif" /></p></li>
+<li class="fragment"><p>Ще отбелязваме кои са новите feature-и</p></li>
+<li class="fragment"><p>Ще ви срещнем и с мъничко Scala 2 синтаксис</p>
+<ul>
+<li class="fragment">много код все още използва него</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="scala-по-света" class="slide level1">
+<h1>Scala по света</h1>
+<div>
+<ul>
+<li class="fragment">Може да се срещне в production общо-взето навсякъде по света</li>
+<li class="fragment">Особено при дистрибутирани системи или ML/Data Science</li>
+<li class="fragment">По света: Twitter, Netflix, Disney+, LinkedIn, Databricks, The Guardian, Airbnb и много други</li>
+<li class="fragment">В България: В Ocado Technology, AtScale, Hopper, Estafet, Dopamine и други</li>
+<li class="fragment">Активна общност с разнообразни и стабилни проекти с отворен код
+<ul>
+<li class="fragment">Typelevel екосистема – Cats, Cats Effect, Http4s, fs2, doobie и много други</li>
+<li class="fragment">Kafka – distributed event streaming</li>
+<li class="fragment">Spark – big data &amp; ML</li>
+<li class="fragment">Lightbend екосистема – Akka, Play Framework, Lagom, Slick</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="какво-ще-учим-част-1" class="slide level1">
+<h1>Какво ще учим 😊?<br />(част 1)</h1>
+<ul>
+<li>Въведение във функционалното програмиране</li>
+<li>Основни подходи при функционално програмиране
+<ul>
+<li>рекурсия</li>
+<li>неизменими (immutable) структури от данни</li>
+<li>функциите като първокласни обекти</li>
+<li>композиция на функции</li>
+<li>изразяване чрез типове</li>
+</ul></li>
+<li>ООП</li>
+<li>Трансформиране на данни</li>
+<li>Lazy изчисления</li>
+<li>Дизайн на типове чрез ФП</li>
+</ul>
+</section>
+<section id="какво-ще-учим-част-2" class="slide level1">
+<h1>Какво ще учим 😊?<br />(част 2)</h1>
+<ul>
+<li>Овладяване на страничните ефекти</li>
+<li>Функционална обработка на грешки</li>
+<li>Конкурентност, асинхронност, комуникация по мрежа (HTTP)</li>
+<li>Абстракции от по-висок ред – видове type classes</li>
+<li>Библиотечка за абстракции – Cats 😺</li>
+<li>Библиотечка за асинхронност и конкурентност – Cats Effect</li>
+<li>Изграждане на цялостнно Scala приложение
+<ul>
+<li>структура</li>
+<li>управление на ресурсите</li>
+<li>домейн дизайн</li>
+<li>връзка с релационна база</li>
+<li>конкурентност и асинхронност</li>
+<li>HTTP</li>
+</ul></li>
+</ul>
+</section>
+<section id="какво-ще-учим-разпределение-по-теми" class="slide level1">
+<h1>Какво ще учим 😊?<br />Разпределение по теми</h1>
+<ol type="1">
+<li>Въведение във функционалното програмиране със Scala</li>
+<li>ООП във функционален език</li>
+<li>Основни подходи при функционалното програмиране</li>
+<li>Fold, колекции, lazy колекции</li>
+<li>Pattern matching и алгебрични типове от данни (ADTs)</li>
+<li>Ефекти и функционална обработка на грешки</li>
+<li>Конкурентност</li>
+<li>Type classes</li>
+<li>Монади и апликативи</li>
+<li>Cats и Cats Effect</li>
+<li>Изграждане на Scala приложение</li>
+</ol>
+</section>
+<section id="ресурси" class="slide level1">
+<h1>Ресурси</h1>
+<ul>
+<li>Functional Progamming in Scala (<a href="https://www.manning.com/books/functional-programming-in-scala">1st edition</a>, <a href="https://www.manning.com/books/functional-programming-in-scala-second-edition">2nd edition</a>)</li>
+<li><a href="https://www.artima.com/shop/programming_in_scala_5ed">Programming in Scala 5th edition</a></li>
+<li><a href="https://www.scalawithcats.com/">Scala with Cats</a></li>
+<li>Ресурси онлайн, <a href="https://docs.scala-lang.org/scala3/book/introduction.html">включително официалния сайт</a></li>
+<li><a href="https://scala-lang.org/api/3.x/">API документация</a></li>
+</ul>
+</section>
+<section id="въпроси" class="slide level1">
+<h1>Въпроси :)?</h1>
+<div class="fragment">
+<p><img data-src="images/01-intro/case-ended.webp" /></p>
+</div>
 </section>
     </div>
   </div>
@@ -72,7 +393,7 @@
 
         // Add the current slide number to the URL hash so that reloading the
         // page/copying the URL will return you to the same slide
-        hash: false,
+        hash: true,
 
         // Start with 1 for the hash rather than 0
         hashOneBasedIndex: false,

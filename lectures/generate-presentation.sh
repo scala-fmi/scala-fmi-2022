@@ -16,4 +16,5 @@ pandoc -t revealjs \
        -V theme=white \
        --css=theme/theme.css \
        -V transition=fade \
-       -V center=false
+       -V center=false \
+       -V hash=true
