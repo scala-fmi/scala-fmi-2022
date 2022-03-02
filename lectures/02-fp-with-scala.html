@@ -139,8 +139,8 @@
 </section>
 <section id="hello-world" class="slide level1">
 <h1>Hello World</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">object</span> HelloWorld<span class="op">:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">main</span><span class="op">(</span>args<span class="op">:</span> <span class="bu">Array</span><span class="op">[</span>String<span class="op">]):</span> <span class="bu">Unit</span> <span class="op">=</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">object</span> HelloWorld<span class="op">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">main</span><span class="op">(</span>args<span class="op">:</span> <span class="bu">Array</span><span class="op">[</span>String<span class="op">]):</span> <span class="dt">Unit</span> <span class="op">=</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span><span class="op">(</span><span class="st">&quot;Hello, World!&quot;</span><span class="op">)</span></span></code></pre></div>
 </section>
 <section id="компилиране-и-изпълнение" class="slide level1">
@@ -151,7 +151,7 @@ Hello, World!</code></pre>
 </section>
 <section id="hello-world-scala-3" class="slide level1 scala3">
 <h1 class="scala3">Hello World (Scala 3)</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>@main</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>@main</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hello <span class="op">=</span> <span class="fu">println</span><span class="op">(</span><span class="st">&quot;Hello, World!&quot;</span><span class="op">)</span></span></code></pre></div>
 </section>
 <section id="компилиране-и-изпълнение-1" class="slide level1 scala3">
@@ -163,7 +163,7 @@ Hello, World!</code></pre>
 <section id="sbt-scalasimple-build-tool" class="slide level1">
 <h1>sbt, Scala/Simple Build Tool</h1>
 <p>build.sbt:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">:=</span> <span class="st">&quot;hello-world&quot;</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">:=</span> <span class="st">&quot;hello-world&quot;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>version <span class="op">:=</span> <span class="st">&quot;0.1&quot;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>scalaVersion <span class="op">:=</span> <span class="st">&quot;3.1.1&quot;</span></span>
@@ -199,7 +199,7 @@ Hello, World!</code></pre>
 <section id="тестове" class="slide level1">
 <h1>Тестове</h1>
 <p>Използваме библиотеката <a href="https://www.scalatest.org/">ScalaTest</a></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> org<span class="op">.</span>scalatest<span class="op">.</span>flatspec<span class="op">.</span>AnyFlatSpec</span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> org<span class="op">.</span>scalatest<span class="op">.</span>flatspec<span class="op">.</span>AnyFlatSpec</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> org<span class="op">.</span>scalatest<span class="op">.</span>matchers<span class="op">.</span>should<span class="op">.</span>Matchers</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ExampleSpec <span class="kw">extends</span> AnyFlatSpec <span class="kw">with</span> Matchers<span class="op">:</span></span>
@@ -210,7 +210,7 @@ Hello, World!</code></pre>
 <section id="включване-на-java-библиотеки" class="slide level1">
 <h1>Включване на Java библиотеки</h1>
 <p><code>build.sbt</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">:=</span> <span class="st">&quot;hello-world&quot;</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">:=</span> <span class="st">&quot;hello-world&quot;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>version <span class="op">:=</span> <span class="st">&quot;0.1&quot;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>scalaVersion <span class="op">:=</span> <span class="st">&quot;3.1.1&quot;</span></span>
@@ -248,39 +248,39 @@ Hello, World!</code></pre>
 </section>
 <section id="дефиниции" class="slide level1">
 <h1>Дефиниции</h1>
-<div class="sourceCode" id="cb9"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> <span class="dv">2</span> <span class="co">// неизменима променлива – винаги сочи към една и съща стойност</span></span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> <span class="dv">2</span> <span class="co">// неизменима променлива – винаги сочи към една и съща стойност</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> b <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> <span class="dv">4</span> <span class="co">// изменима променлива – може да бъде пренасочвана</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> c <span class="op">=</span> <span class="dv">30</span> <span class="op">*</span> <span class="dv">8</span> <span class="co">// стойността се преизчислява при всяко използване, не заема памет</span></span></code></pre></div>
 <div class="fragment">
-<div class="sourceCode" id="cb10"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">100</span> <span class="co">// error: reassignment to val</span></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">100</span> <span class="co">// error: reassignment to val</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">200</span> <span class="co">// успешно</span></span></code></pre></div>
 </div>
 </section>
 <section id="type-inference" class="slide level1">
 <h1>Type inference</h1>
-<div class="sourceCode" id="cb11"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// компилаторът сам открива типа на променливите – String и Int</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">// компилаторът сам открива типа на променливите – String и Int</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> inferred <span class="op">=</span> <span class="st">&quot;Hello, hello, hello&quot;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inferredSize <span class="op">=</span> inferred<span class="op">.</span>size</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">// типът се задава явно</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> explicit<span class="op">:</span> String <span class="op">=</span> <span class="st">&quot;Is there anybody in there?&quot;</span> </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> explicitSize<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> explicit<span class="op">.</span>size</span></code></pre></div>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> explicitSize<span class="op">:</span> <span class="dt">Int</span> <span class="op">=</span> explicit<span class="op">.</span>size</span></code></pre></div>
 </section>
 <section id="функции" class="slide level1">
 <h1>Функции</h1>
-<div class="sourceCode" id="cb12"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fortyTwo <span class="op">=</span> <span class="dv">42</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">sum</span><span class="op">(</span>a<span class="op">:</span> <span class="bu">Int</span><span class="op">,</span> b<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span> <span class="op">=</span> a <span class="op">+</span> b</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fortyTwo <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">sum</span><span class="op">(</span>a<span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">=</span> a <span class="op">+</span> b</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span><span class="op">(</span>fortyTwo<span class="op">,</span> <span class="dv">58</span><span class="op">)</span> <span class="co">// 100</span></span></code></pre></div>
 <p>Посочването на типовете на параметрите е задължително</p>
 <div class="fragment">
-<div class="sourceCode" id="cb13"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// посочването на типа на връщания резултат е опционално,</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// посочването на типа на връщания резултат е опционално,</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">// но препоръчително за публични функции</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">twice</span><span class="op">(</span>str<span class="op">:</span> String<span class="op">):</span> String <span class="op">=</span> str <span class="op">*</span> <span class="dv">2</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">twice</span><span class="op">(</span><span class="st">&quot;:)&quot;</span><span class="op">)</span> <span class="co">// &quot;:):)&quot;</span></span></code></pre></div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb14"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span><span class="op">(</span><span class="st">&quot;You can see me on your screen :P&quot;</span><span class="op">)</span> <span class="co">// Функциите могат да имат странични ефекти</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span><span class="op">(</span><span class="st">&quot;You can see me on your screen :P&quot;</span><span class="op">)</span> <span class="co">// Функциите могат да имат странични ефекти</span></span></code></pre></div>
 </div>
 </section>
 <section id="къде-живеят-дефинициите" class="slide level1">
@@ -293,8 +293,8 @@ Hello, World!</code></pre>
 </section>
 <section id="блокове" class="slide level1">
 <h1>Блокове</h1>
-<div class="sourceCode" id="cb15"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">solveQuadraticEquation</span><span class="op">(</span>a<span class="op">:</span> Double<span class="op">,</span> b<span class="op">:</span> Double<span class="op">,</span> c<span class="op">:</span> Double<span class="op">)</span> <span class="op">=</span> <span class="op">{</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">squared</span><span class="op">(</span>n<span class="op">:</span> Double<span class="op">)</span> <span class="op">=</span> n <span class="op">*</span> n</span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">solveQuadraticEquation</span><span class="op">(</span>a<span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> c<span class="op">:</span> <span class="dt">Double</span><span class="op">)</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">squared</span><span class="op">(</span>n<span class="op">:</span> <span class="dt">Double</span><span class="op">)</span> <span class="op">=</span> n <span class="op">*</span> n</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> discriminant <span class="op">=</span> <span class="fu">squared</span><span class="op">(</span>b<span class="op">)</span> <span class="op">-</span> <span class="dv">4</span> <span class="op">*</span> a <span class="op">*</span> c</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> discriminantSqrt <span class="op">=</span> math<span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span>discriminant<span class="op">)</span></span>
@@ -307,7 +307,7 @@ Hello, World!</code></pre>
 </section>
 <section id="членове" class="slide level1">
 <h1>Членове</h1>
-<div class="sourceCode" id="cb16"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">object</span> TestApp<span class="op">:</span></span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">object</span> TestApp<span class="op">:</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> a <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> <span class="dv">2</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">var</span> b <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> <span class="dv">4</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> c <span class="op">=</span> <span class="dv">30</span> <span class="op">*</span> <span class="dv">8</span></span>
@@ -320,7 +320,7 @@ Hello, World!</code></pre>
 <section id="топ-ниво-във-файл" class="slide level1 scala3">
 <h1 class="scala3">Топ ниво във файл</h1>
 <p><code>TestApp.scala</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> <span class="dv">2</span></span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> <span class="dv">2</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> b <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> <span class="dv">4</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> c <span class="op">=</span> <span class="dv">30</span> <span class="op">*</span> <span class="dv">8</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -333,7 +333,7 @@ Hello, World!</code></pre>
 <p>Класовете, обектите, а от Scala 3 всички дефиниции,<br /> се поставят във файл със <code>.scala</code> разширение.</p>
 <div class="fragment">
 <p>Всеки от тях принадлежи на определен пакет,<br />който се отбелязва преди дефинициите:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span> com<span class="op">.</span>scalafmi</span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span> com<span class="op">.</span>scalafmi</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> <span class="dv">2</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> b <span class="op">=</span> <span class="dv">20</span> <span class="op">*</span> <span class="dv">4</span></span>
@@ -349,14 +349,14 @@ Hello, World!</code></pre>
 </section>
 <section id="още-дефиниции" class="slide level1">
 <h1>Още дефиниции</h1>
-<div class="sourceCode" id="cb19"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Person <span class="op">=</span> String</span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Person <span class="op">=</span> String</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Address <span class="op">=</span> String</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">describe</span><span class="op">(</span>name<span class="op">:</span> Person<span class="op">,</span> address<span class="op">:</span> Address<span class="op">)</span> <span class="op">=</span> name <span class="op">+</span> <span class="st">&quot;&#39;s address is: &quot;</span> <span class="op">+</span> address</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span><span class="op">(</span><span class="st">&quot;Viktor&quot;</span><span class="op">,</span> <span class="st">&quot;Pazardzhik&quot;</span><span class="op">)</span> <span class="co">// &quot;Viktor&#39;s address is: Pazardzhik&quot;</span></span></code></pre></div>
 <div class="fragment">
-<div class="sourceCode" id="cb20"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> ThisIsAConstantByConvention <span class="op">=</span> <span class="fl">3.14</span> <span class="co">// имената на константите започват с главна буква</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> ThisIsAConstantByConvention <span class="op">=</span> <span class="fl">3.14</span> <span class="co">// имената на константите започват с главна буква</span></span></code></pre></div>
 </div>
 </section>
 <section id="още-низови-литерали" class="slide level1">
@@ -369,7 +369,7 @@ Hello, World!</code></pre>
 </section>
 <section id="интерполация" class="slide level1">
 <h1>Интерполация</h1>
-<div class="sourceCode" id="cb21"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">describe</span><span class="op">(</span>name<span class="op">:</span> Person<span class="op">,</span> address<span class="op">:</span> Address<span class="op">,</span> age<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span> <span class="op">=</span></span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">describe</span><span class="op">(</span>name<span class="op">:</span> Person<span class="op">,</span> address<span class="op">:</span> Address<span class="op">,</span> age<span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">=</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="ss">s&quot;$name</span><span class="st">&#39;s address is: </span><span class="ss">${</span><span class="fu">twice</span><span class="op">(</span>address<span class="op">)</span><span class="ss">}</span><span class="st">. He is </span><span class="ss">$age</span><span class="st"> years old</span><span class="ss">&quot;</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">// &quot;Viktor&#39;s address is: PazardzhikPazardzhik. He is 25 years old&quot;</span></span>
@@ -377,21 +377,21 @@ Hello, World!</code></pre>
 </section>
 <section id="raw-низове" class="slide level1">
 <h1>raw низове</h1>
-<div class="sourceCode" id="cb22"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> evilLaughter <span class="op">=</span> <span class="st">&quot;Muhahahaha :D!&quot;</span></span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> evilLaughter <span class="op">=</span> <span class="st">&quot;Muhahahaha :D!&quot;</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="vs">raw&quot;</span><span class="st">Escaping has no\\power \t here\n. </span><span class="ss">$evilLaughter</span><span class="vs">&quot;</span> <span class="co">// Escaping has no\\power \t here\n. Muhahahaha :D!</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Escaping works </span><span class="ch">\\</span><span class="st"> </span><span class="ch">\t</span><span class="st">here</span><span class="ch">\n</span><span class="st">&quot;</span> <span class="co">// Escaping works \     here&lt;newline&gt;</span></span></code></pre></div>
 <p>Полезно за регулярни изрази и други</p>
 </section>
 <section id="многоредови-низове" class="slide level1">
 <h1>Многоредови низове</h1>
-<div class="sourceCode" id="cb23"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> sql <span class="op">=</span> <span class="st">&quot;&quot;&quot;</span></span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> sql <span class="op">=</span> <span class="st">&quot;&quot;&quot;</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT id, name, address, age</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM Person</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE hometown = &#39;Varna&#39;</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;&quot;&quot;</span></span></code></pre></div>
 <div class="fragment">
 <p>Премахване на интервалите в началото:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">val</span> sql <span class="op">=</span></span>
+<div class="sourceCode" id="cb24"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">val</span> sql <span class="op">=</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;&quot;&quot;SELECT id, name, address, age</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="st">      |FROM Person</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="st">      |WHERE hometown = &#39;Varna&#39;</span></span>
@@ -402,7 +402,7 @@ Hello, World!</code></pre>
 <h1>Всяка стойност е обект</h1>
 <div class="fragment">
 <p>Включително тези на основните типове</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">42.</span>abs <span class="co">// 42</span></span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">42.</span>abs <span class="co">// 42</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span><span class="fu">to</span><span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="co">// Range 1 to 10 (inclusive)</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span><span class="fu">until</span><span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="co">// Range 1 until 10</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span><span class="op">+(</span><span class="dv">2</span><span class="op">)</span> <span class="co">// 3, всички оператори са също методи!</span></span>
@@ -410,7 +410,7 @@ Hello, World!</code></pre>
 </div>
 <div class="fragment">
 <p>Инфиксен запис (само за методи на един параметър)</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> to <span class="dv">10</span> <span class="co">// Range 1 to 10 (inclusive)</span></span>
+<div class="sourceCode" id="cb26"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> to <span class="dv">10</span> <span class="co">// Range 1 to 10 (inclusive)</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> until <span class="dv">10</span> <span class="co">// Range 1 until 10</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="co">// 3</span></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="op">*</span> <span class="dv">5</span> <span class="co">// 20</span></span></code></pre></div>
@@ -418,21 +418,21 @@ Hello, World!</code></pre>
 </section>
 <section id="да-имената-могат-да-са-символни" class="slide level1">
 <h1>Да, имената могат да са символни:</h1>
-<div class="sourceCode" id="cb27"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> <span class="op">==&gt;</span> <span class="op">=</span> <span class="st">&quot;An arrow&quot;</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="op">**(</span>a<span class="op">:</span> Double<span class="op">,</span> b<span class="op">:</span> Double<span class="op">):</span> Double <span class="op">=</span> math<span class="op">.</span><span class="fu">pow</span><span class="op">(</span>a<span class="op">,</span> b<span class="op">)</span></span>
+<div class="sourceCode" id="cb27"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> <span class="op">==&gt;</span> <span class="op">=</span> <span class="st">&quot;An arrow&quot;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="op">**(</span>a<span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">Double</span><span class="op">):</span> <span class="dt">Double</span> <span class="op">=</span> math<span class="op">.</span><span class="fu">pow</span><span class="op">(</span>a<span class="op">,</span> b<span class="op">)</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="op">**(</span><span class="fl">2.0</span><span class="op">,</span> <span class="fl">10.0</span><span class="op">)</span> <span class="co">// 1024.0</span></span></code></pre></div>
 <div class="fragment">
 <p>Не могат да се смесват с букви/цифри:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> <span class="op">**</span>Power <span class="op">=</span> <span class="st">&quot;**&quot;</span> <span class="co">// грешка!</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> <span class="op">**</span>Power <span class="op">=</span> <span class="st">&quot;**&quot;</span> <span class="co">// грешка!</span></span></code></pre></div>
 </div>
 </section>
 <section id="if-конструкция" class="slide level1">
 <h1><code>if</code> конструкция</h1>
-<div class="sourceCode" id="cb29"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n <span class="op">=</span> <span class="dv">72</span></span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n <span class="op">=</span> <span class="dv">72</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">42</span> then <span class="st">&quot;Greater than the ultimate answer&quot;</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span> n <span class="op">==</span> <span class="dv">42</span> then <span class="st">&quot;The answer&quot;</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">42</span> <span class="cf">then</span> <span class="st">&quot;Greater than the ultimate answer&quot;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span> n <span class="op">==</span> <span class="dv">42</span> <span class="cf">then</span> <span class="st">&quot;The answer&quot;</span></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="st">&quot;Not there yet&quot;</span></span></code></pre></div>
 </section>
 <section id="всичко-е-израз" class="slide level1">
@@ -441,18 +441,18 @@ Hello, World!</code></pre>
 И си има стойност и тип
 </p>
 <div class="fragment">
-<div class="sourceCode" id="cb30"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n <span class="op">=</span> <span class="dv">72</span></span>
+<div class="sourceCode" id="cb30"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n <span class="op">=</span> <span class="dv">72</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> evaluation <span class="op">=</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">42</span> then <span class="st">&quot;Greater than the ultimate answer&quot;</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span> n <span class="op">==</span> <span class="dv">42</span> then <span class="st">&quot;The answer&quot;</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">42</span> <span class="cf">then</span> <span class="st">&quot;Greater than the ultimate answer&quot;</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="cf">if</span> n <span class="op">==</span> <span class="dv">42</span> <span class="cf">then</span> <span class="st">&quot;The answer&quot;</span></span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="st">&quot;Not there yet&quot;</span></span>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>evaluation <span class="co">// Greater than the ultimate answer</span></span></code></pre></div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb31"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">fact</span><span class="op">(</span>n<span class="op">:</span> <span class="bu">Int</span><span class="op">):</span> <span class="bu">Int</span> <span class="op">=</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span> then <span class="dv">1</span></span>
+<div class="sourceCode" id="cb31"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">fact</span><span class="op">(</span>n<span class="op">:</span> <span class="dt">Int</span><span class="op">):</span> <span class="dt">Int</span> <span class="op">=</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span> <span class="cf">then</span> <span class="dv">1</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> n <span class="op">*</span> <span class="fu">fact</span><span class="op">(</span>n <span class="op">-</span> <span class="dv">1</span><span class="op">)</span></span></code></pre></div>
 </div>
 </section>
@@ -473,15 +473,15 @@ Hello, World!</code></pre>
 </section>
 <section id="в-scala" class="slide level1">
 <h1>В Scala</h1>
-<div class="sourceCode" id="cb33"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">maxSquared</span><span class="op">(</span>a<span class="op">:</span> <span class="bu">Int</span><span class="op">,</span> b<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span> <span class="op">=</span> <span class="op">{</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> max <span class="op">=</span> <span class="cf">if</span> a <span class="op">&gt;</span> b then a <span class="cf">else</span> b</span>
+<div class="sourceCode" id="cb33"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">maxSquared</span><span class="op">(</span>a<span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> max <span class="op">=</span> <span class="cf">if</span> a <span class="op">&gt;</span> b <span class="cf">then</span> a <span class="cf">else</span> b</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  max <span class="op">*</span> max</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>В Scala изглежда по-математично и ясно</p>
 </section>
 <section id="блоковете-също-са-изрази" class="slide level1">
 <h1>Блоковете също са изрази!</h1>
-<div class="sourceCode" id="cb34"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="dv">2</span></span>
+<div class="sourceCode" id="cb34"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> b <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> c <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -490,15 +490,15 @@ Hello, World!</code></pre>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  math<span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span>discriminant<span class="op">)</span></span>
 <span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">maxSquared</span><span class="op">(</span>a<span class="op">:</span> <span class="bu">Int</span><span class="op">,</span> b<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span> <span class="op">=</span> <span class="op">{</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> max <span class="op">=</span> <span class="cf">if</span> a <span class="op">&gt;</span> b then a <span class="cf">else</span> b</span>
+<div class="sourceCode" id="cb35"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">maxSquared</span><span class="op">(</span>a<span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> max <span class="op">=</span> <span class="cf">if</span> a <span class="op">&gt;</span> b <span class="cf">then</span> a <span class="cf">else</span> b</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  max <span class="op">*</span> max</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Оценяват се до последния statement в тях</p>
 </section>
 <section id="блоковете-като-изрази-допълнение" class="slide level1">
 <h1>Блоковете като изрази (допълнение)</h1>
-<div class="sourceCode" id="cb36"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">squared</span><span class="op">(</span>n<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span> <span class="op">=</span> n <span class="op">*</span> n</span>
+<div class="sourceCode" id="cb36"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">squared</span><span class="op">(</span>n<span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">=</span> n <span class="op">*</span> n</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">squared</span><span class="op">(</span><span class="dv">10</span><span class="op">)</span></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">squared</span><span class="op">({</span></span>
@@ -507,7 +507,7 @@ Hello, World!</code></pre>
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  complicatedCalculation <span class="op">/</span> <span class="dv">2</span> </span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="op">})</span></span></code></pre></div>
 <div class="fragment">
-<div class="sourceCode" id="cb37"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>squared <span class="op">{</span></span>
+<div class="sourceCode" id="cb37"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>squared <span class="op">{</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> complicatedCalculation <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  complicatedCalculation <span class="op">/</span> <span class="dv">2</span> </span>
@@ -525,8 +525,8 @@ Hello, World!</code></pre>
 <h1 class="scala3">Блокове чрез индентация</h1>
 <p>Scala 3 ни позволява вместо чрез скоби да определяме блокове чрез индентация:</p>
 <div class="fragment">
-<div class="sourceCode" id="cb38"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">solveQuadraticEquation</span><span class="op">(</span>a<span class="op">:</span> Double<span class="op">,</span> b<span class="op">:</span> Double<span class="op">,</span> c<span class="op">:</span> Double<span class="op">)</span> <span class="op">=</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">squared</span><span class="op">(</span>n<span class="op">:</span> Double<span class="op">)</span> <span class="op">=</span> n <span class="op">*</span> n</span>
+<div class="sourceCode" id="cb38"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">solveQuadraticEquation</span><span class="op">(</span>a<span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> c<span class="op">:</span> <span class="dt">Double</span><span class="op">)</span> <span class="op">=</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">squared</span><span class="op">(</span>n<span class="op">:</span> <span class="dt">Double</span><span class="op">)</span> <span class="op">=</span> n <span class="op">*</span> n</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> discriminant <span class="op">=</span> <span class="fu">squared</span><span class="op">(</span>b<span class="op">)</span> <span class="op">-</span> <span class="dv">4</span> <span class="op">*</span> a <span class="op">*</span> c</span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> discriminantSqrt <span class="op">=</span> math<span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span>discriminant<span class="op">)</span></span>
@@ -537,29 +537,880 @@ Hello, World!</code></pre>
 <span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">(</span>firstSolution<span class="op">,</span> secondSolution<span class="op">)</span> <span class="co">// Наредена двойка. Повече за тях по-късно в курса :)</span></span></code></pre></div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb39"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> theAnswerSquared <span class="op">=</span></span>
+<div class="sourceCode" id="cb39"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> theAnswerSquared <span class="op">=</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> a <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  a <span class="op">*</span> a</span></code></pre></div>
 </div>
 </section>
 <section id="блокове-чрез-индентация-1" class="slide level1 scala3">
 <h1 class="scala3">Блокове чрез индентация</h1>
-<div class="sourceCode" id="cb40"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">42</span> then </span>
+<div class="sourceCode" id="cb40"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">42</span> <span class="cf">then</span> </span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> greater <span class="op">=</span> <span class="st">&quot;Greater&quot;</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="ss">s&quot;$greater</span><span class="st"> than the ultimate answer</span><span class="ss">&quot;</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span> n <span class="op">==</span> <span class="dv">42</span> then <span class="st">&quot;The answer&quot;</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span> n <span class="op">==</span> <span class="dv">42</span> <span class="cf">then</span> <span class="st">&quot;The answer&quot;</span></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="st">&quot;Not there yet&quot;</span></span></code></pre></div>
 <div class="fragment">
 <p>От тук нататък ще използваме само този стил</p>
 </div>
 <div class="fragment">
 <p>При аргументи на функции все пак сме задължени да използваме скобите:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>println <span class="op">{</span></span>
+<div class="sourceCode" id="cb41"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>println <span class="op">{</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> result <span class="op">=</span> <span class="fu">squared</span><span class="op">(</span><span class="dv">42</span><span class="op">)</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="ss">s&quot;</span><span class="st">The result is: </span><span class="ss">$result&quot;</span></span>
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
+</section>
+<section id="досега" class="slide level1">
+<h1>Досега</h1>
+<ul>
+<li>Scala</li>
+<li>Scala toolset</li>
+<li>Типове и литерали. Низови литерали</li>
+<li>Дефиниции – <code>val</code>, <code>var</code>, <code>def</code>, <code>type</code>. Функции</li>
+<li>Type inference</li>
+<li>Файлове и пакети</li>
+<li>Всяка стойност е обект. Инфиксно извикване на методи</li>
+<li>Всичко е израз (със стойност и тип) или дефиниция</li>
+<li><code>if</code> конструкция, блокове (и те са изрази 😊)</li>
+</ul>
+</section>
+<section id="типова-йеархия" class="slide level1">
+<h1>Типова йеархия</h1>
+<p><img data-src="images/classhierarchy.png" /></p>
+</section>
+<section id="any" class="slide level1">
+<h1><a href="https://scala-lang.org/api/3.x/scala/Any.html"><code>Any</code></a></h1>
+<div>
+<ul>
+<li class="fragment"><p>Родител на всички други типове</p></li>
+<li class="fragment"><p>Сравнение по стойност: <code>==</code>, <code>!=</code></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>  <span class="dv">42</span> <span class="op">==</span> <span class="dv">84</span> <span class="op">/</span> <span class="dv">2</span> <span class="co">// true</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Abc&quot;</span> <span class="op">!=</span> <span class="st">&quot;Абв&quot;</span> <span class="co">// true</span></span></code></pre></div></li>
+<li class="fragment"><p>Hash код: <code>##</code></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Have a good day :)!&quot;</span><span class="op">.</span>## <span class="co">// -244558110</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">10</span><span class="op">.</span><span class="fl">0.</span>## <span class="co">// 10</span></span></code></pre></div></li>
+<li class="fragment"><p><code>isInstanceOf[T]</code>, <code>asInstanceOf[T]</code></p></li>
+<li class="fragment"><p><code>toString</code></p></li>
+</ul>
+</div>
+</section>
+<section id="anyval-и-anyref" class="slide level1">
+<h1><a href="https://scala-lang.org/api/3.x/scala/AnyVal.html"><code>AnyVal</code></a> и <a href="https://scala-lang.org/api/3.x/scala/AnyRef.html"><code>AnyRef</code></a></h1>
+<div>
+<ul>
+<li class="fragment">JVM разделя типовете на примитивни и референтни</li>
+<li class="fragment">Примитивните (<code>AnyVal</code>) се съхраняват в променливи чрез тяхната стойност</li>
+<li class="fragment">Стойността на референтните (<code>AnyRef</code>) се съхранява в Heap-а като обект
+<ul>
+<li class="fragment">Променливите съхраняват референция към този обект</li>
+<li class="fragment">Обектите подлежат на Garbage Collection</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="anyval-и-anyref-1" class="slide level1">
+<h1><code>AnyVal</code> и <code>AnyRef</code></h1>
+<div class="sourceCode" id="cb44"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> i <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> j <span class="op">=</span> i</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> strA <span class="op">=</span> <span class="st">&quot;Hello, Goodbye&quot;</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> strB <span class="op">=</span> strA</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> arr1 <span class="op">=</span> <span class="bu">Array</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">)</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> arr2 <span class="op">=</span> arr1</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="fu">arr2</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span> <span class="op">=</span> <span class="dv">100</span> </span></code></pre></div>
+<p><img data-src="images/02-fp-with-scala/primitive-and-referenced-types.jpg" class="fragment" height="256" /></p>
+</section>
+<section id="java-memory-model" class="slide level1">
+<h1>Java Memory Model</h1>
+<p><img data-src="images/02-fp-with-scala/java-memory-model.jpg" /></p>
+</section>
+<section id="java-memory-model-1" class="slide level1">
+<h1>Java Memory Model</h1>
+<p><img data-src="images/02-fp-with-scala/java-memory-model-multithreaded.jpg" /></p>
+</section>
+<section id="anyref-референция-vs-стойност" class="slide level1">
+<h1><code>AnyRef</code> – референция vs стойност</h1>
+<div class="sourceCode" id="cb45"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> name <span class="op">=</span> <span class="st">&quot;Tihomira&quot;</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="ss">s&quot;</span><span class="st">Hello </span><span class="ss">$name&quot;</span> <span class="op">==</span> <span class="ss">s&quot;</span><span class="st">Hello </span><span class="ss">$name&quot;</span> <span class="co">// true</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="ss">s&quot;</span><span class="st">Hello </span><span class="ss">$name&quot;</span> eq <span class="ss">s&quot;</span><span class="st">Hello </span><span class="ss">$name&quot;</span> <span class="co">// false</span></span></code></pre></div>
+</section>
+<section id="типова-йеархия-1" class="slide level1">
+<h1>Типова йеархия</h1>
+<p><img data-src="images/classhierarchy.png" /></p>
+</section>
+<section id="println" class="slide level1">
+<h1>println???</h1>
+<p>Какъв е типът на:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span><span class="op">(</span><span class="st">&quot;:)&quot;</span><span class="op">)</span></span></code></pre></div>
+</section>
+<section id="unit" class="slide level1">
+<h1><a href="https://scala-lang.org/api/3.x/scala/Unit.html"><code>Unit</code></a></h1>
+<div>
+<ul>
+<li class="fragment">Съдържа една единствена стойност – <code>()</code></li>
+<li class="fragment">Изразява страничен ефект</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb47"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> printed<span class="op">:</span> <span class="dt">Unit</span> <span class="op">=</span> <span class="fu">println</span><span class="op">(</span><span class="st">&quot;:)&quot;</span><span class="op">)</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> mutable <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> mutationResult<span class="op">:</span> <span class="dt">Unit</span> <span class="op">=</span> mutable <span class="op">=</span> <span class="dv">20</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb48"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> b <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Конвенция за функции без аргументи</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mult <span class="op">=</span> a <span class="op">*</span> b <span class="co">// Чисти функции пишем без скоби</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">printMult</span><span class="op">()</span> <span class="op">=</span> <span class="fu">println</span><span class="op">(</span>a <span class="op">*</span> b<span class="op">)</span> <span class="co">// Функции със странични ефекти пишем със скоби</span></span></code></pre></div>
+</div>
+</section>
+<section id="null" class="slide level1">
+<h1><a href="https://scala-lang.org/api/3.x/scala/Null.html"><code>Null</code></a></h1>
+<div>
+<ul>
+<li class="fragment">Съществува единствено заради съвместимост с Java</li>
+<li class="fragment">Всички <code>AnyRef</code> типове имат <code>null</code> стойност</li>
+<li class="fragment">В Scala я избягваме колкото можем</li>
+</ul>
+</div>
+</section>
+<section id="nothing" class="slide level1">
+<h1><a href="https://scala-lang.org/api/3.x/scala/Nothing.html"><code>Nothing</code></a></h1>
+<div>
+<ul>
+<li class="fragment">Подтип на всички други типове</li>
+<li class="fragment">Няма нито една стойност от тип <code>Nothing</code></li>
+</ul>
+</div>
+<p><img data-src="images/whaaat.webp" class="fragment" /></p>
+<p class="fragment">
+Необходим за цялостност на някои изводи на ниво типова система
+</p>
+</section>
+<section id="тип-на-изключенията" class="slide level1">
+<h1>Тип на изключенията?</h1>
+<div class="sourceCode" id="cb49"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="cf">throw</span> <span class="kw">new</span> <span class="fu">RuntimeException</span><span class="op">()</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb50"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">fail</span><span class="op">(</span>reason<span class="op">:</span> String<span class="op">):</span> Nothing <span class="op">=</span> <span class="cf">throw</span> <span class="kw">new</span> <span class="fu">RuntimeException</span><span class="op">(</span>reason<span class="op">)</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">failingSqrt</span><span class="op">(</span>n<span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">=</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> n <span class="op">&gt;=</span> <span class="dv">0</span> <span class="cf">then</span> math<span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span>n<span class="op">)</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="fu">fail</span><span class="op">(</span><span class="ss">s&quot;</span><span class="st">Square root of </span><span class="ss">$n</span><span class="st"> is not real</span><span class="ss">&quot;</span><span class="op">)</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="fu">failingSqrt</span><span class="op">(-</span><span class="dv">1</span><span class="op">)</span> <span class="co">// Какъв е типът?</span></span></code></pre></div>
+</div>
+</section>
+<section id="filling-the-blanks" class="slide level1">
+<h1>Filling the blanks</h1>
+<div class="sourceCode" id="cb51"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="op">???</span> <span class="op">:</span> Nothing <span class="op">=</span> <span class="cf">throw</span> <span class="kw">new</span> NotImplementedError</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">twice</span><span class="op">(</span>n<span class="op">:</span> <span class="dt">Int</span><span class="op">):</span> <span class="dt">Int</span> <span class="op">=</span> <span class="op">???</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">fib</span><span class="op">(</span>n<span class="op">:</span> <span class="dt">Int</span><span class="op">):</span> <span class="dt">Int</span> <span class="op">=</span> <span class="op">???</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">fibDoubled</span><span class="op">(</span>n<span class="op">:</span> <span class="dt">Int</span><span class="op">):</span> <span class="dt">Int</span> <span class="op">=</span> <span class="fu">twice</span><span class="op">(</span><span class="fu">fib</span><span class="op">(</span>n<span class="op">))</span> <span class="co">// Компилира се</span></span></code></pre></div>
+</section>
+<section id="if-с-разнородни-типове" class="slide level1">
+<h1><code>if</code> с разнородни типове</h1>
+<div class="fragment">
+<div class="sourceCode" id="cb52"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">42</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">then</span> <span class="kw">true</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">42</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">then</span> <span class="st">&quot;String&quot;</span> <span class="cf">else</span> <span class="fu">println</span><span class="op">(</span><span class="st">&quot;String&quot;</span><span class="op">)</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">42</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">then</span> <span class="dv">0</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb53"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">42</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">then</span> <span class="kw">true</span> <span class="cf">else</span> <span class="dv">0</span> <span class="co">// AnyVal</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">42</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">then</span> <span class="st">&quot;String&quot;</span> <span class="cf">else</span> <span class="fu">println</span><span class="op">(</span><span class="st">&quot;String&quot;</span><span class="op">)</span> <span class="co">// Any</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">42</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">then</span> <span class="dv">0</span> <span class="co">// AnyVal; else частта се счита за Unit</span></span></code></pre></div>
+</div>
+</section>
+<section id="pattern-matching" class="slide level1">
+<h1>Pattern <strong>Matching</strong></h1>
+<div class="sourceCode" id="cb54"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">stringify</span><span class="op">(</span>n<span class="op">:</span> <span class="dt">Int</span><span class="op">):</span> String <span class="op">=</span> n <span class="cf">match</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="dv">1</span> <span class="op">=&gt;</span> <span class="st">&quot;One&quot;</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="dv">2</span> <span class="op">=&gt;</span> <span class="st">&quot;Two&quot;</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="dv">3</span> <span class="op">=&gt;</span> <span class="st">&quot;Three&quot;</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> _ <span class="op">=&gt;</span> <span class="st">&quot;I can only count to three :(&quot;</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="fu">stringify</span><span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="co">// Two</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb55"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">parseBoolean</span><span class="op">(</span>boolean<span class="op">:</span> String<span class="op">):</span> <span class="dt">Boolean</span> <span class="op">=</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  boolean <span class="cf">match</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">&quot;true&quot;</span> <span class="op">|</span> <span class="st">&quot;True&quot;</span> <span class="op">|</span> <span class="st">&quot;TRUE&quot;</span> <span class="op">=&gt;</span> <span class="kw">true</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">&quot;false&quot;</span> <span class="op">|</span> <span class="st">&quot;False&quot;</span> <span class="op">|</span> <span class="st">&quot;FALSE&quot;</span> <span class="op">=&gt;</span> <span class="kw">false</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> _ <span class="op">=&gt;</span> <span class="kw">false</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="fu">parseBoolean</span><span class="op">(</span><span class="st">&quot;True&quot;</span><span class="op">)</span> <span class="co">// true</span></span></code></pre></div>
+</div>
+</section>
+<section id="pattern-matching-1" class="slide level1">
+<h1>Pattern <strong>Matching</strong></h1>
+<div class="sourceCode" id="cb56"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">toInteger</span><span class="op">(</span>value<span class="op">:</span> <span class="bu">Any</span><span class="op">):</span> <span class="dt">Int</span> <span class="op">=</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  value <span class="cf">match</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> n<span class="op">:</span> <span class="dt">Int</span> <span class="op">=&gt;</span> n</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> s<span class="op">:</span> String <span class="op">=&gt;</span> s<span class="op">.</span>toInt</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> d<span class="op">:</span> <span class="dt">Double</span> <span class="op">=&gt;</span> d<span class="op">.</span>toInt</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="fu">toInteger</span><span class="op">(</span><span class="st">&quot;42&quot;</span><span class="op">)</span> <span class="co">// 42</span></span></code></pre></div>
+</section>
+<section id="конструкции-със-странични-ефекти" class="slide level1">
+<h1>Конструкции със странични ефекти</h1>
+</section>
+<section id="while" class="slide level1">
+<h1>while</h1>
+<div class="sourceCode" id="cb57"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">10</span> <span class="cf">do</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span><span class="op">(</span>i<span class="op">)</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span><span class="op">(</span>i<span class="op">)</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="co">// 0 1 2 3 4 5 6 7 8 9 10</span></span></code></pre></div>
+</section>
+<section id="прихващане-на-изключения" class="slide level1">
+<h1>Прихващане на изключения</h1>
+<div class="sourceCode" id="cb58"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> parsedResult <span class="op">=</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> <span class="st">&quot;42L&quot;</span><span class="op">.</span>toInt</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">catch</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> e<span class="op">:</span> NumberFormatException <span class="op">=&gt;</span> <span class="dv">0</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>parsedResult <span class="co">// 0 </span></span></code></pre></div>
+</section>
+<section id="for" class="slide level1">
+<h1>for</h1>
+<div class="sourceCode" id="cb59"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  i <span class="op">&lt;-</span> <span class="dv">1</span> to <span class="dv">4</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> <span class="fu">println</span><span class="op">(</span>i<span class="op">)</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 1 2 3 4</span></span></code></pre></div>
+</section>
+<section id="for---съставни-части" class="slide level1">
+<h1>for - съставни части</h1>
+<ul>
+<li>генератори</li>
+<li>филтри</li>
+<li>дефиниции</li>
+</ul>
+<div class="fragment">
+<div class="sourceCode" id="cb60"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> </span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  i <span class="op">&lt;-</span> <span class="dv">1</span> to <span class="dv">4</span> <span class="co">// генератор</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="co">// филтър </span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  c <span class="op">&lt;-</span> <span class="ch">&#39;a&#39;</span> to <span class="ch">&#39;c&#39;</span> <span class="co">// генератор</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  s <span class="op">=</span> <span class="ss">s&quot;$i$c&quot;</span> <span class="co">// дефиниция</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> <span class="fu">println</span><span class="op">(</span>s<span class="op">)</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 2a 2b 2c 4a 4b 4c</span></span></code></pre></div>
+</div>
+</section>
+<section id="съставни-типове" class="slide level1">
+<h1>Съставни типове</h1>
+</section>
+<section id="наредени-n-торки-tuples" class="slide level1">
+<h1>Наредени n-торки (Tuples)</h1>
+<div class="sourceCode" id="cb61"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> person<span class="op">:</span> <span class="op">(</span>String<span class="op">,</span> <span class="dt">Int</span><span class="op">,</span> String<span class="op">)</span> <span class="op">=</span> <span class="op">(</span><span class="st">&quot;Ivan&quot;</span><span class="op">,</span> <span class="dv">27</span><span class="op">,</span> <span class="st">&quot;Sofia&quot;</span><span class="op">)</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb62"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">greeting</span><span class="op">(</span>person<span class="op">:</span> <span class="op">(</span>String<span class="op">,</span> <span class="dt">Int</span><span class="op">,</span> String<span class="op">)):</span> String <span class="op">=</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="ss">s&quot;</span><span class="st">Hello, I am </span><span class="ss">${</span>person<span class="op">.</span>_1<span class="ss">}</span><span class="st"> from </span><span class="ss">${</span>person<span class="op">.</span>_3<span class="ss">}</span><span class="st">. I am </span><span class="ss">${</span>person<span class="op">.</span>_2<span class="ss">}</span><span class="st"> years old</span><span class="ss">&quot;</span></span></code></pre></div>
+</div>
+<p class="fragment">
+Хетерогенен тип с фиксиран размер
+</p>
+</section>
+<section id="хомогенни-колекции" class="slide level1">
+<h1>Хомогенни колекции</h1>
+<p><code>Range</code>, <code>List[A]</code>, <code>Set[A]</code>, <code>Map[K, V]</code></p>
+<div>
+<ul>
+<li class="fragment"><p><code>Range</code> – целочислен интервал</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="op">(</span><span class="dv">1</span> to <span class="dv">10</span><span class="op">)</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> res0<span class="op">:</span> scala<span class="op">.</span>collection<span class="op">.</span>immutable<span class="op">.</span>Range<span class="op">.</span>Inclusive <span class="op">=</span> Range <span class="dv">1</span> to <span class="dv">10</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="op">(</span><span class="dv">1</span> until <span class="dv">10</span><span class="op">)</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> res1<span class="op">:</span> scala<span class="op">.</span>collection<span class="op">.</span>immutable<span class="op">.</span>Range <span class="op">=</span> Range <span class="dv">1</span> until <span class="dv">10</span></span></code></pre></div></li>
+<li class="fragment"><p><code>List[A]</code> – нареден списък</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> xs <span class="op">=</span> <span class="bu">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">)</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>xs<span class="op">.</span>head <span class="co">// 1</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> specialSyntax <span class="op">=</span> <span class="dv">1</span> <span class="op">::</span> <span class="dv">2</span> <span class="op">::</span> <span class="dv">3</span> <span class="op">::</span> Nil</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>specialSyntax<span class="op">.</span>head <span class="co">// 1</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="co">// оператори, завършващи с `:`, се прилагат върху обекта отдясно</span></span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> specialSyntaxActual <span class="op">=</span> Nil<span class="op">.::(</span><span class="dv">3</span><span class="op">).::(</span><span class="dv">2</span><span class="op">).::(</span><span class="dv">1</span><span class="op">)</span></span></code></pre></div></li>
+</ul>
+</div>
+</section>
+<section id="хомогенни-колекции-1" class="slide level1">
+<h1>Хомогенни колекции</h1>
+<div>
+<ul>
+<li class="fragment"><p><code>Set[A]</code> – множество (без наредба)</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> set <span class="op">=</span> <span class="fu">Set</span><span class="op">(</span><span class="dv">10</span><span class="op">,</span> <span class="dv">11</span><span class="op">,</span> <span class="dv">12</span><span class="op">)</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set</span><span class="op">(</span><span class="dv">11</span><span class="op">)</span> <span class="co">// true</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set</span><span class="op">(</span><span class="dv">20</span><span class="op">)</span> <span class="co">// false</span></span></code></pre></div></li>
+<li class="fragment"><p><code>Map[K, V]</code> – речник (без наредба)</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> numberToString<span class="op">:</span> Map<span class="op">[</span><span class="dt">Int</span><span class="op">,</span> String<span class="op">]</span> <span class="op">=</span> <span class="fu">Map</span><span class="op">(</span><span class="dv">1</span> <span class="op">-&gt;</span> <span class="st">&quot;One&quot;</span><span class="op">,</span> <span class="dv">2</span> <span class="op">-&gt;</span> <span class="st">&quot;Two&quot;</span><span class="op">,</span> <span class="dv">3</span> <span class="op">-&gt;</span> <span class="st">&quot;Three&quot;</span><span class="op">)</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">numberToString</span><span class="op">(</span><span class="dv">1</span><span class="op">)</span> <span class="co">// &quot;One&quot;</span></span></code></pre></div></li>
+</ul>
+</div>
+</section>
+<section id="операции-върху-колекции" class="slide level1">
+<h1>Операции върху колекции</h1>
+<div class="sourceCode" id="cb67"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> xs <span class="op">=</span> <span class="bu">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>xs<span class="op">.</span>isEmpty <span class="co">// false</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>xs<span class="op">.</span>size <span class="co">// 5</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>xs<span class="op">.</span>head <span class="co">// 1</span></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>xs<span class="op">.</span>tail <span class="co">// List(2, 3, 4, 5)</span></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>xs<span class="op">.</span><span class="fu">take</span><span class="op">(</span><span class="dv">3</span><span class="op">)</span> <span class="co">// List(1, 2, 3)</span></span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>xs<span class="op">.</span><span class="fu">drop</span><span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="co">// List(3, 4, 5)</span></span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>xs<span class="op">.</span>sum <span class="co">// 15; работи само за колекции от числени елементи</span></span></code></pre></div>
+</section>
+<section id="map-е-колекция-от-tuple-и" class="slide level1">
+<h1>Map е колекция от tuple-и</h1>
+<div class="sourceCode" id="cb68"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Map</span><span class="op">(</span><span class="dv">1</span> <span class="op">-&gt;</span> <span class="st">&quot;One&quot;</span><span class="op">,</span> <span class="dv">2</span> <span class="op">-&gt;</span> <span class="st">&quot;Two&quot;</span><span class="op">,</span> <span class="dv">3</span> <span class="op">-&gt;</span> <span class="st">&quot;Three&quot;</span><span class="op">).</span>head <span class="co">// (1, &quot;One&quot;)</span></span></code></pre></div>
+</section>
+<section id="string-е-колекция-от-char" class="slide level1">
+<h1>String е колекция от Char</h1>
+<div class="sourceCode" id="cb69"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;abcdef&quot;</span><span class="op">.</span>head <span class="co">// &#39;a&#39;</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;abcdef&quot;</span><span class="op">.</span><span class="fu">drop</span><span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="co">// &quot;cdef&quot;</span></span></code></pre></div>
+</section>
+<section id="range-и-lista-са-подтипове-на-seqa" class="slide level1">
+<h1>Range и List[A] са подтипове на Seq[A]</h1>
+<div class="sourceCode" id="cb70"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">sum</span><span class="op">(</span>xs<span class="op">:</span> <span class="bu">Seq</span><span class="op">[</span><span class="dt">Int</span><span class="op">]):</span> <span class="dt">Int</span> <span class="op">=</span> <span class="op">???</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb71"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">sum</span><span class="op">(</span>xs<span class="op">:</span> <span class="bu">Seq</span><span class="op">[</span><span class="dt">Int</span><span class="op">]):</span> <span class="dt">Int</span> <span class="op">=</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> xs<span class="op">.</span>isEmpty <span class="cf">then</span> <span class="dv">0</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> xs<span class="op">.</span>head <span class="op">+</span> <span class="fu">sum</span><span class="op">(</span>xs<span class="op">.</span>tail<span class="op">)</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span><span class="op">(</span><span class="dv">1</span> to <span class="dv">10</span><span class="op">)</span> <span class="co">// 55</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span><span class="op">(</span><span class="bu">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">))</span> <span class="co">// 10</span></span></code></pre></div>
+</div>
+</section>
+<section id="задача" class="slide level1">
+<h1>Задача</h1>
+<p>Напишете функция, проверяваща, че скобите в един израз са балансирани</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">balanced</span><span class="op">(</span>e<span class="op">:</span> <span class="bu">List</span><span class="op">[</span><span class="dt">Char</span><span class="op">]):</span> <span class="dt">Boolean</span> <span class="op">=</span> <span class="op">???</span></span></code></pre></div>
+</section>
+<section id="типови-параметри" class="slide level1">
+<h1>Типови параметри</h1>
+<div>
+<ul>
+<li class="fragment"><p><code>List[A]</code>, <code>Set[A]</code>, <code>Map[K, V]</code> са параметризирани типове</p></li>
+<li class="fragment"><p><code>type</code> дефинициите също могат да приемат параметри:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> Index<span class="op">[</span>V<span class="op">]</span> <span class="op">=</span> Map<span class="op">[</span><span class="dt">Int</span><span class="op">,</span> V<span class="op">]</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> retrieveLast<span class="op">[</span>V<span class="op">](</span>index<span class="op">:</span> Index<span class="op">[</span>V<span class="op">]):</span> V <span class="op">=</span> <span class="fu">index</span><span class="op">(</span>index<span class="op">.</span>keys<span class="op">.</span>max<span class="op">)</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">retrieveLast</span><span class="op">(</span><span class="fu">Map</span><span class="op">(</span><span class="dv">5</span> <span class="op">-&gt;</span> <span class="st">&quot;Five&quot;</span><span class="op">,</span> <span class="dv">1</span> <span class="op">-&gt;</span> <span class="st">&quot;One&quot;</span><span class="op">))</span> <span class="co">// Five</span></span></code></pre></div></li>
+</ul>
+</div>
+</section>
+<section id="функционален-for" class="slide level1">
+<h1>Функционален for :)</h1>
+<div class="sourceCode" id="cb74"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> squared <span class="op">=</span> <span class="cf">for</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">)</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="cf">yield</span> x <span class="op">*</span> x</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>squared <span class="co">// List(1, 4, 9, 16)</span></span></code></pre></div>
+</section>
+<section id="функционален-for-1" class="slide level1">
+<h1>Функционален for</h1>
+<div class="sourceCode" id="cb75"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> result <span class="op">=</span> <span class="cf">for</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> <span class="dv">0</span></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  y <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span>x<span class="op">,</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">,</span> x <span class="op">*</span> <span class="dv">3</span><span class="op">)</span></span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="cf">yield</span> <span class="op">(</span>x<span class="op">,</span> y<span class="op">)</span></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>result <span class="co">// List((1,1), (1,2), (1,3), (3,3), (3,6), (3,9), (5,5), (5,10), (5,15))</span></span></code></pre></div>
+</section>
+<section id="задача-1" class="slide level1">
+<h1>Задача</h1>
+<p>Генерирайте всички възможни поднизове на даден низ</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">substrings</span><span class="op">(</span>str<span class="op">:</span> String<span class="op">):</span> <span class="bu">List</span><span class="op">[</span>String<span class="op">]</span> <span class="op">=</span> <span class="op">???</span></span></code></pre></div>
+</section>
+<section id="scala-2-и-scala-3-синтаксис" class="slide level1">
+<h1>Scala 2 и Scala 3 синтаксис</h1>
+<ul>
+<li>Scala 3 въведе опростение на синтаксиса на езика с цел четимост</li>
+<li>Optional braces</li>
+<li>Блокове чрез индентация</li>
+<li><code>if</code> без скоби, но с <code>then</code></li>
+<li>Все още доста код и документация са написани на стария синтаксис. Та нека да се запознаем с него</li>
+</ul>
+</section>
+<section id="braces-опционални-в-scala-3" class="slide level1">
+<h1>Braces – опционални в Scala 3</h1>
+<div class="sourceCode" id="cb77"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">discriminantSqrt</span><span class="op">(</span>a<span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> c<span class="op">:</span> <span class="dt">Double</span><span class="op">)</span> <span class="op">=</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> discriminant <span class="op">=</span> b <span class="op">*</span> b <span class="op">-</span> <span class="dv">4</span> <span class="op">*</span> a <span class="op">*</span> c</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>  math<span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span>discriminant<span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="kw">object</span> HelloWorld<span class="op">:</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">sayHiTo</span><span class="op">(</span>name<span class="op">:</span> String<span class="op">)</span> <span class="op">=</span> <span class="ss">s&quot;</span><span class="st">Hi </span><span class="ss">$name</span><span class="st">!</span><span class="ss">&quot;</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> sayHiToTheWorld <span class="op">=</span> <span class="fu">sayHiTo</span><span class="op">(</span><span class="st">&quot;World&quot;</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>booleanString <span class="cf">match</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="st">&quot;true&quot;</span> <span class="op">|</span> <span class="st">&quot;True&quot;</span> <span class="op">|</span> <span class="st">&quot;TRUE&quot;</span> <span class="op">=&gt;</span> <span class="kw">true</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="st">&quot;false&quot;</span> <span class="op">|</span> <span class="st">&quot;False&quot;</span> <span class="op">|</span> <span class="st">&quot;FALSE&quot;</span> <span class="op">=&gt;</span> <span class="kw">false</span></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> _ <span class="op">=&gt;</span> <span class="kw">false</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="st">&quot;42L&quot;</span><span class="op">.</span>toInt</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> e<span class="op">:</span> NumberFormatException <span class="op">=&gt;</span> <span class="dv">0</span></span></code></pre></div>
+</section>
+<section id="braces-задължителни-в-scala-2" class="slide level1">
+<h1>Braces – задължителни в Scala 2</h1>
+<div class="sourceCode" id="cb81"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">discriminantSqrt</span><span class="op">(</span>a<span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> c<span class="op">:</span> <span class="dt">Double</span><span class="op">)</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> discriminant <span class="op">=</span> b <span class="op">*</span> b <span class="op">-</span> <span class="dv">4</span> <span class="op">*</span> a <span class="op">*</span> c</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>  math<span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span>discriminant<span class="op">)</span></span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="kw">object</span> HelloWorld <span class="op">{</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">sayHiTo</span><span class="op">(</span>name<span class="op">:</span> String<span class="op">)</span> <span class="op">=</span> <span class="ss">s&quot;</span><span class="st">Hi </span><span class="ss">$name</span><span class="st">!</span><span class="ss">&quot;</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> sayHiToTheWorld <span class="op">=</span> <span class="fu">sayHiTo</span><span class="op">(</span><span class="st">&quot;World&quot;</span><span class="op">)</span></span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>booleanString <span class="cf">match</span> <span class="op">{</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="st">&quot;true&quot;</span> <span class="op">|</span> <span class="st">&quot;True&quot;</span> <span class="op">|</span> <span class="st">&quot;TRUE&quot;</span> <span class="op">=&gt;</span> <span class="kw">true</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="st">&quot;false&quot;</span> <span class="op">|</span> <span class="st">&quot;False&quot;</span> <span class="op">|</span> <span class="st">&quot;FALSE&quot;</span> <span class="op">=&gt;</span> <span class="kw">false</span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> _ <span class="op">=&gt;</span> <span class="kw">false</span></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="st">&quot;42L&quot;</span><span class="op">.</span>toInt</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> <span class="op">{</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> e<span class="op">:</span> NumberFormatException <span class="op">=&gt;</span> <span class="dv">0</span></span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section id="контролни-структури-scala-3" class="slide level1">
+<h1>Контролни структури – Scala 3</h1>
+<div class="sourceCode" id="cb85"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> <span class="dv">0</span></span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>  y <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span>x<span class="op">,</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">,</span> x <span class="op">*</span> <span class="dv">3</span><span class="op">)</span></span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="cf">yield</span> <span class="op">(</span>x<span class="op">,</span> y<span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> </span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>  i <span class="op">&lt;-</span> <span class="dv">1</span> to <span class="dv">4</span></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> <span class="fu">println</span><span class="op">(</span>s<span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">10</span> <span class="cf">do</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span><span class="op">(</span>i<span class="op">)</span></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">42</span> <span class="cf">then</span> <span class="st">&quot;Greater than the ultimate answer&quot;</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span> n <span class="op">==</span> <span class="dv">42</span> <span class="cf">then</span> <span class="st">&quot;The answer&quot;</span></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="st">&quot;Not there yet&quot;</span></span></code></pre></div>
+</section>
+<section id="контролни-структури-scala-2" class="slide level1">
+<h1>Контролни структури – Scala 2</h1>
+<div class="sourceCode" id="cb89"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">{</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> <span class="dv">0</span></span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>  y <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span>x<span class="op">,</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">,</span> x <span class="op">*</span> <span class="dv">3</span><span class="op">)</span></span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">yield</span> <span class="op">(</span>x<span class="op">,</span> y<span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">{</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>  i <span class="op">&lt;-</span> <span class="dv">1</span> to <span class="dv">4</span></span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="fu">println</span><span class="op">(</span>s<span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span><span class="op">(</span>i<span class="op">)</span></span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>  i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="op">]</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>n <span class="op">&gt;</span> <span class="dv">42</span><span class="op">)</span> <span class="st">&quot;Greater than the ultimate answer&quot;</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">42</span><span class="op">)</span> <span class="st">&quot;The answer&quot;</span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="st">&quot;Not there yet&quot;</span></span></code></pre></div>
+</section>
+<section id="блокове-и-контролни-структури-scala-3" class="slide level1">
+<h1>Блокове и контролни структури –<br />Scala 3</h1>
+<div class="sourceCode" id="cb93"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">42</span> <span class="cf">then</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> difference <span class="op">=</span> n <span class="op">-</span> <span class="dv">42</span></span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Greater than the ultimate answer with difference of $difference&quot;</span></span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span> n <span class="op">==</span> <span class="dv">42</span> <span class="cf">then</span> <span class="st">&quot;The answer&quot;</span></span>
+<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="st">&quot;Not there yet&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> <span class="dv">0</span></span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>  y <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span>x<span class="op">,</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">,</span> x <span class="op">*</span> <span class="dv">3</span><span class="op">)</span></span>
+<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="cf">yield</span></span>
+<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> firstElement <span class="op">=</span> <span class="ss">s&quot;</span><span class="st">x: </span><span class="ss">$x&quot;</span></span>
+<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> secondElement <span class="op">=</span> <span class="ss">s&quot;</span><span class="st">y: </span><span class="ss">$x&quot;</span></span>
+<span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">(</span>firstElement<span class="op">,</span> secondElement<span class="op">)</span></span></code></pre></div>
+<p>Блокове чрез индентация – приложимо при<br />всички контролни структури</p>
+</section>
+<section id="блокове-и-контролни-структури-scala-2" class="slide level1">
+<h1>Блокове и контролни структури –<br />Scala 2</h1>
+<div class="sourceCode" id="cb95"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>n <span class="op">&gt;</span> <span class="dv">42</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> difference <span class="op">=</span> n <span class="op">-</span> <span class="dv">42</span></span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Greater than the ultimate answer with difference of $difference&quot;</span></span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">42</span><span class="op">)</span> <span class="st">&quot;The answer&quot;</span></span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="st">&quot;Not there yet&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">{</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>  x <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> <span class="dv">0</span></span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>  y <span class="op">&lt;-</span> <span class="bu">List</span><span class="op">(</span>x<span class="op">,</span> x <span class="op">*</span> <span class="dv">2</span><span class="op">,</span> x <span class="op">*</span> <span class="dv">3</span><span class="op">)</span></span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">yield</span> <span class="op">{</span></span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> firstElement <span class="op">=</span> <span class="ss">s&quot;</span><span class="st">x: </span><span class="ss">$x&quot;</span></span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> secondElement <span class="op">=</span> <span class="ss">s&quot;</span><span class="st">y: </span><span class="ss">$x&quot;</span></span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">(</span>firstElement<span class="op">,</span> secondElement<span class="op">)</span></span>
+<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Блокове чрез скоби – приложимо навсякъде,<br />където е необходима стойност</p>
+</section>
+<section id="консистентен-синтаксис" class="slide level1">
+<h1>Консистентен синтаксис</h1>
+<div class="fragment">
+<p>Scala 3 приема и двата синтаксиса</p>
+</div>
+<div class="fragment">
+<p>В курса ще използваме консистентно новия</p>
+</div>
+<div class="fragment">
+<p>В <code>build.sbt</code>:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>scalacOptions <span class="op">++=</span> <span class="bu">Seq</span><span class="op">(</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;-new-syntax&quot;</span><span class="op">,</span></span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;-indent&quot;</span></span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="op">)</span></span></code></pre></div>
+</div>
+</section>
+<section id="още-за-функциите" class="slide level1">
+<h1>Още за функциите</h1>
+<ul>
+<li>типови параметри</li>
+<li>overloading</li>
+<li>default стойности на параметрите</li>
+<li>именувани аргументи</li>
+<li>променлив брой параметри</li>
+</ul>
+</section>
+<section id="полиморфизъм-чрез-типови-параметри" class="slide level1">
+<h1>Полиморфизъм чрез типови параметри</h1>
+<div class="sourceCode" id="cb98"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> repeat<span class="op">[</span>A<span class="op">](</span>value<span class="op">:</span> A<span class="op">,</span> times<span class="op">:</span> <span class="dt">Int</span><span class="op">):</span> <span class="bu">List</span><span class="op">[</span>A<span class="op">]</span> <span class="op">=</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> times <span class="op">==</span> <span class="dv">0</span> <span class="cf">then</span> <span class="bu">List</span><span class="op">.</span>empty <span class="co">// or List.empty[A], but A is inferred</span></span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> value <span class="op">::</span> <span class="fu">repeat</span><span class="op">(</span>value<span class="op">,</span> times <span class="op">-</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="fu">repeat</span><span class="op">(</span><span class="st">&quot;Hello&quot;</span><span class="op">,</span> <span class="dv">3</span><span class="op">)</span> <span class="co">// List(&quot;Hello&quot;, &quot;Hello&quot;, &quot;Hello&quot;)</span></span></code></pre></div>
+</section>
+<section id="полиморфизъм-чрез-overloading" class="slide level1">
+<h1>Полиморфизъм чрез overloading</h1>
+<div class="sourceCode" id="cb99"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">twice</span><span class="op">(</span>n<span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">=</span> n <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">twice</span><span class="op">(</span>d<span class="op">:</span> <span class="dt">Double</span><span class="op">)</span> <span class="op">=</span> d <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">twice</span><span class="op">(</span>str<span class="op">:</span> String<span class="op">)</span> <span class="op">=</span> str <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="fu">twice</span><span class="op">(</span><span class="dv">10</span><span class="op">)</span> <span class="co">// 20</span></span>
+<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="fu">twice</span><span class="op">(</span><span class="fl">10.0</span><span class="op">)</span> <span class="co">// 20.0</span></span>
+<span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="fu">twice</span><span class="op">(</span><span class="st">&quot;10&quot;</span><span class="op">)</span> <span class="co">// &quot;1010&quot;</span></span></code></pre></div>
+</section>
+<section id="default-стойности-на-параметрите" class="slide level1">
+<h1>Default стойности на параметрите</h1>
+<div class="sourceCode" id="cb100"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">enlist</span><span class="op">(</span>items<span class="op">:</span> <span class="bu">List</span><span class="op">[</span>String<span class="op">],</span> separator<span class="op">:</span> String <span class="op">=</span> <span class="st">&quot;, &quot;</span><span class="op">)</span> <span class="op">=</span> items<span class="op">.</span><span class="fu">mkString</span><span class="op">(</span>separator<span class="op">)</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> ingredients <span class="op">=</span> <span class="bu">List</span><span class="op">(</span><span class="st">&quot;1 egg&quot;</span><span class="op">,</span> <span class="st">&quot;200 ml milk&quot;</span><span class="op">,</span> <span class="st">&quot;1/2 cup of sugar&quot;</span><span class="op">,</span> <span class="st">&quot;2.5 cups of flour&quot;</span><span class="op">)</span></span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="fu">enlist</span><span class="op">(</span>ingredients<span class="op">)</span> <span class="co">// 1 egg, 200 ml milk, 1/2 cup of sugar, 2.5 cups of flour</span></span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="fu">enlist</span><span class="op">(</span>ingredients<span class="op">,</span> <span class="st">&quot;;&quot;</span><span class="op">)</span> <span class="co">// 1 egg;200 ml milk;1/2 cup of sugar;2.5 cups of flour</span></span></code></pre></div>
+</section>
+<section id="именувани-аргументи" class="slide level1">
+<h1>Именувани аргументи</h1>
+<div class="sourceCode" id="cb101"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">draw</span><span class="op">(</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>  text<span class="op">:</span> String<span class="op">,</span></span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>  textColour<span class="op">:</span> String <span class="op">=</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> </span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a>  backgroundColour<span class="op">:</span> String <span class="op">=</span> <span class="st">&quot;White&quot;</span></span>
+<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="op">):</span> String <span class="op">=</span></span>
+<span id="cb101-6"><a href="#cb101-6" aria-hidden="true" tabindex="-1"></a>  <span class="ss">s&quot;</span><span class="st">This is the text </span><span class="ss">$text</span><span class="st"> written with </span><span class="ss">$textColour</span><span class="st"> letters on </span><span class="ss">$backgroundColour</span><span class="st"> background</span><span class="ss">&quot;</span></span>
+<span id="cb101-7"><a href="#cb101-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-8"><a href="#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span><span class="op">(</span><span class="st">&quot;Hello&quot;</span><span class="op">)</span></span>
+<span id="cb101-9"><a href="#cb101-9" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span><span class="op">(</span><span class="st">&quot;Hello&quot;</span><span class="op">,</span> backgroundColour <span class="op">=</span> <span class="st">&quot;Cyan&quot;</span><span class="op">)</span></span>
+<span id="cb101-10"><a href="#cb101-10" aria-hidden="true" tabindex="-1"></a><span class="fu">draw</span><span class="op">(</span>backgroundColour <span class="op">=</span> <span class="st">&quot;Purple&quot;</span><span class="op">,</span> textColour <span class="op">=</span> <span class="st">&quot;White&quot;</span><span class="op">,</span> text <span class="op">=</span> <span class="st">&quot;Hello&quot;</span><span class="op">)</span></span></code></pre></div>
+</section>
+<section id="променлив-брой-параметри" class="slide level1">
+<h1>Променлив брой параметри</h1>
+<div class="sourceCode" id="cb102"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">enlist</span><span class="op">(</span>first<span class="op">:</span> String<span class="op">,</span> rest<span class="op">:</span> String<span class="op">*)</span> <span class="op">=</span> <span class="op">(</span>first <span class="op">+:</span> rest<span class="op">).</span><span class="fu">mkString</span><span class="op">(</span><span class="st">&quot;, &quot;</span><span class="op">)</span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co">// 1 egg, 200 ml milk, 1/2 cup of sugar, 2.5 cups of flour</span></span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="fu">enlist</span><span class="op">(</span><span class="st">&quot;1 egg&quot;</span><span class="op">,</span> <span class="st">&quot;200 ml milk&quot;</span><span class="op">,</span> <span class="st">&quot;1/2 cup of sugar&quot;</span><span class="op">,</span> <span class="st">&quot;2.5 cups of flour&quot;</span><span class="op">)</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb103"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> ingredients <span class="op">=</span> <span class="bu">List</span><span class="op">(</span><span class="st">&quot;1 egg&quot;</span><span class="op">,</span> <span class="st">&quot;200 ml milk&quot;</span><span class="op">,</span> <span class="st">&quot;1/2 cup of sugar&quot;</span><span class="op">,</span> <span class="st">&quot;2.5 cups of flour&quot;</span><span class="op">)</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="co">// A pinch of love, 1 egg, 200 ml milk, 1/2 cup of sugar, 2.5 cups of flour</span></span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">enlist</span><span class="op">(</span><span class="st">&quot;A pinch of love&quot;</span><span class="op">,</span> ingredients<span class="op">*)</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb104"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">enlist</span><span class="op">(</span><span class="st">&quot;A cake&quot;</span><span class="op">)</span> <span class="co">// A cake</span></span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">enlist</span><span class="op">()</span> <span class="co">// не се компилира</span></span></code></pre></div>
+</div>
+</section>
+<section id="функционално-програмиране" class="slide level1">
+<h1>Функционално програмиране</h1>
+</section>
+<section id="какво-е-функция" class="slide level1">
+<h1>Какво е функция?</h1>
+<p class="fragment">
+Според математиката:<br />Релация на две множествена <code>X</code> и <code>Y</code>, съпоставяща<br />елементи от <code>X</code> към елементи от <code>Y</code>
+</p>
+</section>
+<section id="функциите-са" class="slide level1">
+<h1>Функциите са:</h1>
+<div>
+<ul>
+<li class="fragment">детерминистични – един и същи вход винаги води до един и същи изход</li>
+<li class="fragment">чисти – без странични ефекти</li>
+<li class="fragment">тотални – дефинирани за всеки вход <em>(good to have)</em></li>
+</ul>
+</div>
+</section>
+<section id="section" class="slide level1">
+<h1></h1>
+<p><img data-src="images/02-fp-with-scala/functions.png" /></p>
+</section>
+<section id="функционално-срещу-императивно" class="slide level1">
+<h1>Функционално срещу императивно</h1>
+</section>
+<section id="императивни-програми" class="slide level1">
+<h1>Императивни програми</h1>
+<div>
+<ul>
+<li class="fragment">командваме програмата какво да направи</li>
+<li class="fragment">постъпкови изчисления във времето</li>
+<li class="fragment">всеки statement зависи от всички предишни</li>
+<li class="fragment">трудни за проследяване – трябва да имаме предвид всяка една стъпка и нейния ред</li>
+</ul>
+</div>
+</section>
+<section id="функционални-програми" class="slide level1">
+<h1>Функционални програми</h1>
+<div>
+<ul>
+<li class="fragment"><p>трансформират стойности</p></li>
+<li class="fragment"><p>декларативно – описваме проблема чрез “какво”, а не “как”</p></li>
+<li class="fragment"><p>изразите са единственото, определящо зависимости</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> b <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> c <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> x <span class="op">=</span> a <span class="op">+</span> c</span>
+<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> y <span class="op">=</span> b <span class="op">*</span> <span class="dv">40</span></span>
+<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-8"><a href="#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> z <span class="op">=</span> y <span class="op">*</span> x <span class="op">*</span> x</span></code></pre></div></li>
+<li class="fragment"><p>лесни за проследяване и за разсъждаване върху тях</p></li>
+<li class="fragment"><p>неизменими структури и липса на странични ефекти</p></li>
+<li class="fragment"><p>времето е “спряло”</p></li>
+<li class="fragment"><p>лесна композиция на отделните части</p></li>
+</ul>
+</div>
+</section>
+<section id="моделиране-на-времето" class="slide level1">
+<h1>Моделиране на времето</h1>
+<div class="sourceCode" id="cb106"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> oldZdravko <span class="op">=</span> <span class="fu">Person</span><span class="op">(</span><span class="st">&quot;Zdravko&quot;</span><span class="op">,</span> <span class="dv">32</span><span class="op">,</span> <span class="st">&quot;Varna&quot;</span><span class="op">,</span> <span class="st">&quot;Bulgarian&quot;</span><span class="op">)</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> newZdravko <span class="op">=</span> oldZdravko<span class="op">.</span><span class="fu">copy</span><span class="op">(</span>age <span class="op">=</span> <span class="dv">33</span><span class="op">,</span> address <span class="op">=</span> <span class="st">&quot;Sofia&quot;</span><span class="op">)</span></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>oldZdravko<span class="op">.</span><span class="fu">sayHiTo</span><span class="op">(</span>newZdravko<span class="op">)</span> <span class="co">// и двете версии на Здравко продължават да съществуват</span></span></code></pre></div>
+<p class="fragment">
+Функционалното програмиране работи с факти
+</p>
+</section>
+<section id="програма-без-странични-ефекти-програма-ли-е" class="slide level1">
+<h1>Програма без странични ефекти програма ли е?</h1>
+<div class="fragment">
+<p>Ще разгледаме множество функционални средства за ограничаване на страничните ефекти само до определени места</p>
+</div>
+<div class="fragment">
+<p>„Програма като стойност“</p>
+</div>
+</section>
+<section id="functional-wizard" class="slide level1">
+<h1>Functional Wizard</h1>
+<p><img data-src="images/02-fp-with-scala/functional-wizard.png" height="512" /></p>
+<p>Controls time &amp; space</p>
+</section>
+<section id="има-място-и-за-двете" class="slide level1">
+<h1>Има място и за двете</h1>
+<div>
+<ul>
+<li class="fragment">Императивното е незаминимо при някои алгоритми и оптимизации</li>
+<li class="fragment">Функционалното прави останалите части на програмата по-ясни
+<ul>
+<li class="fragment">ясна композитност между компоненти</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="if-a-tree-falls-in-a-forest-and-no-one-is-around-to-hear-it-does-it-make-a-sound" class="slide level1">
+<h1>“If a tree falls in a forest and no one is around to hear it, does it make a sound?”</h1>
+<p class="fragment">
+Напълно приемлово е функция да използва mutable state,<br />ако е само вътрешен за нея
+</p>
+<p class="fragment">
+Тоест не може да бъде наблюдаван външно
+</p>
+</section>
+<section id="модел-на-изчисление" class="slide level1">
+<h1>Модел на изчисление</h1>
+<p class="fragment">
+Колко от вас са учили СЕП?
+</p>
+</section>
+<section id="substitution-model-операционна-семантика" class="slide level1">
+<h1>Substitution model (операционна семантика)</h1>
+<div class="sourceCode" id="cb107"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">max</span><span class="op">(</span>a<span class="op">:</span> <span class="dt">Int</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">=</span> <span class="cf">if</span> a <span class="op">&gt;</span> b <span class="cf">then</span> a <span class="cf">else</span> b</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span><span class="op">(</span><span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">3</span><span class="op">)</span></span></code></pre></div>
+</section>
+<section id="предаване-на-параметрите-по-стойност" class="slide level1">
+<h1>Предаване на параметрите по стойност</h1>
+<div>
+<ul>
+<li class="fragment"><code>max(3 * 4, 2 * 3)</code></li>
+<li class="fragment"><code>max(12, 6)</code></li>
+<li class="fragment"><code>if 12 &gt; 6 then 12 else 6</code></li>
+<li class="fragment"><code>if true then 12 else 6</code></li>
+<li class="fragment"><code>12</code></li>
+</ul>
+</div>
+</section>
+<section id="предаване-на-параметрите-по-име" class="slide level1">
+<h1>Предаване на параметрите по име</h1>
+<div>
+<ul>
+<li class="fragment"><code>max(3 * 4, 2 * 3)</code></li>
+<li class="fragment"><code>if (3 * 4) &gt; (2 * 3) then (3 * 4) else (2 * 3)</code></li>
+<li class="fragment"><code>if (12) &gt; (6) then (3 * 4) else (2 * 3)</code></li>
+<li class="fragment"><code>if true then (3 * 4) else (2 * 3)</code></li>
+<li class="fragment"><code>3 * 4</code></li>
+<li class="fragment"><code>12</code></li>
+</ul>
+</div>
+</section>
+<section id="предаване-на-параметрите-по-име-1" class="slide level1">
+<h1>Предаване на параметрите по име</h1>
+<div class="sourceCode" id="cb108"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">max</span><span class="op">(</span>a<span class="op">:</span> <span class="op">=&gt;</span> <span class="dt">Int</span><span class="op">,</span> b<span class="op">:</span> <span class="op">=&gt;</span> <span class="dt">Int</span><span class="op">)</span> <span class="op">=</span> <span class="cf">if</span> a <span class="op">&gt;</span> b <span class="cf">then</span> a <span class="cf">else</span> b</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span><span class="op">(</span><span class="dv">3</span> <span class="op">*</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">3</span><span class="op">)</span></span></code></pre></div>
+</section>
+<section id="предаване-на-параметрите-по-име-2" class="slide level1">
+<h1>Предаване на параметрите по име</h1>
+<div class="sourceCode" id="cb109"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="op">||(</span>a<span class="op">:</span> <span class="dt">Boolean</span><span class="op">,</span> b<span class="op">:</span> <span class="op">=&gt;</span> <span class="dt">Boolean</span><span class="op">):</span> <span class="dt">Boolean</span> <span class="op">=</span> <span class="cf">if</span> a <span class="cf">then</span> <span class="kw">true</span> <span class="cf">else</span> b</span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="op">||(</span><span class="kw">true</span><span class="op">,</span> <span class="op">{</span></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span><span class="op">(</span><span class="st">&quot;Won&#39;t be printed&quot;</span><span class="op">)</span></span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">false</span></span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="op">})</span> <span class="co">// true</span></span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-8"><a href="#cb109-8" aria-hidden="true" tabindex="-1"></a><span class="op">||(</span><span class="kw">false</span><span class="op">,</span> <span class="op">{</span></span>
+<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span><span class="op">(</span><span class="st">&quot;Will be printed&quot;</span><span class="op">)</span></span>
+<span id="cb109-10"><a href="#cb109-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">false</span></span>
+<span id="cb109-11"><a href="#cb109-11" aria-hidden="true" tabindex="-1"></a><span class="op">})</span> <span class="co">// false</span></span></code></pre></div>
+</section>
+<section id="предаване-на-параметрите-по-име-3" class="slide level1">
+<h1>Предаване на параметрите по име</h1>
+<div class="sourceCode" id="cb110"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">describeByValue</span><span class="op">(</span>items<span class="op">:</span> <span class="bu">List</span><span class="op">[</span><span class="dt">Int</span><span class="op">],</span> evaluation<span class="op">:</span> <span class="dt">Int</span><span class="op">):</span> String <span class="op">=</span> </span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> items<span class="op">.</span>isEmpty <span class="cf">then</span> <span class="st">&quot;No items available&quot;</span></span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="ss">s&quot;</span><span class="st">Items: </span><span class="ss">${</span>items<span class="op">.</span><span class="fu">mkString</span><span class="op">(</span><span class="st">&quot;, &quot;</span><span class="op">)</span><span class="ss">}</span><span class="st"> are evaluated to </span><span class="ss">$evaluation&quot;</span></span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">describeByName</span><span class="op">(</span>items<span class="op">:</span> <span class="bu">List</span><span class="op">[</span><span class="dt">Int</span><span class="op">],</span> evaluation<span class="op">:</span> <span class="op">=&gt;</span> <span class="dt">Int</span><span class="op">):</span> String <span class="op">=</span></span>
+<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> items<span class="op">.</span>isEmpty <span class="cf">then</span> <span class="st">&quot;No items available&quot;</span></span>
+<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> <span class="ss">s&quot;</span><span class="st">Items: </span><span class="ss">${</span>items<span class="op">.</span><span class="fu">mkString</span><span class="op">(</span><span class="st">&quot;, &quot;</span><span class="op">)</span><span class="ss">}</span><span class="st"> are evaluated to </span><span class="ss">$evaluation&quot;</span></span>
+<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">avg</span><span class="op">(</span>xs<span class="op">:</span> <span class="bu">List</span><span class="op">[</span><span class="dt">Int</span><span class="op">])</span> <span class="op">=</span> xs<span class="op">.</span>sum <span class="op">/</span> xs<span class="op">.</span>size</span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb111"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> someItems <span class="op">=</span> <span class="bu">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">)</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describeByName</span><span class="op">(</span>someItems<span class="op">,</span> <span class="fu">avg</span><span class="op">(</span>someItems<span class="op">))</span> <span class="co">// Items: 1, 2, 3 are evaluated to 2</span></span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="fu">describeByValue</span><span class="op">(</span>someItems<span class="op">,</span> <span class="fu">avg</span><span class="op">(</span>someItems<span class="op">))</span> <span class="co">// Items: 1, 2, 3 are evaluated to 2</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb112"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> noItems <span class="op">=</span> <span class="bu">List</span><span class="op">.</span>empty<span class="op">[</span><span class="dt">Int</span><span class="op">]</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describeByName</span><span class="op">(</span>noItems<span class="op">,</span> <span class="fu">avg</span><span class="op">(</span>noItems<span class="op">))</span> <span class="co">// No items available</span></span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="fu">describeByValue</span><span class="op">(</span>noItems<span class="op">,</span> <span class="fu">avg</span><span class="op">(</span>noItems<span class="op">))</span> <span class="co">// java.lang.ArithmeticException: / by zero</span></span></code></pre></div>
+</div>
+</section>
+<section id="защо-ни-е-нужно-по-име" class="slide level1">
+<h1>Защо ни е нужно по име?</h1>
+<div>
+<ul>
+<li class="fragment"><p>short circuiting и собствени контролни структури</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>fastComputation orElse longComputation</span></code></pre></div></li>
+<li class="fragment"><p>Отлагане на изчисления</p>
+<ul>
+<li class="fragment">безкрайни структури от данни</li>
+<li class="fragment">изпълнение по-късно или в друга нишка</li>
+</ul></li>
+<li class="fragment"><p>Повторно изпълнение на изрази със странични ефекти</p></li>
+</ul>
+</div>
+</section>
+<section id="модел-на-изчисление-в-haskell" class="slide level1">
+<h1>Модел на изчисление в Haskell</h1>
+<div class="sourceCode" id="cb114"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">squared</span><span class="op">(</span>n<span class="op">:</span> <span class="op">=&gt;</span> <span class="dt">Int</span><span class="op">):</span> <span class="dt">Int</span> <span class="op">=</span></span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">lazy</span> <span class="kw">val</span> nValue <span class="op">=</span> n</span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>  nValue <span class="op">*</span> nValue</span></code></pre></div>
+</section>
+<section id="референтна-прозрачност" class="slide level1">
+<h1>Референтна прозрачност</h1>
+<p>Израз е референтно прозрачен, ако може да бъде заменен от своята стойност без това да променя поведението на програмата</p>
+<p class="fragment">
+Substitution модела работи само за референтно прозрачни изрази
+</p>
+</section>
+<section id="референтна-прозрачност-1" class="slide level1">
+<h1>Референтна прозрачност</h1>
+<div class="sourceCode" id="cb115"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 1</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">(</span>а<span class="op">,</span> a<span class="op">)</span></span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="co">// 2</span></span>
+<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">(</span><span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span><span class="op">)</span></span>
+<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-8"><a href="#cb115-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 3</span></span>
+<span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">3</span><span class="op">)</span></span></code></pre></div>
+</section>
+<section id="референтна-прозрачност-2" class="slide level1">
+<h1>Референтна прозрачност</h1>
+<div class="sourceCode" id="cb116"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 1</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span><span class="op">(</span><span class="st">&quot;Hey there!&quot;</span><span class="op">)</span></span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">(</span>a<span class="op">,</span> a<span class="op">)</span></span>
+<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-9"><a href="#cb116-9" aria-hidden="true" tabindex="-1"></a><span class="co">// 2</span></span>
+<span id="cb116-10"><a href="#cb116-10" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">({</span></span>
+<span id="cb116-11"><a href="#cb116-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span><span class="op">(</span><span class="st">&quot;Hey there!&quot;</span><span class="op">)</span></span>
+<span id="cb116-12"><a href="#cb116-12" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb116-13"><a href="#cb116-13" aria-hidden="true" tabindex="-1"></a><span class="op">},</span> <span class="op">{</span></span>
+<span id="cb116-14"><a href="#cb116-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span><span class="op">(</span><span class="st">&quot;Hey there!&quot;</span><span class="op">)</span></span>
+<span id="cb116-15"><a href="#cb116-15" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb116-16"><a href="#cb116-16" aria-hidden="true" tabindex="-1"></a><span class="op">})</span></span>
+<span id="cb116-17"><a href="#cb116-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-18"><a href="#cb116-18" aria-hidden="true" tabindex="-1"></a><span class="co">// 3</span></span>
+<span id="cb116-19"><a href="#cb116-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-20"><a href="#cb116-20" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">3</span><span class="op">)</span></span></code></pre></div>
+</section>
+<section id="изключенията-не-са-референтно-прозрачни" class="slide level1">
+<h1>Изключенията не са референтно прозрачни</h1>
+<div class="sourceCode" id="cb117"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">exceptionThrowingFails</span><span class="op">(</span>x<span class="op">:</span> String<span class="op">):</span> String <span class="op">=</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> y<span class="op">:</span> String <span class="op">=</span> <span class="cf">throw</span> <span class="kw">new</span> <span class="fu">Exception</span><span class="op">()</span></span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> x <span class="op">+</span> y</span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">catch</span></span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> _<span class="op">:</span> Exception <span class="op">=&gt;</span> <span class="st">&quot;&quot;</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb118"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">exceptionThrowingComputes</span><span class="op">(</span>x<span class="op">:</span> String<span class="op">):</span> String <span class="op">=</span> </span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span> x <span class="op">+</span> <span class="op">(</span><span class="cf">throw</span> <span class="kw">new</span> <span class="fu">Exception</span><span class="op">())</span></span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">catch</span> </span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> _<span class="op">:</span> Exception <span class="op">=&gt;</span> <span class="st">&quot;&quot;</span></span></code></pre></div>
+</div>
+</section>
+<section id="как-да-пишем-функционално" class="slide level1">
+<h1>Как да пишем функционално?</h1>
+<ul>
+<li>Основни подходи
+<ul>
+<li>Рекурсия</li>
+<li>Функциите като първокласни обекти</li>
+<li>Функции от по-висок ред</li>
+<li>Неизменими структури от данни</li>
+<li>Композитност</li>
+</ul></li>
+<li>Дизайн чрез типове и данни. Средства за трансформация на данни</li>
+<li>Работа с грешки и изключителни ситуации</li>
+<li>Контрол над страничните ефекти и ограничаването им</li>
+<li>Абстракции от по-висок ред</li>
+</ul>
 </section>
 <section id="въпроси" class="slide level1">
 <h1>Въпроси :)?</h1>

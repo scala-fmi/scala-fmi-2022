@@ -17,4 +17,5 @@ pandoc -t revealjs \
        --css=theme/theme.css \
        -V transition=fade \
        -V center=false \
-       -V hash=true
+       -V hash=true \
+       --syntax-definition highlight-scala.xml
