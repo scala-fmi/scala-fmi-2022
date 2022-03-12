@@ -1,4 +1,4 @@
-name := "oop-in-a-functional-language"
+name := "hello-world"
 version := "0.1"
 
 scalaVersion := "3.1.1"
