@@ -43,7 +43,7 @@
     * характеристики на функционалните програми
     * Substitution модел на изчисление. Предаване на параметрите по стойност и по име
     * Референтна прозрачност
-* [03 – ООП във функционален език](https://scala-fmi.github.io/scala-fmi-2021/lectures/03-oop-in-a-functional-language.html) \[[код](lectures/examples/03-oop-in-a-functional-language)\]
+* [03 – ООП във функционален език](https://scala-fmi.github.io/scala-fmi-2022/lectures/03-oop-in-a-functional-language.html) \[[код](lectures/examples/03-oop-in-a-functional-language)\]
   - Обектно-ориентирано програмиране като система от обекти
     * Съобщения, енкапсулация и late-binding
     * ООП като концепция, ортогонална на ФП. ООП в Scala
