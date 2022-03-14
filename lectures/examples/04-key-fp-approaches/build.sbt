@@ -1,4 +1,4 @@
-name := "oop-in-a-functional-language"
+name := "key-fp-approaches"
 version := "0.1"
 
 scalaVersion := "3.1.1"
