@@ -16,9 +16,7 @@ object Recursion extends App:
     else l.head + sum(l.tail)
 
   //f(5) = f(4) + f(3)
-  def fibonacci(i: Int): Int =
-    if i <= 1 then 1
-    else fibonacci(i - 1) + fibonacci(i - 2)
+  def fibonacci(i: Int): Int = ???
 
 object TailRecursion extends App:
   // We could introduce inner functions if we don't want to pollute the interface
@@ -37,12 +35,10 @@ object TailRecursion extends App:
   @tailrec
   def sum(l: List[Int], acc: Int = 0): Int =
     if l.isEmpty then acc
-    else sum(l.tail, acc + l.head)
+    else sum(l.tail, l.head + acc)
 
-  @tailrec
-  def fibonacci(i: Int, prev: Int = 0, current: Int = 1): Int =
-    if i <= 1 then current
-    else fibonacci(i - 1, prev = current, current = current + prev)
+  // @tailrec
+  def fibonacci(i: Int): Int = ???
 
 object MoreListFunctions extends App:
   @tailrec
