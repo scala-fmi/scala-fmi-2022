@@ -15,8 +15,9 @@ object Recursion extends App:
     if l.isEmpty then 0
     else l.head + sum(l.tail)
 
-  //f(5) = f(4) + f(3)
+  // f(5) = f(4) + f(3)
   def fibonacci(i: Int): Int = ???
+
 
 object TailRecursion extends App:
   // We could introduce inner functions if we don't want to pollute the interface
@@ -40,19 +41,17 @@ object TailRecursion extends App:
   // @tailrec
   def fibonacci(i: Int): Int = ???
 
+
 object MoreListFunctions extends App:
   @tailrec
   def drop[A](la: List[A], n: Int): List[A] =
     if n <= 0 || la.isEmpty then la
     else drop(la.tail, n - 1)
 
-  @tailrec
-  def reverse[A](l: List[A], acc: List[A] = Nil): List[A] =
-    if l.isEmpty then acc
-    else reverse(l.tail, l.head :: acc)
+  def nthElement[A](la: List[A], n: Int): A = ???
+
+  def reverse[A](l: List[A]): List[A] = ???
 
   def take[A](la: List[A], n: Int): List[A] = ???
-
-  def nthElement[A](la: List[A], n: Int): A = ???
 
   def concat(l1: List[Int], l2: List[Int]): List[Int] = ???
