@@ -162,14 +162,24 @@ def squared(n: => Int): Int =
 # Примери
 
 ```scala
-def sum(l: List[Int]): Int
+def sum(l: List[Int]): Int =
+  if l.isEmpty then 0
+  else l.head + sum(l.tail)
 
-def size[A](l: List[A]): Int
+def size[A](l: List[A]): Int =
+  if l.isEmpty then 0
+  else 1 + size(l.tail)
 
-def fibonacci(i: Int): Int
+def fibonacci(i: Int): Int = ???
 ```
 
 # Unfolding the recursion
+
+```scala
+def fact(n: Int): Int =
+  if n <= 1 then 1
+  else n * fact(n - 1)
+```
 
 ::: incremental
 
@@ -221,13 +231,13 @@ def fact(n: Int, acc: Int = 1): Int =
 
 <div class="fragment">
 
-И какво от това?
+Но защо?
 
 </div>
 
 :::
 
-# Как изглежда стека тогава?
+# Тогава стека изглежда така
 
 ```
 fact(5, 1)
@@ -251,16 +261,17 @@ fact(1, 120) =
 120
 ```
 
-# Ето какво
+# Опашкова рекурсия
 
 ::: incremental
 
-* Няма нужда да пазим променливи в стека от предните извиквания
+* Няма нужда да се пазят променливи в стека от предните извиквания
 * "Tail recursive" функциите могат да бъдат оптимизирани от компилатора
-* accumulator подход
-* @tailrec
+* Това може да подсигурим чрез анотацията `@tailrec`
+* За постигането ѝ често се ползва accumulator
 
 :::
+
 
 # Още примери
 
@@ -299,10 +310,12 @@ def fibonacci(i: Int): Int
 
 Синтаксис
 ```scala
-val lambdaName = (param: Type) => expression
+(param: Type) => expression
 ```
 
 <div class="fragment">
+
+Примери
 
 ```scala
 val addOne = (x: Int) => x + 1
@@ -335,7 +348,7 @@ sum(40, 2) // 42
     def apply(a: Int, b: Int): Boolean = a < b
   ```
 * `Function2` e нормален `trait` - репрезентира функции на два аргумента
-* Съществуват подобни за функции на различен брой аргументи - `Function0` ... `Function22`
+* Съществуват подобни за функции на различен брой аргументи - `Function0` ... `Function22`, `FunctionXXL`
 
 :::
 
@@ -370,26 +383,39 @@ oneAdder(2)
 
 # Eta expansion
 
-Преобразуване на метод към функция
+Разлика между def и ламбдa?
+
+```scala
+def isEvenMethod(i: Int) = i % 2 == 0
+
+val isEvenFunction = (i: Int) => i % 2 == 0
+```
+
+Преобразуване от def към ламбда
 
 ```scala
 def sum(a: Int, b: Int) = a + b
 
-val sumFun = sum  // doesn't work, will work in Scala 3
-  
-val sumFun = sum _  // works
-
-val sumFun: (Int, Int) => Int = sum   // also works
-
-val sumFun2: Function2[Int, Int, Int] = sum   // also works
+val sumFun = sum  // works, did not work in Scala 2
 
 sumFun(1, 2)
+
+
+// does not apply to no-args methods
+def sayHi = println("Hi")
+
+val hiFunc = sayHi // does not work
+
+val hiFunc = () => sayHi
 ```
 
 # Partial application
 
 ```scala
 val addOne = sum(_, 1)
+
+// еквивалетно на
+val addOne = x => sum(x, 1)
 ```
 
 Типът на `addOne` е `Int => Int`
@@ -413,7 +439,7 @@ wrapWithDiv(wrapWithP("Hello, world"))
 
 ::: incremental
 
-* Вече видяхме, че са функциите нормални стойности
+* Вече видяхме, че функциите са нормални стойности
 * Което означава, че можем да ги подаваме на други функции или да ги връщаме като резултати
 
 <div class="fragment">
@@ -428,13 +454,13 @@ wrapWithDiv(wrapWithP("Hello, world"))
 # Пример
 
 ```scala
-def formatResult(name: String, n: Int, f: Int => Int) =
-  s"The $name of $n is ${f(n)}"
+def formatResult[A, B](name: String, f: A => B, arg: A) =
+  s"The $name of $arg is ${f(arg)}"
 
-formatResult("factorial", 3, fact)
+formatResult("factorial", fact, 3)
 //res2: String = "The factorial of 3 is 6"
 
-formatResult("+1 addition", 41, addOne)
+formatResult("+1 addition", addOne, 41)
 //res4: String = "The +1 addition of 41 is 42"
 
 ```
