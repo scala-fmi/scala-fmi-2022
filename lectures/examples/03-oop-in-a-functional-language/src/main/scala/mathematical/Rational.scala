@@ -1,5 +1,7 @@
 package mathematical
 
+import scala.language.implicitConversions
+
 class Rational(n: Int, d: Int = 1) extends Ordered[Rational]:
   require(d != 0)
 
@@ -14,8 +16,8 @@ class Rational(n: Int, d: Int = 1) extends Ordered[Rational]:
   def unary_~ = Rational(denom, numer)
 
   def +(that: Rational) = Rational(
-  numer * that.denom + that.numer * denom,
-  denom * that.denom
+    numer * that.denom + that.numer * denom,
+    denom * that.denom
   )
 
   def -(that: Rational) = this + (-that)
@@ -29,8 +31,8 @@ class Rational(n: Int, d: Int = 1) extends Ordered[Rational]:
   override def hashCode(): Int = (numer, denom).##
 
   override def equals(obj: Any): Boolean = obj match
-  case that: Rational => numer == that.numer && denom == that.denom
-  case _ => false
+    case that: Rational => numer == that.numer && denom == that.denom
+    case _ => false
 
   private def gcd(a: Int, b: Int): Int = if b == 0 then a else gcd(b, a % b)
 
@@ -42,5 +44,5 @@ object Rational:
   implicit def intToRational(n: Int): Rational = Rational(n)
 
   def sum(rationals: Rational*): Rational =
-  if rationals.isEmpty then Zero
-  else rationals.head + sum(rationals.tail*)
+    if rationals.isEmpty then Zero
+    else rationals.head + sum(rationals.tail*)

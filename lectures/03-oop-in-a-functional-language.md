@@ -868,6 +868,30 @@ def checkLocations(locations: List[String], bird: Bird): List[String] =
 checkLocations(List("Sofia", "Varna"), Eagle("Henry"))
 ```
 
+::: { .fragment }
+
+Върху JVM се имплементира чрез reflection, поради което изисква:
+
+```scala
+import reflect.Selectable.reflectiveSelectable
+```
+
+:::
+
+# Досега
+
+* ООП като цялостна система от обекти, взаимодействащи помежду си
+* Дефиниране на класове и обекти, параметри на клас
+* Обекти като функции чрез `apply`
+* Неизменими value/data типове чрез case class
+* Абстракции чрез trait
+* Uniform Access Principle
+* Подтипов полиморфизъм
+* implicit конверсии
+* Type safety чрез обвиващи AnyVal класове
+* Изброени типове
+* Номинално и структурно типизиране
+
 # Типова алгебра { .scala3 }
 
 ::: { .fragment }
@@ -884,10 +908,13 @@ trait LovingAnimal:
   def hug = s"A hug from $name"
 
 case class Owl(name: String, age: Int):
-  def flyThrough(location: String): String = s"Hi, I am a $age years old owl. Hoot, hoot!"
+  def flyThrough(location: String): String =
+    s"Hi, I am a $age years old owl and I am flying through $location. Hoot, hoot!"
 
 val lovelyOwl: Owl & LovingAnimal = new Owl("Oliver", 7) with LovingAnimal
 lovelyOwl.hug // A hug from Oliver
+lovelyOwl.flyThrough("Plovdiv") // Hi, I am a 7 years old owl and
+                                // I am flying through Plovdiv. Hoot, hoot!
 ```
 
 # Обединение на типове (`|`) { .scala3 }
@@ -915,7 +942,7 @@ def toInteger(value: String | Int | Double): Int = value match
 ::: { .fragment }
 
 ```
-|def toInteger(value: String | Int | Double): Int = value match {
+|def toInteger(value: String | Int | Double): Int = value match
 |                                                   ^^^^^
 |                                  match may not be exhaustive.
 |
@@ -1115,6 +1142,23 @@ List("a", "b", "c").second // b
 ```
 :::
 
+# Търсене на extension методи –<br />точно като при implicits
+
+1. В текущия scope (чрез текущ или външен блок или чрез import)
+2. В продружаващия обект на който и да е от участващите типове
+
+# Extension методи в придружаващ обект
+
+```scala
+object Rational:
+  extension (xs: List[Rational])
+    def total: Rational =
+      if xs.isEmpty then 0
+      else xs.head + xs.tail.total
+      
+    def avg: Rational = xs.total / xs.size
+```
+
 # Extension Methods в Scala 2
 
 ::: incremental
@@ -1125,7 +1169,7 @@ List("a", "b", "c").second // b
 
 :::
 
-# Extension Methods чрез implicit<br />(depracated подход от Scala 2)
+# Extension Methods чрез implicit<br />(стар подход от Scala 2)
 
 ```scala
 class EnrichedInt(val n: Int) extends AnyVal:
@@ -1138,7 +1182,7 @@ implicit def intToEnrichedInt(n: Int) = new EnrichedInt(n)
 2 ** 3 // 8.0
 ```
 
-# Extension Methods чрез implicit<br />(depracated подход от Scala 2)
+# Extension Methods чрез implicit<br />(стар подход от Scala 2)
 
 ```scala
 implicit class EnrichedInt(val n: Int) extends AnyVal:
@@ -1187,15 +1231,6 @@ class ExampleSpec extends AnyFlatSpec with Matchers:
 
 # ООП дизайн?
 
-::: { .fragment }
-
-* книги за домейн дизайн
-  - [Functional and Reactive Domain Modeling](https://www.manning.com/books/functional-and-reactive-domain-modeling)
-  - [Domain-Driven Design Distilled](https://www.informit.com/store/domain-driven-design-distilled-9780134434421)
-  - [Domain-Driven Design](https://www.informit.com/store/domain-driven-design-tackling-complexity-in-the-heart-9780321125217)
-
-:::
-
 # ООП дизайн -- скрити домейн обекти
 
 ```scala
@@ -1234,6 +1269,6 @@ def buyTea(cc: CreditCard): (Tea, Charge) =
 
 :::
 
-# [Таблица на типовите елементи в Scala](https://github.com/scala-fmi/scala-fmi-2021/blob/master/resources/type-elements-in-scala.md)
+# [Таблица на типовите елементи в Scala](https://github.com/scala-fmi/scala-fmi-2022/blob/master/resources/type-elements-in-scala.md)
 
 # Въпроси :)?
