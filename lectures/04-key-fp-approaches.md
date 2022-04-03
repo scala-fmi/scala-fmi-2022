@@ -1198,14 +1198,62 @@ val v2 = v1.updated(5, 42)
 
 * Разучаването им започва силно през 90-те
   - ["Purely Functional Data Structures", Chris Okasaki](https://www.cambridge.org/core/books/purely-functional-data-structures/0409255DA1B48FA731859AC72E34D494)
-* Популяризирани чрез Clojure
+* Популяризирани чрез Clojure и Scala
   - ["The Value of Values", Rich Hickey](https://www.infoq.com/presentations/Value-Values/)
+  - Преди: значително по-скъпи памет и storage спрямо наличната изчислителна мощ
+  - Днес: значително по-евтини памет и storage спрямо наличната изчислителна мощ
 * Persistence
 * Structural sharing
 * Подпомагани от GC
 * Безопасно споделяне със всяка част от кода
   - дори между нишки
   - (~)константно създаване на производна структура -- например с допълнителен елемент
+
+:::
+
+# Други приложения на<br />immutable структури?
+
+::: { .fragment }
+
+[Immutability Changes Everything](https://queue.acm.org/detail.cfm?id=2884038) от Pat Helland
+
+:::
+
+# Други приложения – Бази от данни
+
+::: incremental
+
+* Append-only logs
+  - Write-ahead logging и Log-structured merge-tree са широко използвани в базите от данни
+  - Apache Kafka – streams of data
+  - всеки запис в лога е неизменим факт за какво се е случило
+    * който лесно може да бъде репликиран
+* Software-Transactional Memory (имплементирано в Clojure и други)
+* Multi-Version Concurrency Control
+  - използван например в PostgreSQL, където всеки ред в базата е immutable tuple
+  - Vacuum процес за garbage collection
+
+:::
+
+# Други приложения – Git
+
+* Git обектен модел – snapshot на дърво на файлова система
+* Бърз diff
+
+::: { .fragment }
+
+![](images/04-key-fp-approaches/git-objects-1.png){ height=480 }
+
+:::
+
+# Други приложения на – UI и front-end разработка
+
+::: incremental
+
+* Изключително полезно за UI
+* Пример: Redux за агрегиран immutable state на приложението
+  - със строги правила за генериране на нова версия на състоянието
+* Пример: Virtual DOM, React – diff между версии на DOM дървото
 
 :::
 
@@ -1218,6 +1266,33 @@ val v2 = v1.updated(5, 42)
 * От Scala 2.13 -- [оптимизация](https://core.ac.uk/download/pdf/192654061.pdf)
 * Повечето им операции също са [ефективно константа](https://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
 * До 4 елемента се пазят в масив
+
+:::
+
+# Tuple-ите в Scala
+
+::: incremental
+
+* `EmptyTuple` и инстанции на `Tuple1`, `Tuple2`, ..., `Tuple22`, `TupleXXL`
+* Всеки елемент на tuple-а се запазва като поле в обект
+
+:::
+
+::: { .fragment }
+
+От Scala 3 имат [удобни методи](https://scala-lang.org/api/3.x/scala/NonEmptyTuple.html):
+
+```scala
+(1, "Two", 3.0).size // 3
+(1, "Two", 3.0).head // 1
+(1, "Two", 3.0).tail // ("Two", 3.0)
+Nil *: (1, "Two", 3.0) // (List(), 1, Two, 3.0)
+(0, 1) ++ (2, 3, 4) // (0, 1, 2, 3, 4)
+(0, 1, 2, 3, 4).take(2) // (0, 1)
+(0, 1, 2, 3, 4).drop(2) // (2, 3, 4)
+(1, "Two", 3.0).toList
+// val res: List[Int | (String | (Double | Nothing))] = List(1, Two, 3.0)
+```
 
 :::
 

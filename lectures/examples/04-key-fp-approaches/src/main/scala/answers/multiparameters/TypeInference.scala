@@ -19,8 +19,8 @@ object TypeInference:
 
     loop(la).reverse
 
-//  mapSL(List(1, 2, 3), _ * 2) // Does not compile
+  mapSL(List(1, 2, 3), _ * 2) // Does not compile on Scala 2, but does on Scala 3
   mapSL(List(1, 2, 3), (_: Int) * 2)
 
-  mapML(List(1, 2, 3))(_ * 2) // Type inference works
+  mapML(List(1, 2, 3))(_ * 2) // Type inference works in both Scala 2 and Scala 3
   mapML(List(1, 2, 3))((_: Int) * 2)

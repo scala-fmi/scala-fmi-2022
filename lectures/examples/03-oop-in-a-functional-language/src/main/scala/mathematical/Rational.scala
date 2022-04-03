@@ -39,10 +39,17 @@ class Rational(n: Int, d: Int = 1) extends Ordered[Rational]:
 object Rational:
   val Zero = Rational(0) // използва apply, дефиниран долу
 
-  //  def apply(n: Int, d: Int = 1) = new Rational(n, d)
+//  def apply(n: Int, d: Int = 1) = new Rational(n, d)
 
   implicit def intToRational(n: Int): Rational = Rational(n)
 
   def sum(rationals: Rational*): Rational =
     if rationals.isEmpty then Zero
     else rationals.head + sum(rationals.tail*)
+
+  extension (xs: List[Rational])
+    def total: Rational =
+      if xs.isEmpty then 0
+      else xs.head + xs.tail.total
+
+    def avg: Rational = xs.total / xs.size

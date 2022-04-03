@@ -22,6 +22,13 @@ object LanguageConstructs extends App:
     println("I am a cat")
   }
 
+  // extension methods can also be called this way:
+  times(4) {
+    println("Meow")
+  }
+  // They actually are functions with multiple parameters lists where the first one consists of the target object.
+  // Be being extension methods Scala allows to call them as methods on the target object.
+
   @tailrec
   def timesN(n: Int)(fn: => Unit): Unit =
     if n <= 0 then ()
