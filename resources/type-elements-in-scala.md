@@ -197,6 +197,122 @@ lovelyOwl.flyThrough("Plovdiv") // Hi, I am a...
 </td>
     </tr>
   </tbody>
+  <tbody>
+    <tr>
+      <th colspan="4" align="left"><i>Type bounds (ограничения върху типови параметри)</i></th>
+    </tr>
+    <tr>
+<th>
+Горна граница
+
+`A <: Type`
+</th>
+<td>
+
+```scala
+def using[A <: AutoCloseable, B](resource: A)
+                                (f: A => B): B =
+  try f(resource)
+  finally resource.close()
+```
+
+</td>
+<td>
+
+Параметърът `A` трябва да е съвместип с типа `Type`, т.е.
+* ако `Type` е номинален, то `A` да наследява `Type`
+* ако `Type` е структурен, то `A` да има структурата на `Type`
+
+</td>
+    </tr>
+    <tr>
+<th>
+Долна граница
+
+`A >: Type`
+</th>
+<td>
+
+```scala
+trait JsonEncoder[A]:
+  def encode(a: A): Json
+
+trait Fruit
+case class Apple(color: String) extends Fruit
+case class Pear(color: String) extends Fruit
+
+def encodeAPear[A >: Pear](e: JsonEncoder[A]): Json =
+  e.encode(Pear("yellow"))
+
+val fruitEncoder: JsonEncoder[Fruit] = ???
+encodeAPear(fruitEncoder)
+```
+
+</td>
+<td>
+
+Параметърът `Type` трябва да е съвместип с типа `A`, т.е.
+* ако `Type` е номинален, то `Type` да наследява `A`
+* ако `Type` е структурен, то `Type` да има структурата на `A`
+
+</td>
+    </tr>
+    <tr>
+<th>
+Ковариантност
+
+`+A`
+</th>
+<td>
+
+```scala
+sealed trait Option[+A]
+case class Some[+A](value: A) extends Option[A]
+case object None extends Option[Nothing]
+
+trait Fruit
+case class Apple(color: String) extends Fruit
+case class Pear(color: String) extends Fruit
+
+val maybeApple: Option[Apple] = Apple("red")
+val maybeFruit: Option[Fruit] = maybeApple
+```
+
+</td>
+<td>
+
+Определя, че типът `Option[B]` е съвместим с `Option[A]` тогава и само тогава, когато `B` е подтип на `A`
+
+</td>
+    </tr>
+    <tr>
+<th>
+Контравариантност
+
+`-A`
+</th>
+<td>
+
+```scala
+trait JsonEncoder[-A]:
+  def encode(a: A): Json
+
+trait Fruit
+case class Apple(color: String) extends Fruit
+case class Pear(color: String) extends Fruit
+
+val fruitEncoder: JsonEncoder[Fruit] = ???
+val appleEncoder: JsonEncoder[Apple] = fruitEncoder
+```
+
+</td>
+<td>
+
+Определя, че типът `JsonEncoder[B]` е съвместим с `JsonEncoder[A]` тогава и само тогава, когато `B` е надтип на `A`
+
+</td>
+    </tr>
+  </tbody>
 
   <tbody>
     <tr>
