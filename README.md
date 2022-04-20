@@ -123,9 +123,9 @@
   - Type bounds (ограничения върху типовите параметри).
   - Вариантност. Ковариантност и контравариантност на типове. Вариантност при типовете за функции. [Още примери](https://www.freecodecamp.org/news/understand-scala-variances-building-restaurants/)
   - Изразяване на опционалност. `null` като грешка за милиард долара. Имплементация на `Option` тип
-  - Полезни операции върху `Option`. Използване на операции вместо pattern matching
-  - Деструктуриране чрез екстрактори. Използването им в pattern matching
-* 07 – Ефекти и функционална обработка на грешки
+  - Полезни операции върху `Option`. [Използване на операции вместо pattern matching](https://github.com/scala-fmi/scala-fmi-2022/blob/master/lectures/07-effects-and-functional-error-handling.ipynb)
+  - Деструктуриране чрез екстрактори. Използването им в pattern matching ([тук](https://github.com/scala-fmi/scala-fmi-2022/blob/master/lectures/07-effects-and-functional-error-handling.ipynb))
+* [07 – Ефекти и функционална обработка на грешки](https://github.com/scala-fmi/scala-fmi-2022/blob/master/lectures/07-effects-and-functional-error-handling.ipynb)
   - **забележка**: примерите от тази лекция са на Scala 2 поради използването на Jupyter като презентационен инструмент
   - Функционален дизайн – премахване на нелегалните състояния
   - От частични към тотални функции
