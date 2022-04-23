@@ -2,8 +2,8 @@ package threads
 
 import util.Utils
 
-object ThreadsExample extends App:
-  def doWork = Utils.doWork
+@main def runThreadsExample =
+  import Utils.doWork
 
   def createThread(work: => Unit) = new Thread(() => work)
 
@@ -46,3 +46,4 @@ object ThreadsExample extends App:
     thread7.join()
     thread8.join()
   }
+end runThreadsExample

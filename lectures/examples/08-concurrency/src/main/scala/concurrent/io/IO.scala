@@ -12,13 +12,12 @@ import scala.util.{Failure, Success, Try}
 
 trait IO[+A]:
   def map[B](f: A => B): IO[B] = flatMap(a => IO.of(f(a)))
-
   def flatMap[B](f: A => IO[B]): IO[B] = FlatMap(this, f)
+  def flatMapError[AA >: A](f: Throwable => IO[AA]): IO[AA] = FlatMapError(this, f)
 
   def zip[B](that: IO[B]): IO[(A, B)] = Zip(this, that)
 
   def zipMap[B, C](that: IO[B])(f: (A, B) => C): IO[C] = zip(that).map(f.tupled)
-
   def bindTo(ec: ExecutionContext): IO[A] = BindTo(this, ec)
 
   def unsafeRunSync: A = IO.unsafeRunSync(this)
@@ -117,8 +116,8 @@ object IO:
     case Eval(delayedValue) => delayedValue()
     case FlatMap(io, f) => unsafeRunSync(f(unsafeRunSync(io)))
     case FlatMapError(io, f) => Try(unsafeRunSync(io)) match
-        case Failure(error) => unsafeRunSync(f(error))
-        case Success(value) => value
+      case Failure(error) => unsafeRunSync(f(error))
+      case Success(value) => value
     case Zip(ioA, ioB) => (unsafeRunSync(ioA), unsafeRunSync(ioB))
     case Async(registerCallback) =>
       val p = scala.concurrent.Promise[T]()
@@ -126,7 +125,7 @@ object IO:
       Await.result(p.future, Duration.Inf)
     case BindTo(nestedIO, _) => unsafeRunSync(nestedIO)
 
-object IOApp extends App:
+@main def ioExample =
   val console = new ConsoleForIO(ExecutionContexts.blocking)
 
   val task = IO {
@@ -143,13 +142,12 @@ object IOApp extends App:
     n * 2
   }
 
-  val calculation =
-    for
-      combined <- task zip task
-      (a, b) = combined
-      c <- double(a + b)
-      _ <- console.putStringLine(s"(a, b) is: ${(a, b)}. The result is: $c") // console puts this in the blocking EC
-    yield c
+  val calculation = for
+    combined <- task zip task
+    (a, b) = combined
+    c <- double(a + b)
+    _ <- console.putStringLine(s"(a, b) is: ${(a, b)}. The result is: $c") // console puts this in the blocking EC
+  yield c
 
   println("The plan:" + calculation)
 
@@ -160,3 +158,4 @@ object IOApp extends App:
   calculation.unsafeRunAsync(r => println(s"The final result is: $r"))(ExecutionContexts.default)
 
   Thread.sleep(10000)
+end ioExample

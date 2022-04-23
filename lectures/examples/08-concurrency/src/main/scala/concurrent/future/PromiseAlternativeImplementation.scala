@@ -11,7 +11,7 @@ import scala.concurrent.{CanAwait, TimeoutException}
 import scala.util.{Failure, Success, Try}
 
 // An alternative implementation using synchronized
-class PromiseSynchronized[A]:
+class PromiseAlternativeImplementation[A]:
   case class Handler(handler: Try[A] => Any, ex: Executor):
     def executeWithValue(value: Try[A]): Unit = ex.execute(() => handler(value))
 
@@ -58,10 +58,10 @@ class PromiseSynchronized[A]:
 
     def result(atMost: Duration)(using permit: CanAwait): A = ready(atMost).value.get.get
 
-  def complete(value: Try[A]): PromiseSynchronized[A] =
+  def complete(value: Try[A]): PromiseAlternativeImplementation[A] =
     completeWithValue(value).foreach(_.executeWithValue(value))
     this
 
-  def succeed(value: A): PromiseSynchronized[A] = complete(Success(value))
+  def succeed(value: A): PromiseAlternativeImplementation[A] = complete(Success(value))
 
-  def fail(e: Throwable): PromiseSynchronized[A] = complete(Failure(e))
+  def fail(e: Throwable): PromiseAlternativeImplementation[A] = complete(Failure(e))

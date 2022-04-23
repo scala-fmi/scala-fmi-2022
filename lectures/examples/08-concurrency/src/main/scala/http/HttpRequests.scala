@@ -2,17 +2,19 @@ package http
 
 import util.HttpServiceUrls
 
-object HttpRequests extends App:
+@main def runHttpRequestsExample =
   import concurrent.Executors.given
 
-  val exampleRequest = HttpClient.get("http://example.com").map(_.getResponseBody)
-  val googleRequest = HttpClient.get("http://google.com").map(_.getResponseBody)
+  val myIp = HttpClient.get("http://icanhazip.com")
+    .map(_.getResponseBody)
 
-  val result =
-    for
-      (exampleResponse, googleResponse) <- exampleRequest zip googleRequest
-      randomNumberUrl = HttpServiceUrls.randomNumberUpTo(exampleResponse.length + googleResponse.length)
-      randomNumberResponse <- HttpClient.get(randomNumberUrl)
-    yield randomNumberResponse.getResponseBody
+  val example = HttpClient.get("http://example.org")
+    .map(_.getResponseBody)
 
-  result.foreach(println)
+  val endResult = for
+    (ipResult, exampleResult) <- (myIp zip example)
+    r <- HttpClient.get(
+      HttpServiceUrls.randomNumberUpTo(ipResult.length + exampleResult.length))
+  yield r.getResponseBody
+
+  endResult.foreach(println)

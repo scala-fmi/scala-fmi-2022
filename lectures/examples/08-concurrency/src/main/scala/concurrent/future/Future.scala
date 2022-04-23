@@ -81,30 +81,35 @@ object Future:
     try f
     catch case NonFatal(e) => Future.failed(e)
 
-//object FutureApp extends App:
-//  import Executors.given Executor
-//
-//  def calc1 = Future {
-//    1 + 1
-//  }
-//
-//  def calc2 = Future {
-//    42
-//  }
-//
-//  def double(n: Int) = Future {
-//    n * 2
-//  }
-//
-//  val combinedCalculation =
-//    for
-//      n <- Future.successful(10)
-//      (r1, r2) <- calc1 zip calc2
-//      doubled <- double(r1 + r2)
-//    yield doubled + n
-//
-//  combinedCalculation.foreach(println)
-//
-//  Await.result(combinedCalculation, Duration.Inf)
-//
-////  Thread.sleep(5000)
+object FutureApp:
+  import Executors.given
+
+  def calc1 = Future {
+    Thread.sleep(2000)
+    println("Calculation 1 completed")
+    1 + 1
+  }
+
+  def calc2 = Future {
+    Thread.sleep(2000)
+    println("Calculation 2 completed")
+    42
+  }
+
+  def double(n: Int) = Future {
+    n * 2
+  }
+
+  val combinedCalculation =
+    for
+      a <- Future.successful(142)
+      (r1, r2) <- calc1 zip calc2
+      doubled <- double(r1 + r2)
+    yield doubled + a
+
+  combinedCalculation.foreach(println)
+
+  def main(args: Array[String]): Unit =
+    Await.result(combinedCalculation, 5.seconds)
+
+    // Thread.sleep(5000)
