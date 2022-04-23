@@ -15,20 +15,23 @@ object Callbacks:
   }
 
   def produce2Products(onComplete: (Product, Product) => Unit): Unit =
+    // We need to do complex and error prone state management
+    // and concurrency synchronization
     var firstProduct: Option[Product] = None
 
-    def callback(newProduct: Product): Unit = this.synchronized {
-      firstProduct match
-        case None =>
-          firstProduct = Some(newProduct)
-        case Some(existingProduct) =>
-          onComplete(existingProduct, newProduct)
+    val onProduced: Product => Unit = { newProduct =>
+      this.synchronized {
+        firstProduct match
+          case Some(existingProduct) => onComplete(existingProduct, newProduct)
+          case None => firstProduct = Some(newProduct)
+      }
     }
 
-    produceProduct(callback)
-    produceProduct(callback)
+    produceProduct(onProduced)
+    produceProduct(onProduced)
 
-  def main(args: Array[String]): Unit = execute {
+  @main def run: Unit = execute {
+//    produceProduct(println)
     produce2Products((p1, p2) => println((p1, p2)))
   }
 

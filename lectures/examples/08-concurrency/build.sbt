@@ -11,6 +11,7 @@ libraryDependencies ++= Seq(
   ("com.typesafe.akka" %% "akka-stream" % akkaVersion).cross(CrossVersion.for3Use2_13),
   ("com.typesafe.akka" %% "akka-http" % "10.2.9").cross(CrossVersion.for3Use2_13),
   "org.asynchttpclient" % "async-http-client" % "2.12.3",
+  "ch.qos.logback" % "logback-classic" % "1.2.11",
   "org.scalatest" %% "scalatest" % "3.2.11" % Test
 )
 

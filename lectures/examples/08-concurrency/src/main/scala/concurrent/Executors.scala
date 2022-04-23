@@ -1,11 +1,11 @@
 package concurrent
 
-import java.util.concurrent.{Executor, ForkJoinPool}
+import java.util.concurrent.{Executor, ExecutorService, ForkJoinPool}
 
 object Executors:
-  given Executor = new ForkJoinPool
+  given defaultExecutor: Executor = new ForkJoinPool
 
-  val currentThreadExecutor = new Executor:
-    override def execute(operation: Runnable): Unit = operation.run()
+  val currentThreadExecutor: Executor = new Executor:
+    def execute(operation: Runnable): Unit = operation.run()
 
-  val blockingExecutor = java.util.concurrent.Executors.newCachedThreadPool()
+  val blockingExecutor: ExecutorService = java.util.concurrent.Executors.newCachedThreadPool()
