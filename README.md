@@ -112,7 +112,7 @@
     * нестриктни view-та на колекции
     * lazy списъци с мемоизация
   - Имплементация на `LazyList`
-* 06 – Pattern matching и алгебрични типове от данни (ADTs)
+* [06 – Pattern matching и алгебрични типове от данни (ADTs)](https://github.com/scala-fmi/scala-fmi-2021/blob/master/lectures/06-adts-are-the-root-of-all-evil.ipynb) [\[pattern-и\]](resources/pattern-matching.md)
   - Pattern matching. Деструктуриране на обекти
   - Pattern matching на различни места
     * `case` блокове – при `match` или на мястата, където се очакват функции или частични функции. Примери с `map` и `collect`
@@ -121,7 +121,7 @@
     * product типове. `case` класове, наредени n-торки и други
     * sum типове. Имплементация чрез `sealed trait` и `enum`
   - Type bounds (ограничения върху типовите параметри).
-  - Вариантност. Ковариантност и контравариантност на типове. Вариантност при типовете за функции. [Още примери](https://www.freecodecamp.org/news/understand-scala-variances-building-restaurants/)
+  - [Вариантност](resources/variance.md). Ковариантност и контравариантност на типове. Вариантност при типовете за функции. [Още примери](https://www.freecodecamp.org/news/understand-scala-variances-building-restaurants/)
   - Изразяване на опционалност. `null` като грешка за милиард долара. Имплементация на `Option` тип
   - Полезни операции върху `Option`. [Използване на операции вместо pattern matching](https://github.com/scala-fmi/scala-fmi-2022/blob/master/lectures/07-effects-and-functional-error-handling.ipynb)
   - Деструктуриране чрез екстрактори. Използването им в pattern matching ([тук](https://github.com/scala-fmi/scala-fmi-2022/blob/master/lectures/07-effects-and-functional-error-handling.ipynb))
@@ -142,6 +142,8 @@
 ## Допълнителни ресурси
 
 * [Таблица на елементите, съставящи типовата система на Scala](resources/type-elements-in-scala.md)
+* [Възможни образци при pattern matching. Използване на pattern matching](resources/pattern-matching.md)
+* [Вариантност](resources/variance.md)
 
 ## Генериране на лекции
 
