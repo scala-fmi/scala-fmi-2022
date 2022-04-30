@@ -1,6 +1,6 @@
 package exercises
 
-object MultiParameterLists extends App:
+@main def multiParameterListsExamples =
   def min[T](compare: (T, T) => Int)(a: T, b: T) =
     if compare(a, b) <= 0 then a
     else b
@@ -40,5 +40,4 @@ object MultiParameterLists extends App:
   }
   // They actually are functions with multiple parameters lists where the first one consists of the target object.
   // Be being extension methods Scala allows to call them as methods on the target object.
-
-
+end multiParameterListsExamples

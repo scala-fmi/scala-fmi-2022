@@ -2,7 +2,7 @@ package exercises
 
 import scala.annotation.tailrec
 
-object Recursion extends App:
+object Recursion:
   def fact(n: Int): Int =
     if n <= 1 then 1
     else n * fact(n - 1)
@@ -19,7 +19,7 @@ object Recursion extends App:
   def fibonacci(i: Int): Int = ???
 
 
-object TailRecursion extends App:
+object TailRecursion:
   // We could introduce inner functions if we don't want to pollute the interface
   // But let's use default parameters
 
@@ -42,7 +42,7 @@ object TailRecursion extends App:
   def fibonacci(i: Int): Int = ???
 
 
-object MoreListFunctions extends App:
+object MoreListFunctions:
   @tailrec
   def drop[A](la: List[A], n: Int): List[A] =
     if n <= 0 || la.isEmpty then la

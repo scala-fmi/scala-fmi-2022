@@ -7,7 +7,7 @@ import scala.annotation.tailrec
 import scala.io.Source
 import scala.language.reflectiveCalls
 
-object LanguageConstructs extends App:
+@main def langunageConstructsExamples =
   // times construct
   extension (n: Int)
     @tailrec
@@ -68,3 +68,4 @@ object LanguageConstructs extends App:
   println {
     numberOfLines("build.sbt")
   }
+end langunageConstructsExamples
