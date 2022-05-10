@@ -27,8 +27,9 @@ object JsonValue:
 trait JsonSerializable[A]:
   def toJsonValue(a: A): JsonValue
 
-  extension (a: A) def toJson: JsonValue = toJsonValue(a)
-  extension (a: A) def toJsonString: String = JsonValue.toString(toJsonValue(a))
+  extension (a: A)
+    def toJson: JsonValue = toJsonValue(a)
+    def toJsonString: String = JsonValue.toString(toJsonValue(a))
 
 object JsonSerializable:
   import JsonValue.*

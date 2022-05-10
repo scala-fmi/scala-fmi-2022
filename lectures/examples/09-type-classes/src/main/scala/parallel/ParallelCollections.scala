@@ -1,6 +1,6 @@
 package parallel
 
-import math.Monoid
+import answers.Monoid
 import parallel.Utils.time
 
 import scala.collection.parallel.CollectionConverters.*
@@ -17,7 +17,7 @@ def sum[A : Monoid](xs: ParSeq[A]): A =
 
   // Non-associative operation
   given badMonoid: Monoid[Int] with
-    def op(a: Int, b: Int): Int = a - b
+    extension (a: Int) def |+|(b: Int): Int = a - b
     def identity: Int = 0
 
   // when using the badMonoid the two will produce different results

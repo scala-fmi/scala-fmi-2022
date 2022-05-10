@@ -1,4 +1,6 @@
-package math
+package answers
+
+import answers.Monoid
 
 import scala.annotation.tailrec
 import scala.language.implicitConversions
@@ -35,11 +37,9 @@ class Rational(n: Int, d: Int = 1) extends Ordered[Rational]:
 
   override def toString: String = s"$numer/$denom"
 
-  def compare(that: Rational): Int = (this - that).numer
+  override def compare(that: Rational): Int = (this - that).numer
 
 object Rational:
-  def identity: Rational = Rational(0)
-
   def apply(n: Int, d: Int = 1) = new Rational(n, d)
 
   implicit def intToRational(n: Int): Rational = new Rational(n)

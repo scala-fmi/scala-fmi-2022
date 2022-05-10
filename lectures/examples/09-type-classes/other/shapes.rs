@@ -25,6 +25,8 @@ impl Shape for Rectangle {
     }
 }
 
+// Here we say that T has the Shape type class (just like we do in Scala)
+// which allows us to use all its operations
 fn print_area<T: Shape> (shape: &T) {
     println!("{}", shape.area());
 }
@@ -35,7 +37,4 @@ fn main() {
 
     print_area(&circle); // 12.5664
     print_area(&rectangle); // 15
-
-    print_area_generic(&circle); // 12.5664
-    print_area_generic(&rectangle); // 15
 }

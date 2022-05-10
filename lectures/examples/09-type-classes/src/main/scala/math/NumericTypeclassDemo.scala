@@ -30,5 +30,9 @@ package math
         yield Rational(n, d)
       case _ => None
 
-  List(Rational(3, 4), Rational(1, 2), Rational(2, 5)).sum // 33/20
-  List(Rational(3, 4), Rational(1, 2), Rational(2, 5)).product // 3/20
+  println {
+    List(Rational(3, 4), Rational(1, 2), Rational(2, 5)).sum
+  } // 33/20
+  println {
+    List(Rational(3, 4), Rational(1, 2), Rational(2, 5)).product
+  } // 3/20

@@ -2,7 +2,7 @@ package math
 
 import scala.annotation.tailrec
 
-object ListOrderingDemo extends App:
+@main def runListOrderingDemo =
   given [A : Ordering]: Ordering[List[A]] = (x: List[A], y: List[A]) =>
     val aOrdering = Ordering[A]
     import aOrdering.mkOrderingOps
