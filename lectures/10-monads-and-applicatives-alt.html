@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>I got you, FAM! or Functor / Applicative / Monad</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal-js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal-js/css/theme/white.css" id="theme">
+  <link rel="stylesheet" href="theme/theme.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal-js/css/print/pdf.css' : 'reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">I got you, FAM! or Functor / Applicative / Monad</h1>
+</section>
+
+<section id="the-story-so-far" class="slide level1">
+<h1>The story so far</h1>
+<div>
+<ul>
+<li class="fragment">What are type classes?</li>
+<li class="fragment">Build a set of rules a type.</li>
+<li class="fragment">Enable ad-hoc polymorphism</li>
+<li class="fragment">In Scala: Context aware &amp; able to augment existing types</li>
+</ul>
+</div>
+</section>
+<section id="a-brief-detour" class="slide level1">
+<h1>A brief detour</h1>
+<p>Having a hierarchy C extends B extends A which one is the most:</p>
+<ul>
+<li>powerful</li>
+<li>the highest abstraction</li>
+</ul>
+<p class="fragment">
+<blockquote>
+<p>Rule Of Least Power - When designing computer systems, one is often faced with a choice between using a more or less powerful language for publishing information, for expressing constraints, or for solving some problem. This finding explores tradeoffs relating the choice of language to reusability of information. The “Rule of Least Power” suggests choosing the least powerful language suitable for a given purpose.</p>
+</blockquote>
+</p>
+</section>
+<section id="functional-programming-in-scala" class="slide level1">
+<h1>Functional Programming in Scala</h1>
+<p><a href="https://www.manning.com/books/functional-programming-in-scala"><img data-src="images/10-monads-and-applicatives/functional-programming-in-scala.jpeg" height="520" /></a></p>
+</section>
+<section id="теория-на-категориите" class="slide level1">
+<h1>Теория на категориите</h1>
+<p><a href="https://github.com/hmemcpy/milewski-ctfp-pdf"><img data-src="images/10-monads-and-applicatives/category-theory-for-programmers.png" height="520" /></a></p>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal-js/lib/js/head.min.js"></script>
+  <script src="reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
