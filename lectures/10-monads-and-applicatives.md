@@ -475,9 +475,9 @@ def map4[A,B,C,D,E](fa: F[A],
 
 ```scala
 trait Traversable[F[_]] extends Functor[F]:
-  def traverse[G[_]: Applicative, A, B](fa: F[A])(f: A => G[B]): G[F[B]]
+  def traverse[G[_] : Applicative, A, B](fa: F[A])(f: A => G[B]): G[F[B]]
   
-  def sequence[G[_]:Applicative,A](fga: F[G[A]]): G[F[A]] =
+  def sequence[G[_] : Applicative, A](fga: F[G[A]]): G[F[A]] =
     traverse(fga)(ga => ga)
 ```
 

@@ -6,7 +6,7 @@ trait Applicative[F[_]] extends Functor[F]:
 
   // primitive combinators
   def map2[A, B, C](fa: F[A], fb: F[B])(f: (A, B) => C): F[C]
-  def unit[A](a: => A): F[A]
+  def unit[A](a: A): F[A]
 
   // derived combinators
   extension [A](fa: F[A])
@@ -47,7 +47,7 @@ object Applicative:
       case (Some(a), Some(b)) => Some(f(a, b))
       case (_, _) => None
 
-    def unit[A](a: => A): Option[A] = Some(a)
+    def unit[A](a: A): Option[A] = Some(a)
 
   given [L]: Applicative[[R] =>> Either[L, R]] with
     def map2[A, B, C](fa: Either[L, A], fb: Either[L, B])(f: (A, B) => C): Either[L, C] = (fa, fb) match
@@ -55,7 +55,7 @@ object Applicative:
       case (Left(l), _) => Left(l)
       case (_, Left(l)) => Left(l)
 
-    def unit[A](a: => A): Either[L, A] = Right(a)
+    def unit[A](a: A): Either[L, A] = Right(a)
 
 @main def runApplicativeDemo =
   import Applicative.given

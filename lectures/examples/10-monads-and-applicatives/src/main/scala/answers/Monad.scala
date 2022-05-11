@@ -1,43 +1,38 @@
-package effects
+package answers
+
+import effects.Functor
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.language.higherKinds
 import scala.util.{Failure, Success, Try}
 
-trait Monad[F[_]]:
-  // Exercise 1: Implement compose using flatMap and vice versa
-
+trait Monad[F[_]] extends Functor[F]:
   def unit[A](a: A): F[A]
   extension [A](fa: F[A])
     def flatMap[B](f: A => F[B]): F[B]
 
-  def compose[A, B, C](f: A => F[B], g: B => F[C]): A => F[C] = a => f(a).flatMap(g)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // Exercise 2: Implement the functions below using the primitives
-  extension [A](fa: F[A])
     def map[B](f: A => B): F[B] = fa.flatMap(a => unit(f(a)))
+
+  def compose[A, B, C](f: A => F[B], g: B => F[C]): A => F[C] = a => f(a).flatMap(g)
 
   extension [A](ffa: F[F[A]])
     def flatten: F[A] = ffa.flatMap(x => x)
 
   def zip[A, B](fa: F[A], fb: F[B]): F[(A, B)] = fa.flatMap(a => map(fb)(b => (a, b)))
   def map2[A, B, C](fa: F[A], fb: F[B])(f: (A, B) => C): F[C] = zip(fa, fb).map(f.tupled)
+
+  extension [A](lfa: List[F[A]])
+    def sequence: F[List[A]] =
+      lfa.foldRight(unit(List[A]())) { (next, acc) =>
+        map2(next, acc)(_ :: _)
+      }
+
+    def sequence2: F[List[A]] =
+      traverse(lfa)(fa => fa)
+
+  extension [A](as: List[A])
+    def traverse[B](f: A => F[B]): F[List[B]] =
+      as.foldRight(unit(List[B]()))((a, mbs) => map2(f(a), mbs)(_ :: _))
 
 object Monad:
   def apply[F[_]](using m: Monad[F]): Monad[F] = m

@@ -8,7 +8,7 @@ case object Nthng extends Maybe[Nothing]
 
 object Maybe:
   given Monad[Maybe] with
-    def unit[A](a: => A): Maybe[A] = Just(a)
+    def unit[A](a: A): Maybe[A] = Just(a)
 
     extension [A](fa: Maybe[A])
       def flatMap[B](f: A => Maybe[B]): Maybe[B] = fa match
