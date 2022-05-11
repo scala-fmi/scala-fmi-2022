@@ -16,7 +16,7 @@ trait Traversable[F[_]] extends Functor[F]:
 
       val idApplicative = new Applicative[Id]:
         def map2[A, B, C](fa: Id[A], fb: Id[B])(f: (A, B) => C): Id[C] = f(fa, fb)
-        def unit[A](a: => A): Id[A] = a
+        def unit[A](a: A): Id[A] = a
 
       traverse[Id, A, B](fa)(f)(idApplicative)
 
@@ -33,10 +33,10 @@ object Traversable:
         case Some(a) => G.map(f(a))(Some(_))
         case None => G.unit(None)
 
-  case class Tree[+A](head: A, tail: List[Tree[A]])
+  case class Tree[+A](value: A, children: List[Tree[A]])
   given Traversable[Tree] with
     def traverse[M[_], A, B](ta: Tree[A])(f: A => M[B])(implicit M: Applicative[M]): M[Tree[B]] =
-      M.map2(f(ta.head), Traversable[List].traverse(ta.tail)(a => traverse(a)(f)))(Tree(_, _))
+      M.map2(f(ta.value), Traversable[List].traverse(ta.children)(a => traverse(a)(f)))(Tree(_, _))
 
 @main def runTraversableDemo =
   import Traversable.*

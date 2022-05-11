@@ -17,12 +17,12 @@ object FormValidatorNec:
     else PasswordDoesNotMeetCriteria.invalidNec
 
   given MyMonad[ValidationResult] with
-    def unit[A](a: => A): ValidationResult[A] = Valid(a)
+    def unit[A](a: A): ValidationResult[A] = Valid(a)
 
     extension [A](fa: ValidationResult[A])
       def flatMap[B](f: A => ValidationResult[B]): ValidationResult[B] = fa match
         case Valid(a) => f(a)
-        case Invalid(_) => fa.asInstanceOf[ValidationResult[B]]
+        case i @ Invalid(_) => i
 
   def validateForm(username: String, password: String): ValidationResult[RegistrationData] =
     MyMonad[ValidationResult].map2(

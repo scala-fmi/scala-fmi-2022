@@ -12,4 +12,4 @@ object State:
         f(a).run(s2)
       }
 
-    def unit[A](a: => A): State[S, A] = State(s => (s, a))
+    def unit[A](a: A): State[S, A] = State(s => (s, a))

@@ -6,7 +6,7 @@ object Id:
   type Id[A] = A
 
   given Monad[Id] with
-    def unit[A](a: => A): Id[A] = a
+    def unit[A](a: A): Id[A] = a
 
     extension [A](fa: Id[A])
       def flatMap[B](f: A => Id[B]): Id[B] = f(fa)

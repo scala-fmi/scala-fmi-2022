@@ -36,7 +36,7 @@ object FormValidatorNecApplicative:
         case (Invalid(nec), Valid(_)) => Invalid(nec)
         case (Invalid(nec1), Invalid(nec2)) => Invalid(nec1 ++ nec2)
 
-    def unit[A](a: => A): ValidationResult[A] = Valid(a)
+    def unit[A](a: A): ValidationResult[A] = Valid(a)
 
 @main def runFormValidatorNecApplicativeDemo =
   import FormValidatorNecApplicative.given Applicative[ValidationResult]
