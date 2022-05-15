@@ -1,9 +1,10 @@
 package math
 
-trait Monoid[A]:
-  extension (a: A)
-    def |+|(b: A): A
-  def identity: A
+trait Monoid[M] extends Semigroup[M]:
+  extension (a: M)
+    def |+|(b: M): M // no need to repeat this one from Semigroup, it's here just for completeness
+
+  def identity: M
 
 object Monoid:
   def apply[A](using m: Monoid[A]): Monoid[A] = m
@@ -20,14 +21,14 @@ object Monoid:
     extension (a: String) def |+|(b: String): String = a + b
     val identity: String = ""
 
-  given [A: Monoid]: Monoid[Option[A]] with
-    extension (a: Option[A]) def |+|(b: Option[A]): Option[A] = (a, b) match
+  given [A : Monoid]: Monoid[Option[A]] with
+    extension (ma: Option[A]) def |+|(mb: Option[A]): Option[A] = (ma, mb) match
       case (Some(a), Some(b)) => Some(a |+| b)
-      case (Some(_), _) => a
-      case (_, Some(_)) => b
+      case (Some(_), _) => ma
+      case (_, Some(_)) => mb
       case _ => None
 
-    val identity: Option[A] = None
+    def identity: Option[A] = None
 
   given [A : Monoid, B : Monoid]: Monoid[(A, B)] with
     extension (p1: (A, B)) def |+|(p2: (A, B)): (A, B) = (p1, p2) match

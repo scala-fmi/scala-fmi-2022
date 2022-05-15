@@ -1,6 +1,6 @@
 package parallel
 
-import answers.Monoid
+import math.Monoid
 import parallel.Utils.time
 
 import scala.collection.parallel.CollectionConverters.*
