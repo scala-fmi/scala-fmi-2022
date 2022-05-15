@@ -6,14 +6,20 @@ case class State[S, A](run: S => (S, A))
 
 object State:
   // [A] =>> State[S, A] is a type lambda – a type-level function which
-  // accepts a type parameter and product a specific type – in this case
+  // accepts a type parameter and produces a specific type – in this case
   // the function accepts the parameter A and produces the type State[S, A].
   //
-  // In meaning this is equivalent to having
+  // In meaning this is equivalent to having:
+  //
   // type S = ???
   // type StateMonad[A] = State[S, A]
-  // In the above code StateMonad is also a type-level function, but unlike the lambda
-  // above it has a name
+  //
+  // and to passing StateMonad to `Monad` as type parameter. StateMonad is a type-level function too,
+  // but unlike the lambda above it has a name
+  //
+  // Both of these lines are equivalent in Scala 3:
+  // type StateMonad[A] = State[S, A]
+  // type StateMonad = [A] =>> State[S, A]
 
   given [S]: Monad[[A] =>> State[S, A]] with
     extension [A](fa: State[S, A])
