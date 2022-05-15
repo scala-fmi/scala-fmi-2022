@@ -259,6 +259,54 @@ encodeAPear(fruitEncoder)
     </tr>
     <tr>
 <th>
+Контекстна граница
+
+`A : Type`
+</th>
+<td>
+
+```scala
+def sum[A : Monoid](xs: List[A]) =
+  xs.fold(Monoid[A].identity)(_ |+| _)
+
+```
+
+еквивалентно е на:
+
+```scala
+def sum[A](xs: List[A])(using Monoid[A]) =
+  xs.fold(Monoid[A].identity)(_ |+| _)
+```
+
+</td>
+<td>
+
+Трябва да съществува инстанция на `A` за type class-а `Type`. Или още казано – да е фиксирана `given` стойност от тип `Type[A]`, която се подава с извикването на параметризираната функция (или конструирането на параметризирания клас)
+
+</td>
+    </tr>
+    <tr>
+<th>
+Комбинация от type bounds
+
+`A <: Type1 >: Type2 : Type3 : Type4 : Type 5`
+</th>
+<td>
+
+```scala
+def doSomething[V, E <: Expression[V] : Monoid : Eq]
+  (expressions: List[E]): E = ???
+```
+
+</td>
+<td>
+
+Scala ни позволява да поставяме произволен брой ограничения върху `A`. `A` може също така да бъде higher-kinded тип.
+
+</td>
+    </tr>
+    <tr>
+<th>
 Ковариантност
 
 `+A`
@@ -337,6 +385,41 @@ twice("10") // "1010"
 Дефинират се функции с еднакво име, но различни типове.
 
 Конкретната имплементация се избира по време на компилация.
+
+Вид Ad-Hoc полиморфизъм.
+</td>
+    </tr>
+    <tr>
+<th>Type class</th>
+<td>
+
+```scala
+trait Monoid[M]:
+  extension (a: M) def |+|(b: M): M
+  def identity: M
+
+object Monoid:
+  def apply[M](using m: Monoid[M]): Monoid[M] = m
+  // ...
+
+given Monoid[Int] with
+  extension (a: Int) def |+|(b: Int): Int = a + b
+  val identity: Int = 0
+
+given Monoid[Rational] = ???
+
+def sum[A : Monoid](xs: List[A]) =
+  xs.fold(Monoid[A].identity)(_ |+| _)
+
+sum(List(2, 4)) // uses Monoid[Int]
+sum(List(Rational(2), Rational(4))) // uses Monoid[Rational]
+```
+
+</td>
+<td>
+Ретроактивно добавяне на имплементация за тип към определен type class.
+
+Конкретната имплементация на операциите от type class-а се избира по време на компилация, според типа и контекста.
 
 Вид Ad-Hoc полиморфизъм.
 </td>

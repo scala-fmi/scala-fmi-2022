@@ -168,6 +168,25 @@
     * асинхронен интерпретатор на IO
     * синхронен интерпретатор на IO
   - Предимства на асинхронен IO пред eager Future
+* [09 – Type classes](https://scala-fmi.github.io/scala-fmi-2022/lectures/09-type-classes.html) \[[код](lectures/examples/09-type-classes)\]
+  - Абстрактност като помощно средство в програмирането. Абстрактност в математиката
+  - Какво е type class. Пример чрез моноид
+  - Контекст в програмния код. Контекстност на type class-овете в Scala. `given` инстанции и контекстни `using` параметри
+  - Характеристики на type class-овете. Операции, композитност, аксиоми
+  - Context bound
+  - Логически изводи при търсене на implicit стойности, логическа типова система
+  - Защо спазването на аксиомите е важно. Пример с паралелен `fold`
+  - [Реализация на type class-ове в Scala 2 чрез `implicit`](lectures/examples/09-type-classes-scala-2)
+  - Сравнение между ООП класовете и type class-овете
+  - Полиморфизъм и видове полиморфизъм. Static и late binding. Ретроактивност
+  - Примери за type class-ове в стандартната библитека на Scala – `Numeric`, `Ordering`
+  - Примери в други езици – [Haskell](lectures/examples/09-type-classes/other/monoid.hs) и [Rust](lectures/examples/09-type-classes/other/monoid.rs) (и [още Rust](lectures/examples/09-type-classes/other/shapes.rs)). Сравнение на тях и Scala
+  - Библиотеки за type class-ове. Теория на категории
+  - Type class-ове за форматиране и сериализация, пример за JSON сериализация
+  - `Monoid` и `Semigroup` в библиотеката Cats
+  - Допълнителни примери
+    * Multiversal срещу universal equality, `Eq` в Cats
+    * Пример за type class-ове на повече типове, линейно пространство в Spire
 
 ## Допълнителни ресурси
 
