@@ -311,8 +311,15 @@ trait Monad[F[_]] extends Functor[F]:
 * Идентитет
 
 ```scala
-map(x)(a => a) == x
+x.map(a => a) == x
 ```
+
+* асоциативност
+
+```scala
+x.map(f).map(g) == x.map(f andThen g)
+```
+
 
 # Грешни състояния на монади
 

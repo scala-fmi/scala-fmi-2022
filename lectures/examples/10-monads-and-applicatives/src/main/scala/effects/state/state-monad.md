@@ -39,16 +39,15 @@ case class State[S, A](run: S => (S, A))
 Да имплементираме монадна инстанция за този тип, която да ни позволи да композираме генерирането на стойности, всяка от съответното ѝ състояние. За примера горе с генератора на случайни числа това значи всяко последвашо случайно число да бъде генерирано от правилното последващо състояние на генератора. Инстанцията ще бъде следната:
 
 ```scala
-object State {
-  implicit def stateMonad[S] = new Monad[State[S, _]] {
-    def flatMap[A, B](fa:  State[S, A])(f:  A => State[S, B]): State[S, B] = State { s1 =>
-      val (s2, a) = fa.run(s1)
-      f(a).run(s2)
-    }
+object State:
+  given [S]: Monad[[A] =>> State[S, A]] with
+    extension [A](fa: State[S, A])
+      def flatMap[B](f: A => State[S, B]): State[S, B] = State { s1 =>
+        val (s2, a) = fa.run(s1)
+        f(a).run(s2)
+      }
 
-    def unit[A](a: => A): State[S, A] = State(s => (s, a))
-  }
-}
+    def unit[A](a: A): State[S, A] = State(s => (s, a))
 ```
 
 Разглеждаме `State` като ефект по втория си параметър, а за всеки тип `S` той ще има различна монадна инстанция. Както говорихме на лекциите, синтаксисът `State[S, _]` ще работи едва от версия 3 на Scala, за текущата версия се налага да използва по-сложен синтаксис с ламбда за типове, който може да [видите тук](State.scala).
@@ -81,11 +80,11 @@ val nextBoolean: State[RNG, Boolean] = nextInt.map(_ >= 0)
 Сега вече можем да направим следното:
 
 ```scala
-val randomTuple = for {
+val randomTuple = for
   a <- nextInt
   b <- nextInt
   c <- nextBoolean
-} yield (a, b, a + b, c)
+yield (a, b, a + b, c)
 ```
 
 Тук отново имаме последователни извиквания на `nextInt` (два пъти) и `nextBoolean`, но за разлика от първоначалния чисто функционален код, вече не се налага да предаваме състоянието на генератора ръчно – монадната инстанция на `State` прави това автоматично за нас.

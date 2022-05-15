@@ -11,14 +11,12 @@ trait Traversable[F[_]] extends Functor[F]:
     traverse(fga)(ga => ga)
 
   extension [A](fa: F[A])
+    // To implement map with ease here we use the Id monad as an applicative
     def map[B](f: A => B): F[B] =
-      type Id[A] = A
+      import effects.id.Id
+      import effects.id.given Monad[Id]
 
-      val idApplicative = new Applicative[Id]:
-        def map2[A, B, C](fa: Id[A], fb: Id[B])(f: (A, B) => C): Id[C] = f(fa, fb)
-        def unit[A](a: A): Id[A] = a
-
-      traverse[Id, A, B](fa)(f)(idApplicative)
+      traverse[Id, A, B](fa)(f)
 
 object Traversable:
   def apply[F[_]](using a: Traversable[F]): Traversable[F] = a

@@ -3,12 +3,11 @@ package effects
 import scala.util.Try
 
 trait Applicative[F[_]] extends Functor[F]:
-
-  // primitive combinators
+  // Base operations
   def map2[A, B, C](fa: F[A], fb: F[B])(f: (A, B) => C): F[C]
   def unit[A](a: A): F[A]
 
-  // derived combinators
+  // Derived operations:
   extension [A](fa: F[A])
     def map[B](f: A => B): F[B] = map2(fa, unit(()))((a, _) => f(a))
 
@@ -34,6 +33,11 @@ trait Applicative[F[_]] extends Functor[F]:
 
   extension [A](lfa: List[F[A]])
     def sequence: F[List[A]] = lfa.traverse(fa => fa)
+
+    def sequenceAlternativeApplementation: F[List[A]] =
+      lfa.foldRight(unit(List[A]())) { (next, acc) =>
+        map2(next, acc)(_ :: _)
+      }
 
   extension [A](as: List[A])
     def traverse[B](f: A => F[B]): F[List[B]] =
