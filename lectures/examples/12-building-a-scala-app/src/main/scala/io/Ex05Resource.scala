@@ -1,31 +1,31 @@
 package io
 
 import cats.effect.IOApp
-import cats.syntax.flatMap._
+import cats.syntax.flatMap.*
 
-object Ex05Resource extends IOApp.Simple {
+object Ex05Resource extends IOApp.Simple:
   import cats.effect.{IO, Resource}
 
-  import java.io._
+  import java.io.*
 
   def inputStream(f: File): Resource[IO, FileInputStream] = Resource.fromAutoCloseable(IO(new FileInputStream(f)))
 
   def outputStream(f: File): Resource[IO, FileOutputStream] = Resource.fromAutoCloseable(IO(new FileOutputStream(f)))
 
   def inputOutputStreams(in: File, out: File): Resource[IO, (InputStream, OutputStream)] =
-    for {
-      inStream  <- inputStream(in)
+    for
+      inStream <- inputStream(in)
       outStream <- outputStream(out)
-    } yield (inStream, outStream)
+    yield (inStream, outStream)
 
-  def transmit(origin: InputStream, destination: OutputStream, buffer: Array[Byte], acc: Long): IO[Long] = for {
+  def transmit(origin: InputStream, destination: OutputStream, buffer: Array[Byte], acc: Long): IO[Long] = for
     amount <- IO.blocking(origin.read(buffer, 0, buffer.length))
-    count  <-
-      if (amount > -1)
+    count <-
+      if amount > -1 then
         IO.blocking(destination.write(buffer, 0, amount)) >>
           transmit(origin, destination, buffer, acc + amount)
       else IO.pure(acc)
-  } yield count
+  yield count
 
   def transfer(origin: InputStream, destination: OutputStream): IO[Long] =
     transmit(origin, destination, new Array[Byte](1024 * 10), 0L)
@@ -38,4 +38,3 @@ object Ex05Resource extends IOApp.Simple {
   def run: IO[Unit] =
     copy(new File("build.sbt"), new File("build-copy.sbt")) >>=
       (c => IO.println(s"Transfered $c bytes"))
-}

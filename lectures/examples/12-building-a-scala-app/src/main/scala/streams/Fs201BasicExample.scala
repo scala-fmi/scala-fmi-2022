@@ -3,7 +3,7 @@ package streams
 import cats.effect.IO
 import cats.effect.unsafe.implicits.global
 
-object Fs201BasicExample extends App {
+object Fs201BasicExample extends App:
   import fs2.Stream
 
   val s1 = Stream.empty
@@ -15,9 +15,8 @@ object Fs201BasicExample extends App {
 
   println(s5.toList)
 
-  def repeat[F[_], A](stream: Stream[F, A]): Stream[F, A] = {
+  def repeat[F[_], A](stream: Stream[F, A]): Stream[F, A] =
     stream ++ repeat(stream)
-  }
 
   println(repeat(s3).take(10).toList)
 
@@ -26,4 +25,3 @@ object Fs201BasicExample extends App {
 
   val effectfulStream2 = Stream.evalSeq(IO(List(1, 2, 3)))
   println(effectfulStream2.compile.fold(0)(_ + _).unsafeRunSync())
-}
