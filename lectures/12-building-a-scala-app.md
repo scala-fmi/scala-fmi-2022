@@ -261,15 +261,9 @@ Decoding<br/>
 # Encoders
 
 ```scala
-trait Encoder[A] {
+trait Encoder[A]:
   def apply(a: A): Json
-}
 
-implicit class EncoderOps[A](val wrappedEncodeable: A) {
-  def asJson(implicit encoder: Encoder[A]): Json = encoder(wrappedEncodeable)
-  def asJsonObject(implicit encoder: ObjectEncoder[A]): JsonObject =
-    encoder.encodeObject(wrappedEncodeable)
-}
 ```
 
 # Encoder examples
@@ -281,14 +275,14 @@ implicit class EncoderOps[A](val wrappedEncodeable: A) {
 `String -> Parser -> Json -> HCursor -> Decoder -> Data Model`
 
 ```scala
-trait Parser {
+trait Parser:
   def parse(input: String): Either[ParsingFailure, Json]
   def decode[A: Decoder](input: String): Either[Error, A]
-}
 
-trait Decoder[A] {
+
+trait Decoder[A]:
   def apply(c: HCursor): Decoder.Result[A]
-}
+
 ```
 
 # Добавяне на circe към проект

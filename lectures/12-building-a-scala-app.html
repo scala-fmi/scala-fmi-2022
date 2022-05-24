@@ -332,15 +332,8 @@
 </section>
 <section id="encoders" class="slide level1">
 <h1>Encoders</h1>
-<div class="sourceCode" id="cb6"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> <span class="ex">Encoder</span><span class="op">[</span>A<span class="op">]</span> <span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">apply</span><span class="op">(</span>a<span class="op">:</span> A<span class="op">):</span> Json</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">implicit</span> <span class="kw">class</span> EncoderOps<span class="op">[</span>A<span class="op">](</span><span class="kw">val</span> wrappedEncodeable<span class="op">:</span> A<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">asJson</span><span class="op">(</span><span class="kw">implicit</span> encoder<span class="op">:</span> <span class="ex">Encoder</span><span class="op">[</span>A<span class="op">]):</span> Json <span class="op">=</span> <span class="fu">encoder</span><span class="op">(</span>wrappedEncodeable<span class="op">)</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">asJsonObject</span><span class="op">(</span><span class="kw">implicit</span> encoder<span class="op">:</span> ObjectEncoder<span class="op">[</span>A<span class="op">]):</span> JsonObject <span class="op">=</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    encoder<span class="op">.</span><span class="fu">encodeObject</span><span class="op">(</span>wrappedEncodeable<span class="op">)</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> <span class="ex">Encoder</span><span class="op">[</span>A<span class="op">]:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">apply</span><span class="op">(</span>a<span class="op">:</span> A<span class="op">):</span> Json</span></code></pre></div>
 </section>
 <section id="encoder-examples" class="slide level1">
 <h1>Encoder examples</h1>
@@ -349,14 +342,13 @@
 <section id="decoding" class="slide level1">
 <h1>Decoding</h1>
 <p><code>String -&gt; Parser -&gt; Json -&gt; HCursor -&gt; Decoder -&gt; Data Model</code></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> <span class="ex">Parser</span> <span class="op">{</span></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> <span class="ex">Parser</span><span class="op">:</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">parse</span><span class="op">(</span>input<span class="op">:</span> <span class="ex">String</span><span class="op">):</span> Either<span class="op">[</span>ParsingFailure<span class="op">,</span> Json<span class="op">]</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> decode<span class="op">[</span>A<span class="op">:</span> Decoder<span class="op">](</span>input<span class="op">:</span> <span class="ex">String</span><span class="op">):</span> Either<span class="op">[</span><span class="ex">Error</span><span class="op">,</span> A<span class="op">]</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> Decoder<span class="op">[</span>A<span class="op">]</span> <span class="op">{</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">apply</span><span class="op">(</span>c<span class="op">:</span> HCursor<span class="op">):</span> Decoder<span class="op">.</span><span class="ex">Result</span><span class="op">[</span>A<span class="op">]</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> Decoder<span class="op">[</span>A<span class="op">]:</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">apply</span><span class="op">(</span>c<span class="op">:</span> HCursor<span class="op">):</span> Decoder<span class="op">.</span><span class="ex">Result</span><span class="op">[</span>A<span class="op">]</span></span></code></pre></div>
 </section>
 <section id="добавяне-на-circe-към-проект" class="slide level1">
 <h1>Добавяне на circe към проект</h1>
