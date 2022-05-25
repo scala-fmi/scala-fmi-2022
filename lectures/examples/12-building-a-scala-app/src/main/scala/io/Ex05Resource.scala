@@ -8,7 +8,12 @@ object Ex05Resource extends IOApp.Simple:
 
   import java.io.*
 
-  def inputStream(f: File): Resource[IO, FileInputStream] = Resource.fromAutoCloseable(IO(new FileInputStream(f)))
+  def inputStream(f: File): Resource[IO, FileInputStream] =
+    Resource.make {
+      IO.blocking(new FileInputStream(f))
+    } { inStream =>
+      IO.blocking(inStream.close()).handleErrorWith(_ => IO.unit)
+    }
 
   def outputStream(f: File): Resource[IO, FileOutputStream] = Resource.fromAutoCloseable(IO(new FileOutputStream(f)))
 
