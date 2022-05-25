@@ -9,7 +9,6 @@ case class Tweet(id: Int, content: String, likes: Int = 0)
 object Tweet:
   import io.circe.generic.semiauto.*
 
-  // or both at the same time
   given Codec[Tweet] = deriveCodec
 
 object DerivedCodecExample extends App:
