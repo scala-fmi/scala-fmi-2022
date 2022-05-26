@@ -30,7 +30,7 @@ object SimpleMiddlewareTest extends IOApp:
 
   import SimpleMiddlewareExample.*
 
-  override def run(args: List[String]): IO[ExitCode] =
+  def run(args: List[String]): IO[ExitCode] =
     val goodRequest = Request[IO](Method.GET, uri"/")
     val badRequest = Request[IO](Method.GET, uri"/bad")
 

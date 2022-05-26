@@ -40,21 +40,6 @@ title: Изграждане на Scala приложение
 
 :::
 
-# Още един поглед към Cats Effect IO
-
-# Cats Effect Type Class-ове
-
-[![](images/11-cats-and-cats-effects/hierarchy-impure.jpeg){ height=520 }](https://typelevel.org/cats-effect/docs/typeclasses/)
-
-# Безопасно боравене с Resource-и
-
-::: { .fragment }
-
-Тоест функционален вариант на [using](04-key-fp-approaches.html#/%D0%B8%D0%BC%D0%BF%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%B0%D0%BD%D0%B5-%D0%BD%D0%B0-%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%B8-%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8-1/0)
-
-:::
-
-
 # JSON библиотеки
 
 * [circe](https://circe.github.io/circe/) - базира се на cats
@@ -268,6 +253,15 @@ object HttpRoutes:
 
 * Освен сървърна част, `http4s` има и HTTP клиент
 * [пример от документацията](https://http4s.org/v0.23/client/)
+
+# Безопасно боравене с Resource-и
+
+::: { .fragment }
+
+Тоест функционален вариант на [using](04-key-fp-approaches.html#/%D0%B8%D0%BC%D0%BF%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%B0%D0%BD%D0%B5-%D0%BD%D0%B0-%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%B8-%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8-1/0)
+
+:::
+
 
 # Структуриране на кода
 

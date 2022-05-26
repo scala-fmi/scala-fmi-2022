@@ -10,7 +10,7 @@ object Tweet:
   import io.circe.generic.semiauto.*
   import org.http4s.circe.*
 
-  implicit val tweetCodec: Codec[Tweet] = deriveCodec
+  given Codec[Tweet] = deriveCodec
 
   implicit def tweetEntityEncoder: EntityEncoder[IO, Tweet] = jsonEncoderOf[IO, Tweet]
   implicit def tweetsEntityEncoder: EntityEncoder[IO, Seq[Tweet]] = jsonEncoderOf[IO, Seq[Tweet]]

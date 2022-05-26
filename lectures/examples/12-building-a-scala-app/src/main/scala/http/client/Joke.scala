@@ -8,9 +8,9 @@ import io.circe.Codec
 import io.circe.parser.*
 import io.circe.syntax.*
 
-case class Joke(joke: String) extends AnyVal
+case class Joke(joke: String)
 
 object Joke:
   import io.circe.generic.semiauto.*
 
-//  given Codec[Joke] = deriveCodec[Joke]
+  given Codec[Joke] = deriveCodec[Joke]

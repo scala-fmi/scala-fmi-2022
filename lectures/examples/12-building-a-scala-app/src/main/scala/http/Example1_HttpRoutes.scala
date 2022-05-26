@@ -18,7 +18,7 @@ object Example1_HttpRoutes:
   }
 
   val helloRoutes = HttpRoutes.of[IO] {
-    case GET -> Root / "hello" / name => //   GET /hello/zdravko
+    case GET -> Root / "hello" / name => //   GET example.com/hello/zdravko
       Ok(s"Hello, $name.")
     case GET -> Root / "hola" / name =>
       Ok(s"¡Hola, $name!")
