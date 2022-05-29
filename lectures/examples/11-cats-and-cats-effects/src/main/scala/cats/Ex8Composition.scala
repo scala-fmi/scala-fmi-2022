@@ -38,9 +38,8 @@ import scala.concurrent.Future
 
       def flatMap[A, B](fga: F[G[A]])(f: A => F[G[B]]): F[G[B]] = fm.flatMap(fga) { ga =>
         val fApplied = gm.map(ga)(f)
-//        val fggb = Traverse[G].sequence(fApplied) // we cannot do it if G doesn't support sequence
-//        fm.map(fggb)(gm.flatten)
-          ???
+        val fggb = Traverse[G].sequence(fApplied) // we cannot do it if G doesn't support sequence
+        fm.map(fggb)(gm.flatten)
       }
 
       def tailRecM[A, B](a: A)(f: A => F[G[Either[A, B]]]): F[G[B]] = ???

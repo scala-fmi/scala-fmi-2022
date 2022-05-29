@@ -1,9 +1,9 @@
 package cats
 
-import cats.implicits.*
-//import cats.syntax.either.*
-//import cats.syntax.option.*
-//import cats.syntax.validated.*
+//import cats.implicits.*
+import cats.syntax.either.*
+import cats.syntax.option.*
+import cats.syntax.validated.*
 
 @main def runDataTypesSyntax =
   // Option
@@ -19,8 +19,6 @@ import cats.implicits.*
 
   val validatedOne = 1.validNec
   val validatedN = "Error".invalidNec
-
-  validatedN
 
   validatedOne.toEither
 

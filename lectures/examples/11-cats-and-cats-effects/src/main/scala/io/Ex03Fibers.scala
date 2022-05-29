@@ -20,8 +20,7 @@ object Ex03Fibers extends IOApp.Simple:
 
 object Ex03FibersBetter extends IOApp.Simple:
   def run: IO[Unit] =
-    val result = IO
-      .both(
+    val result = IO.both(
         Ex01RunningIO.double(10),
         Ex01RunningIO.square(10)
       )
@@ -36,5 +35,4 @@ object Ex03FibersBest extends IOApp.Simple:
       Ex01RunningIO.square(10)
     ).parMapN(_ + _)
 
-//    result.timed.flatMap(IO.println)
     result.timed >>= IO.println

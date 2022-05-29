@@ -3,6 +3,7 @@ package io
 import cats.effect.IO
 import cats.effect.unsafe.implicits.global
 import cats.syntax.parallel.*
+import cats.implicits.*
 
 import scala.concurrent.duration.DurationInt
 
@@ -17,7 +18,7 @@ object Ex01RunningIO:
     d <- double(a + b + c)
   yield d
 
-  val calcOutput = calc.timed.flatMap(IO.println)
+  val calcOutput = calc.timed >>= IO.println
 
   def main(args: Array[String]): Unit =
     calcOutput.unsafeRunSync()

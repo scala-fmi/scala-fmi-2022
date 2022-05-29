@@ -2,21 +2,24 @@ package io
 
 import cats.effect.IOApp
 import cats.syntax.flatMap.*
+import cats.implicits.*
 
 object Ex05Resource extends IOApp.Simple:
   import cats.effect.{IO, Resource}
 
   import java.io.*
 
-  def inputStream(f: File): Resource[IO, FileInputStream] = Resource.fromAutoCloseable(IO(new FileInputStream(f)))
+  def inputStream(f: File): Resource[IO, FileInputStream] =
+    Resource.make {
+      IO.blocking(new FileInputStream(f))
+    } { inStream =>
+      IO.blocking(inStream.close()).handleErrorWith(_ => IO.unit)
+    }
 
   def outputStream(f: File): Resource[IO, FileOutputStream] = Resource.fromAutoCloseable(IO(new FileOutputStream(f)))
 
   def inputOutputStreams(in: File, out: File): Resource[IO, (InputStream, OutputStream)] =
-    for
-      inStream <- inputStream(in)
-      outStream <- outputStream(out)
-    yield (inStream, outStream)
+    (inputStream(in), outputStream(out)).tupled
 
   def transmit(origin: InputStream, destination: OutputStream, buffer: Array[Byte], acc: Long): IO[Long] = for
     amount <- IO.blocking(origin.read(buffer, 0, buffer.length))

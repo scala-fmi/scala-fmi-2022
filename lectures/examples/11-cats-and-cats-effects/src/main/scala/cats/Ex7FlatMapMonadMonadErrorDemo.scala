@@ -26,7 +26,7 @@ import scala.concurrent.duration.DurationInt
       ifFalse = storeUserForReview(user)
     )
   val user = User("A", Email("a", "gmail.com"), "123")
-//  registerUser(user)
+  //  registerUser(user)
 
   // TODO: >> and >>= examples
 

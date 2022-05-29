@@ -336,10 +336,157 @@ trait Parallel[M[_]] extends NonEmptyParallel[M]:
 
 [![](images/11-cats-and-cats-effects/hierarchy-impure.jpeg){ height=520 }](https://typelevel.org/cats-effect/)
 
+# MonadCancel
+
+::: { .fragment }
+
+
+Разширява `MonadError` с опция за канселиране. Така ефектът може да бъде в едно от следните състояния:
+
+```scala
+sealed trait Outcome[F[_], E, A]
+final case class Succeeded[F[_], E, A](fa: F[A]) extends Outcome[F, E, A]
+final case class Errored[F[_], E, A](e: E) extends Outcome[F, E, A]
+final case class Canceled[F[_], E, A]() extends Outcome[F, E, A]
+```
+
+:::
+
+# MonadCancel
+
+```scala
+trait MonadCancel[F[_], E] extends MonadError[F, E]:
+  // Gives us a cancelled instance of the effect. Every composition
+  // with it should cancel all the dependent effects
+  def canceled: F[Unit]
+
+  // Registers an action for when the effect is cancelled
+  def onCancel[A](fa: F[A], fin: F[Unit]): F[A]
+
+  // ... and some other methods
+```
+
+# [MonadCancel](https://typelevel.org/cats-effect/docs/typeclasses/monadcancel) [(API)](https://typelevel.org/cats-effect/api/3.x/cats/effect/kernel/MonadCancel.html)
+
+`MonadCancel` имплементира следната операция:
+
+```scala
+def bracket[A, B](acquire: F[A])(use: A => F[B])(release: A => F[Unit])
+```
+
+Това ни позволява да менажираме ресурси, които трябва да бъдат затваряни.
+
+::: incremental
+
+* Първоначално ресурсът се acquire-ва
+* след това го процесваме
+* когато процесването свърши или получим грешка или канселиране, тогава ресурсът се освобождава
+* Повече за това по-късно
+
+:::
+
+# [Unique](https://typelevel.org/cats-effect/docs/typeclasses/unique)
+
+```scala
+trait Unique[F[_]]:
+  def unique: F[Unique.Token]
+```
+
+Генерира гарантирано уникални (при сравнение) стойности
+
+# [Spawn](https://typelevel.org/cats-effect/docs/typeclasses/spawn) [(API)](https://typelevel.org/cats-effect/api/3.x/cats/effect/kernel/GenSpawn.html)
+
+```scala
+trait GenSpawn[F[_], E] extends MonadCancel[F, E] with Unique[F]
+```
+
+::: incremental
+
+* Позволява конкурентност чрез изпълнение на ефекта в конкурентен fiber – метод `start`
+  * Изпълняват се в `compute` pool-а
+* Връща `IO[Fiber]`, който може да бъде `join`-нат, за да изчакаме резултата му, или `cancel`-иран
+  * много често от fiber-а, който го е стартирал
+* Позволявани да изпълним множество ефекти конкурентно (`both`) или в състезание (`race`)
+* Не позволява комуникация между fiber-и преди fiber-а да е завършил
+  * Можем да извлечем резултат от него само и единствено чрез `join`
+* `parTupled` и другите `Parallel` операции водят до създаване на `fiber`-и
+
+:::
+
+# [Concurrent](https://typelevel.org/cats-effect/docs/typeclasses/concurrent) [(API)](https://typelevel.org/cats-effect/api/3.x/cats/effect/kernel/GenConcurrent.html)
+
+Позволява безопасна обмяна на информация между fiber-и
+
+```scala
+trait GenConcurrent[F[_], E] extends GenSpawn[F, E]:
+  // ...
+```
+
+Благодарение на него са имплементирани структури като Ref, Queue, Deferred и други
+
 # Spawn vs Concurrent
 
 ![](images/11-cats-and-cats-effects/Screenshot_20220518_173430.png)
 ![](images/11-cats-and-cats-effects/Screenshot_20220518_173528.png)
+
+# Clock
+
+```scala
+trait Clock[F[_]]:
+  def monotonic: F[FiniteDuration]
+
+  def realTime: F[FiniteDuration]
+```
+
+Дава ни текущото време
+
+# [Temporal](https://typelevel.org/cats-effect/docs/typeclasses/temporal)
+
+Позволява ни да `sleep`-ваме и да имплементираме `timeout`-и.
+
+Използва scheduler thread pool-а на Runtime-а.
+
+# [Sync](https://typelevel.org/cats-effect/docs/typeclasses/sync) [(API)](https://typelevel.org/cats-effect/api/3.x/cats/effect/kernel/Sync.html)
+
+Осигурява връзка към външния свят през синхронен API, като отлага неговия страничен ефект:
+
+```scala
+trait Sync[F[_]] extends MonadCancel[F, Throwable] with Clock[F] with Unique[F] with Defer[F]:
+  // Синхронният код, който ще бъде отложен и превърнат
+  // във функционален ефект
+  def delay[A](thunk: => A): F[A]
+
+  // Блокиращ синхронен код – ще се изпълни в blocking thread pool-а
+  def blocking[A](thunk: => A): F[A]
+
+  // Като blocking, но позволяващо канселиране, използващо
+  // стандартния метод за канселиране на грешки в Java (interrupt)
+  def interruptible[A](thunk: => A): F[A]
+```
+
+# [Async](https://typelevel.org/cats-effect/docs/typeclasses/async) [(API)](https://typelevel.org/cats-effect/api/3.x/cats/effect/kernel/Async.html)
+
+Осигурява връзка към външния свят през асинхронен, callback-базиран API:
+
+```scala
+trait Async[F[_]] extends AsyncPlatform[F] with Sync[F] with Temporal[F]:
+  // Позволява на IO да регистрира callback за тази операция
+  def async_[A](k: (Either[Throwable, A] => Unit) => Unit): F[A]
+
+  // По-обща версия, позволяваща и канселиране
+  def async[A](k: (Either[Throwable, A] => Unit) => F[Option[F[Unit]]]): F[A]
+
+  // Дава достъп до compute execution context-а, в който да се изпълни
+  // асинхронен код
+  def executionContext: F[ExecutionContext]
+
+  // Подменя comput execution context-а
+  def evalOn[A](fa: F[A], ec: ExecutionContext): F[A]
+```
+
+# Безопасно управление на ресурси
+
+# Задача: имплементация на Channel
 
 # Ефектни Type class-ове
 

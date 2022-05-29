@@ -381,9 +381,131 @@
 <h1>Ефектни котки…</h1>
 <p><a href="https://typelevel.org/cats-effect/"><img data-src="images/11-cats-and-cats-effects/hierarchy-impure.jpeg" height="520" /></a></p>
 </section>
+<section id="monadcancel" class="slide level1">
+<h1>MonadCancel</h1>
+<div class="fragment">
+<p>Разширява <code>MonadError</code> с опция за канселиране. Така ефектът може да бъде в едно от следните състояния:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">sealed</span> <span class="kw">trait</span> Outcome<span class="op">[</span>F<span class="op">[</span>_<span class="op">],</span> E<span class="op">,</span> A<span class="op">]</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">final</span> <span class="cf">case</span> <span class="kw">class</span> Succeeded<span class="op">[</span>F<span class="op">[</span>_<span class="op">],</span> E<span class="op">,</span> A<span class="op">](</span>fa<span class="op">:</span> F<span class="op">[</span>A<span class="op">])</span> <span class="kw">extends</span> Outcome<span class="op">[</span>F<span class="op">,</span> E<span class="op">,</span> A<span class="op">]</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">final</span> <span class="cf">case</span> <span class="kw">class</span> Errored<span class="op">[</span>F<span class="op">[</span>_<span class="op">],</span> E<span class="op">,</span> A<span class="op">](</span>e<span class="op">:</span> E<span class="op">)</span> <span class="kw">extends</span> Outcome<span class="op">[</span>F<span class="op">,</span> E<span class="op">,</span> A<span class="op">]</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">final</span> <span class="cf">case</span> <span class="kw">class</span> Canceled<span class="op">[</span>F<span class="op">[</span>_<span class="op">],</span> E<span class="op">,</span> A<span class="op">]()</span> <span class="kw">extends</span> Outcome<span class="op">[</span>F<span class="op">,</span> E<span class="op">,</span> A<span class="op">]</span></span></code></pre></div>
+</div>
+</section>
+<section id="monadcancel-1" class="slide level1">
+<h1>MonadCancel</h1>
+<div class="sourceCode" id="cb19"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> MonadCancel<span class="op">[</span>F<span class="op">[</span>_<span class="op">],</span> E<span class="op">]</span> <span class="kw">extends</span> MonadError<span class="op">[</span>F<span class="op">,</span> E<span class="op">]:</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Gives us a cancelled instance of the effect. Every composition</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// with it should cancel all the dependent effects</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> canceled<span class="op">:</span> F<span class="op">[</span><span class="dt">Unit</span><span class="op">]</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Registers an action for when the effect is cancelled</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> onCancel<span class="op">[</span>A<span class="op">](</span>fa<span class="op">:</span> F<span class="op">[</span>A<span class="op">],</span> fin<span class="op">:</span> F<span class="op">[</span><span class="dt">Unit</span><span class="op">]):</span> F<span class="op">[</span>A<span class="op">]</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ... and some other methods</span></span></code></pre></div>
+</section>
+<section id="monadcancel-api" class="slide level1">
+<h1><a href="https://typelevel.org/cats-effect/docs/typeclasses/monadcancel">MonadCancel</a> <a href="https://typelevel.org/cats-effect/api/3.x/cats/effect/kernel/MonadCancel.html">(API)</a></h1>
+<p><code>MonadCancel</code> имплементира следната операция:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bracket<span class="op">[</span>A<span class="op">,</span> B<span class="op">](</span>acquire<span class="op">:</span> F<span class="op">[</span>A<span class="op">])(</span>use<span class="op">:</span> A <span class="op">=&gt;</span> F<span class="op">[</span>B<span class="op">])(</span>release<span class="op">:</span> A <span class="op">=&gt;</span> F<span class="op">[</span><span class="dt">Unit</span><span class="op">])</span></span></code></pre></div>
+<p>Това ни позволява да менажираме ресурси, които трябва да бъдат затваряни.</p>
+<div>
+<ul>
+<li class="fragment">Първоначално ресурсът се acquire-ва</li>
+<li class="fragment">след това го процесваме</li>
+<li class="fragment">когато процесването свърши или получим грешка или канселиране, тогава ресурсът се освобождава</li>
+<li class="fragment">Повече за това по-късно</li>
+</ul>
+</div>
+</section>
+<section id="unique" class="slide level1">
+<h1><a href="https://typelevel.org/cats-effect/docs/typeclasses/unique">Unique</a></h1>
+<div class="sourceCode" id="cb21"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> Unique<span class="op">[</span>F<span class="op">[</span>_<span class="op">]]:</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> unique<span class="op">:</span> F<span class="op">[</span>Unique<span class="op">.</span>Token<span class="op">]</span></span></code></pre></div>
+<p>Генерира гарантирано уникални (при сравнение) стойности</p>
+</section>
+<section id="spawn-api" class="slide level1">
+<h1><a href="https://typelevel.org/cats-effect/docs/typeclasses/spawn">Spawn</a> <a href="https://typelevel.org/cats-effect/api/3.x/cats/effect/kernel/GenSpawn.html">(API)</a></h1>
+<div class="sourceCode" id="cb22"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> GenSpawn<span class="op">[</span>F<span class="op">[</span>_<span class="op">],</span> E<span class="op">]</span> <span class="kw">extends</span> MonadCancel<span class="op">[</span>F<span class="op">,</span> E<span class="op">]</span> <span class="kw">with</span> Unique<span class="op">[</span>F<span class="op">]</span></span></code></pre></div>
+<div>
+<ul>
+<li class="fragment">Позволява конкурентност чрез изпълнение на ефекта в конкурентен fiber – метод <code>start</code>
+<ul>
+<li class="fragment">Изпълняват се в <code>compute</code> pool-а</li>
+</ul></li>
+<li class="fragment">Връща <code>IO[Fiber]</code>, който може да бъде <code>join</code>-нат, за да изчакаме резултата му, или <code>cancel</code>-иран
+<ul>
+<li class="fragment">много често от fiber-а, който го е стартирал</li>
+</ul></li>
+<li class="fragment">Позволявани да изпълним множество ефекти конкурентно (<code>both</code>) или в състезание (<code>race</code>)</li>
+<li class="fragment">Не позволява комуникация между fiber-и преди fiber-а да е завършил
+<ul>
+<li class="fragment">Можем да извлечем резултат от него само и единствено чрез <code>join</code></li>
+</ul></li>
+<li class="fragment"><code>parTupled</code> и другите <code>Parallel</code> операции водят до създаване на <code>fiber</code>-и</li>
+</ul>
+</div>
+</section>
+<section id="concurrent-api" class="slide level1">
+<h1><a href="https://typelevel.org/cats-effect/docs/typeclasses/concurrent">Concurrent</a> <a href="https://typelevel.org/cats-effect/api/3.x/cats/effect/kernel/GenConcurrent.html">(API)</a></h1>
+<p>Позволява безопасна обмяна на информация между fiber-и</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> GenConcurrent<span class="op">[</span>F<span class="op">[</span>_<span class="op">],</span> E<span class="op">]</span> <span class="kw">extends</span> GenSpawn<span class="op">[</span>F<span class="op">,</span> E<span class="op">]:</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ...</span></span></code></pre></div>
+<p>Благодарение на него са имплементирани структури като Ref, Queue, Deferred и други</p>
+</section>
 <section id="spawn-vs-concurrent" class="slide level1">
 <h1>Spawn vs Concurrent</h1>
 <p><img data-src="images/11-cats-and-cats-effects/Screenshot_20220518_173430.png" /> <img data-src="images/11-cats-and-cats-effects/Screenshot_20220518_173528.png" /></p>
+</section>
+<section id="clock" class="slide level1">
+<h1>Clock</h1>
+<div class="sourceCode" id="cb24"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> Clock<span class="op">[</span>F<span class="op">[</span>_<span class="op">]]:</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> monotonic<span class="op">:</span> F<span class="op">[</span>FiniteDuration<span class="op">]</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> realTime<span class="op">:</span> F<span class="op">[</span>FiniteDuration<span class="op">]</span></span></code></pre></div>
+<p>Дава ни текущото време</p>
+</section>
+<section id="temporal" class="slide level1">
+<h1><a href="https://typelevel.org/cats-effect/docs/typeclasses/temporal">Temporal</a></h1>
+<p>Позволява ни да <code>sleep</code>-ваме и да имплементираме <code>timeout</code>-и.</p>
+<p>Използва scheduler thread pool-а на Runtime-а.</p>
+</section>
+<section id="sync-api" class="slide level1">
+<h1><a href="https://typelevel.org/cats-effect/docs/typeclasses/sync">Sync</a> <a href="https://typelevel.org/cats-effect/api/3.x/cats/effect/kernel/Sync.html">(API)</a></h1>
+<p>Осигурява връзка към външния свят през синхронен API, като отлага неговия страничен ефект:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> Sync<span class="op">[</span>F<span class="op">[</span>_<span class="op">]]</span> <span class="kw">extends</span> MonadCancel<span class="op">[</span>F<span class="op">,</span> Throwable<span class="op">]</span> <span class="kw">with</span> Clock<span class="op">[</span>F<span class="op">]</span> <span class="kw">with</span> Unique<span class="op">[</span>F<span class="op">]</span> <span class="kw">with</span> Defer<span class="op">[</span>F<span class="op">]:</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Синхронният код, който ще бъде отложен и превърнат</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">// във функционален ефект</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> delay<span class="op">[</span>A<span class="op">](</span>thunk<span class="op">:</span> <span class="op">=&gt;</span> A<span class="op">):</span> F<span class="op">[</span>A<span class="op">]</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Блокиращ синхронен код – ще се изпълни в blocking thread pool-а</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> blocking<span class="op">[</span>A<span class="op">](</span>thunk<span class="op">:</span> <span class="op">=&gt;</span> A<span class="op">):</span> F<span class="op">[</span>A<span class="op">]</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Като blocking, но позволяващо канселиране, използващо</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// стандартния метод за канселиране на грешки в Java (interrupt)</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> interruptible<span class="op">[</span>A<span class="op">](</span>thunk<span class="op">:</span> <span class="op">=&gt;</span> A<span class="op">):</span> F<span class="op">[</span>A<span class="op">]</span></span></code></pre></div>
+</section>
+<section id="async-api" class="slide level1">
+<h1><a href="https://typelevel.org/cats-effect/docs/typeclasses/async">Async</a> <a href="https://typelevel.org/cats-effect/api/3.x/cats/effect/kernel/Async.html">(API)</a></h1>
+<p>Осигурява връзка към външния свят през асинхронен, callback-базиран API:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode scala"><code class="sourceCode highlightscala"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">trait</span> Async<span class="op">[</span>F<span class="op">[</span>_<span class="op">]]</span> <span class="kw">extends</span> AsyncPlatform<span class="op">[</span>F<span class="op">]</span> <span class="kw">with</span> Sync<span class="op">[</span>F<span class="op">]</span> <span class="kw">with</span> Temporal<span class="op">[</span>F<span class="op">]:</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Позволява на IO да регистрира callback за тази операция</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> async_<span class="op">[</span>A<span class="op">](</span>k<span class="op">:</span> <span class="op">(</span>Either<span class="op">[</span>Throwable<span class="op">,</span> A<span class="op">]</span> <span class="op">=&gt;</span> <span class="dt">Unit</span><span class="op">)</span> <span class="op">=&gt;</span> <span class="dt">Unit</span><span class="op">):</span> F<span class="op">[</span>A<span class="op">]</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// По-обща версия, позволяваща и канселиране</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> async<span class="op">[</span>A<span class="op">](</span>k<span class="op">:</span> <span class="op">(</span>Either<span class="op">[</span>Throwable<span class="op">,</span> A<span class="op">]</span> <span class="op">=&gt;</span> <span class="dt">Unit</span><span class="op">)</span> <span class="op">=&gt;</span> F<span class="op">[</span><span class="bu">Option</span><span class="op">[</span>F<span class="op">[</span><span class="dt">Unit</span><span class="op">]]]):</span> F<span class="op">[</span>A<span class="op">]</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Дава достъп до compute execution context-а, в който да се изпълни</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// асинхронен код</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> executionContext<span class="op">:</span> F<span class="op">[</span>ExecutionContext<span class="op">]</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Подменя comput execution context-а</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> evalOn<span class="op">[</span>A<span class="op">](</span>fa<span class="op">:</span> F<span class="op">[</span>A<span class="op">],</span> ec<span class="op">:</span> ExecutionContext<span class="op">):</span> F<span class="op">[</span>A<span class="op">]</span></span></code></pre></div>
+</section>
+<section id="безопасно-управление-на-ресурси" class="slide level1">
+<h1>Безопасно управление на ресурси</h1>
+</section>
+<section id="задача-имплементация-на-channel" class="slide level1">
+<h1>Задача: имплементация на Channel</h1>
 </section>
 <section id="ефектни-type-class-ове" class="slide level1">
 <h1>Ефектни Type class-ове</h1>
