@@ -1,12 +1,12 @@
 package fmi.inventory
 
 import cats.effect.IO
-import cats.implicits._
-import doobie.implicits._
+import cats.syntax.all.*
+import doobie.implicits.*
 import fmi.infrastructure.db.DoobieDatabase.DbTransactor
 
-class ProductDao(dbTransactor: DbTransactor) {
-  def retrieveProduct(sku: ProductSku): IO[Option[Product]] = {
+class ProductDao(dbTransactor: DbTransactor):
+  def retrieveProduct(sku: ProductSku): IO[Option[Product]] =
     sql"""
       SELECT sku, name, description, weight_in_grams
       FROM product
@@ -15,9 +15,8 @@ class ProductDao(dbTransactor: DbTransactor) {
       .query[Product]
       .option
       .transact(dbTransactor)
-  }
 
-  def addProduct(product: Product): IO[Unit] = {
+  def addProduct(product: Product): IO[Unit] =
     sql"""
       INSERT INTO product as p (sku, name, description, weight_in_grams)
       VALUES (${product.sku}, ${product.name}, ${product.description}, ${product.weightInGrams})
@@ -25,10 +24,5 @@ class ProductDao(dbTransactor: DbTransactor) {
       name = EXCLUDED.name,
       description = EXCLUDED.description,
       weight_in_grams = EXCLUDED.weight_in_grams
-    """
-      .update
-      .run
-      .void
+    """.update.run.void
       .transact(dbTransactor)
-  }
-}

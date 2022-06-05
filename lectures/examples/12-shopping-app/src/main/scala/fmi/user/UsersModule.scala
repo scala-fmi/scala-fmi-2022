@@ -15,19 +15,19 @@ case class UsersModule(
   authenticatedRoutes: AuthedRoutes[AuthenticatedUser, IO]
 )
 
-object UsersModule {
-  def apply(dbTransactor: DbTransactor, cryptoService: CryptoService): Resource[IO, UsersModule] = {
+object UsersModule:
+  def apply(dbTransactor: DbTransactor, cryptoService: CryptoService): Resource[IO, UsersModule] =
     val usersDao = new UsersDao(dbTransactor)
     val usersService = new UsersService(usersDao)
     val authenticationUtils = new AuthenticationUtils(cryptoService, usersDao)
     val usersRouter = new UsersRouter(usersService, authenticationUtils)
 
-    Resource.pure(UsersModule(
-      usersDao,
-      usersService,
-      authenticationUtils.authMiddleware,
-      usersRouter.nonAuthenticatedRoutes,
-      usersRouter.authenticatedRoutes
-    ))
-  }
-}
+    Resource.pure(
+      UsersModule(
+        usersDao,
+        usersService,
+        authenticationUtils.authMiddleware,
+        usersRouter.nonAuthenticatedRoutes,
+        usersRouter.authenticatedRoutes
+      )
+    )

@@ -13,17 +13,17 @@ case class InventoryModule(
   authenticatedRoutes: AuthedRoutes[AuthenticatedUser, IO]
 )
 
-object InventoryModule {
-  def apply(dbTransactor: DbTransactor): Resource[IO, InventoryModule] = {
+object InventoryModule:
+  def apply(dbTransactor: DbTransactor): Resource[IO, InventoryModule] =
     val productDao = new ProductDao(dbTransactor)
     val productStockDao = new ProductStockDao(dbTransactor)
     val inventoryRouter = new InventoryRouter(productDao, productStockDao)
 
-    Resource.pure(InventoryModule(
-      productDao,
-      productStockDao,
-      inventoryRouter.nonAuthenticatedRoutes,
-      inventoryRouter.authenticatedRoutes
-    ))
-  }
-}
+    Resource.pure(
+      InventoryModule(
+        productDao,
+        productStockDao,
+        inventoryRouter.nonAuthenticatedRoutes,
+        inventoryRouter.authenticatedRoutes
+      )
+    )

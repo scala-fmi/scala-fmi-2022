@@ -3,13 +3,12 @@ package fmi.user
 case class User(
   id: UserId,
   passwordHash: String,
-  role: UserRole.Value,
+  role: UserRole,
   name: String,
   age: Option[Int]
 )
 
-case class UserId(email: String) extends AnyVal
+case class UserId(email: String)
 
-object UserRole extends Enumeration {
-  val Admin, NormalUser = Value
-}
+enum UserRole:
+  case Admin, NormalUser

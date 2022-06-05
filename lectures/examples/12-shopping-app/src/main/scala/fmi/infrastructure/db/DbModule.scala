@@ -8,8 +8,8 @@ import fmi.infrastructure.db.DoobieDatabase.DbTransactor
 
 case class DbModule(dbTransactor: DbTransactor)
 
-object DbModule {
-  def apply(dbConfig: DbConfig): Resource[IO, DbModule] = for {
+object DbModule:
+  def apply(dbConfig: DbConfig): Resource[IO, DbModule] = for
     _ <- Resource.eval(new DbMigrator(dbConfig, "classpath:/db-migrations").migrate())
 
     connectionEc <- ExecutionContexts.fixedThreadPool[IO](dbConfig.connectionPoolSize)
@@ -20,5 +20,4 @@ object DbModule {
       dbConfig.password,
       connectionEc
     )
-  } yield DbModule(transactor)
-}
+  yield DbModule(transactor)

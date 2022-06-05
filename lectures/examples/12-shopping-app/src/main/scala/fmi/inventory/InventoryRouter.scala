@@ -1,16 +1,16 @@
 package fmi.inventory
 import cats.effect.IO
-import cats.implicits._
+import cats.syntax.all.*
 import fmi.user.{AuthenticatedUser, UserRole}
+import fmi.utils.CirceUtils
 import io.circe.Codec
-import io.circe.generic.extras.semiauto.deriveUnwrappedCodec
 import io.circe.generic.semiauto.deriveCodec
-import org.http4s.dsl.io._
+import org.http4s.dsl.io.*
 import org.http4s.{AuthedRoutes, HttpRoutes}
 
-class InventoryRouter(productDao: ProductDao, productStockDao: ProductStockDao) {
-  import InventoryJsonCodecs._
-  import org.http4s.circe.CirceEntityCodec._
+class InventoryRouter(productDao: ProductDao, productStockDao: ProductStockDao):
+  import InventoryJsonCodecs.given
+  import org.http4s.circe.CirceEntityCodec.given
 
   def nonAuthenticatedRoutes: HttpRoutes[IO] = HttpRoutes.of[IO] {
     case GET -> Root / "stock" =>
@@ -19,9 +19,11 @@ class InventoryRouter(productDao: ProductDao, productStockDao: ProductStockDao) 
     case GET -> Root / "products" / sku =>
       val productSku = ProductSku(sku)
 
-      productDao.retrieveProduct(productSku).flatMap(
-        _.fold(NotFound())(Ok(_))
-      )
+      productDao
+        .retrieveProduct(productSku)
+        .flatMap(
+          _.fold(NotFound())(Ok(_))
+        )
   }
 
   def authenticatedRoutes: AuthedRoutes[AuthenticatedUser, IO] = AuthedRoutes.of[AuthenticatedUser, IO] {
@@ -34,15 +36,13 @@ class InventoryRouter(productDao: ProductDao, productStockDao: ProductStockDao) 
       adjustmentResult.flatMap {
         case SuccessfulAdjustment => Ok()
         case NotEnoughStockAvailable => Conflict()
-    }
+      }
   }
-}
 
-object InventoryJsonCodecs {
-  implicit val productSkuCodec: Codec[ProductSku] = deriveUnwrappedCodec
-  implicit val productCodec: Codec[Product] = deriveCodec
-  implicit val productStockCodec: Codec[ProductStock] = deriveCodec
+object InventoryJsonCodecs:
+  given Codec[ProductSku] = CirceUtils.unwrappedCodec(ProductSku.apply)(_.sku)
+  given Codec[Product] = deriveCodec
+  given Codec[ProductStock] = deriveCodec
 
-  implicit val productStockAdjustmentCodec: Codec[ProductStockAdjustment] = deriveCodec
-  implicit val inventoryAdjustmentCodec: Codec[InventoryAdjustment] = deriveCodec
-}
+  given Codec[ProductStockAdjustment] = deriveCodec
+  given Codec[InventoryAdjustment] = deriveCodec

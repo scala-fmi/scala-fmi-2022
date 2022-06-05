@@ -13,11 +13,11 @@ case class ShoppingModule(
   authenticatedRoutes: AuthedRoutes[AuthenticatedUser, IO]
 )
 
-object ShoppingModule {
+object ShoppingModule:
   def apply(
-   dbTransactor: DbTransactor,
-   productStockDao: ProductStockDao,
-  ): Resource[IO, ShoppingModule] = {
+    dbTransactor: DbTransactor,
+    productStockDao: ProductStockDao
+  ): Resource[IO, ShoppingModule] =
     val orderDao = new OrderDao(dbTransactor)
     val orderService = new OrderService(dbTransactor)(productStockDao, orderDao)
     val shippingRouter = new ShippingRouter(orderService)
@@ -25,5 +25,3 @@ object ShoppingModule {
     Resource.pure(
       ShoppingModule(orderDao, orderService, shippingRouter.authenticatedRoutes)
     )
-  }
-}

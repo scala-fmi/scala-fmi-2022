@@ -8,12 +8,10 @@ import java.time.Instant
 import java.util.UUID
 
 case class Order(orderId: OrderId, user: UserId, orderLines: List[OrderLine], placingTimestamp: Instant)
-case class OrderId(id: String) extends AnyVal
+case class OrderId(id: String)
 
-case class OrderLine(product: ProductSku, quantity: Int) {
+case class OrderLine(product: ProductSku, quantity: Int):
   def toProductStockAdjustment = ProductStockAdjustment(product, -quantity)
-}
 
-object OrderId {
+object OrderId:
   def generate: IO[OrderId] = IO(OrderId(UUID.randomUUID().toString))
-}
