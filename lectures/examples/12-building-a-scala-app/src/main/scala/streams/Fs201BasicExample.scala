@@ -21,7 +21,7 @@ object Fs201BasicExample extends App:
   println(repeat(s3).take(10).toList)
 
   val effectfulStream = Stream.eval(IO.println("Hellou!!!"))
-  println(effectfulStream.compile.toList.unsafeRunSync())
+  println(effectfulStream.compile.drain.unsafeRunSync())
 
   val effectfulStream2 = Stream.evalSeq(IO(List(1, 2, 3)))
   println(effectfulStream2.compile.fold(0)(_ + _).unsafeRunSync())

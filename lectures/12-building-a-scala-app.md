@@ -254,14 +254,6 @@ object HttpRoutes:
 * Освен сървърна част, `http4s` има и HTTP клиент
 * [пример от документацията](https://http4s.org/v0.23/client/)
 
-# Безопасно боравене с Resource-и
-
-::: { .fragment }
-
-Тоест функционален вариант на [using](04-key-fp-approaches.html#/%D0%B8%D0%BC%D0%BF%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%B0%D0%BD%D0%B5-%D0%BD%D0%B0-%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%B8-%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8-1/0)
-
-:::
-
 
 # Структуриране на кода
 
@@ -358,6 +350,20 @@ resourceProcessor.countHttpResourceWords("http://example.org")
 
 # Thin cake pattern
 
+# Още информация
+
+[DI in Scala guide](https://di-in-scala.github.io/)
+
+# Безопасно боравене с Resource-и
+
+::: { .fragment }
+
+Тоест функционален вариант на [using](04-key-fp-approaches.html#/%D0%B8%D0%BC%D0%BF%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%B0%D0%BD%D0%B5-%D0%BD%D0%B0-%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%B8-%D0%BA%D0%BE%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8-1/0)
+
+:::
+
+# Ефектни модули. Dependency Injection чрез Resource
+
 # Как да определим кои да са модулите
 
 ::: incremental
@@ -401,10 +407,6 @@ resourceProcessor.countHttpResourceWords("http://example.org")
 
 :::
 
-# Още информация
-
-[DI in Scala guide](https://di-in-scala.github.io/)
-
 # Глобални ресурси?
 
 ::: incremental
@@ -419,6 +421,17 @@ resourceProcessor.countHttpResourceWords("http://example.org")
 * По-късно ще разгледам как лесно може да постигнем безопасност чрез Resource
 
 :::
+
+# Ефектни модули. Dependency Injection чрез Resource
+
+# Потоци
+
+* [Fs2](https://fs2.io/)
+* [Akka Streams](https://doc.akka.io/docs/akka/current/stream/index.html)
+* [Monix](https://monix.io/)
+* [Play Iteratees](https://www.playframework.com/documentation/2.8.x/Iteratees)
+
+# Fs2 – Демо
 
 # Връзка със SQL база от данни
 
@@ -442,14 +455,5 @@ resourceProcessor.countHttpResourceWords("http://example.org")
 # Doobie – сериализация/десериализация към/от заявка
 
 [Anatomy of a Doobie query](https://cdn.rawgit.com/tpolecat/doobie-infographic/v0.6.0/doobie.svg)
-
-# Потоци
-
-* [Fs2](https://fs2.io/)
-* [Akka Streams](https://doc.akka.io/docs/akka/current/stream/index.html)
-* [Monix](https://monix.io/)
-* [Play Iteratees](https://www.playframework.com/documentation/2.8.x/Iteratees)
-
-# Fs2 – Демо
 
 # Въпроси :)?

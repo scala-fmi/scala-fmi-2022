@@ -10,8 +10,8 @@ object AuthService:
 
   object UserIdQueryParam extends QueryParamDecoderMatcher[Int]("userId")
 
-  val unprotectedRoutes = HttpRoutes.of[IO] {
-    case POST -> Root / "login" :? UserIdQueryParam(userId) => Auth.login(userId)
+  val unprotectedRoutes = HttpRoutes.of[IO] { case POST -> Root / "login" :? UserIdQueryParam(userId) =>
+    Auth.login(userId)
   }
 
   val authedRoutes: AuthedRoutes[User, IO] =

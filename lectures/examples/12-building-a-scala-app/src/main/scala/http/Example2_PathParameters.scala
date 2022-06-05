@@ -10,7 +10,6 @@ import org.http4s.implicits.*
 import java.time.LocalDate
 import scala.util.Try
 
-
 @main
 def run =
 
@@ -20,8 +19,6 @@ def run =
   }
 
   println(requestEntityUnsafe[String](app)(get(uri"hello/rest/of/the/path")))
-
-
 
   def getUserName(userId: Int): IO[String] = IO.pure(s"User$userId")
 
@@ -36,7 +33,6 @@ def run =
 
   println(requestEntityUnsafe[String](usersService)(get(uri"/users/1")))
   println(requestUnsafe(usersService)(get(uri"/users/two")))
-
 
   /** Custom extractors We need: def unapply(str: String): Option[T]
     */

@@ -53,8 +53,6 @@ object Example3_QueryParameters extends App:
         Ok(getAverageTemperatureForYear(year))
   }
 
-
-
   // Validating query parameters
   val validatingYearQueryParamDecoder: QueryParamDecoder[Year] =
     QueryParamDecoder[Int].emap(i => Try(Year.of(i)).toEither.leftMap(t => ParseFailure(t.getMessage, t.getMessage)))

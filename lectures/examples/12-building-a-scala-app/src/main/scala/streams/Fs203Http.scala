@@ -7,7 +7,6 @@ import org.http4s.blaze.server.BlazeServerBuilder
 import org.http4s.dsl.io.*
 import org.http4s.implicits.*
 
-import scala.concurrent.ExecutionContext.global
 import scala.concurrent.duration.DurationInt
 
 object Fs203Http extends IOApp.Simple:
@@ -23,7 +22,7 @@ object Fs203Http extends IOApp.Simple:
 
   val httpApp = counterRoutes.orNotFound
 
-  val serverBuilder = BlazeServerBuilder[IO](global)
+  val serverBuilder = BlazeServerBuilder[IO]
     .bindHttp(8080, "localhost")
     .withHttpApp(httpApp)
     .resource
