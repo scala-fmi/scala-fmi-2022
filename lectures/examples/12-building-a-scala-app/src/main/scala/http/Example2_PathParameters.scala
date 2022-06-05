@@ -1,25 +1,24 @@
 package http
 
 import cats.effect.IO
-import cats.implicits._
-import http.Utils._
+import cats.implicits.*
+import http.Utils.*
 import org.http4s.HttpRoutes
-import org.http4s.dsl.io._
-import org.http4s.implicits._
+import org.http4s.dsl.io.*
+import org.http4s.implicits.*
 
 import java.time.LocalDate
 import scala.util.Try
 
-object Example2_PathParameters extends App {
+@main
+def run =
 
   // Match rest of the path
-  val app = HttpRoutes.of[IO] {
-    case GET -> "hello" /: rest =>
-      Ok(s"""Rest of the path is: $rest""")
+  val app = HttpRoutes.of[IO] { case GET -> "hello" /: rest =>
+    Ok(s"""Rest of the path is: $rest""")
   }
 
   println(requestEntityUnsafe[String](app)(get(uri"hello/rest/of/the/path")))
-
 
   def getUserName(userId: Int): IO[String] = IO.pure(s"User$userId")
 
@@ -35,20 +34,13 @@ object Example2_PathParameters extends App {
   println(requestEntityUnsafe[String](usersService)(get(uri"/users/1")))
   println(requestUnsafe(usersService)(get(uri"/users/two")))
 
-  /**
-   * Custom extractors
-   * We need:
-   *    def unapply(str: String): Option[T]
-   */
+  /** Custom extractors We need: def unapply(str: String): Option[T]
+    */
 
-  object LocalDateVar {
-    def unapply(str: String): Option[LocalDate] = {
-      if (str.nonEmpty)
-        Try(LocalDate.parse(str)).toOption
-      else
-        None
-    }
-  }
+  object LocalDateVar:
+    def unapply(str: String): Option[LocalDate] =
+      if str.nonEmpty then Try(LocalDate.parse(str)).toOption
+      else None
 
   def getTemperatureForecast(date: LocalDate): IO[Double] = IO.println(date) *> IO(42.23)
 
@@ -58,4 +50,3 @@ object Example2_PathParameters extends App {
   }
 
   println(requestEntityUnsafe[String](dailyWeatherService)(get(uri"/weather/temperature/2016-11-05")))
-}

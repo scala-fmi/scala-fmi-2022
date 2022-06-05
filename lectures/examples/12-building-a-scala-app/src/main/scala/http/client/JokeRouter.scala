@@ -5,10 +5,10 @@ import io.circe.Json
 import org.http4s.circe.CirceEntityCodec.circeEntityEncoder
 import org.http4s.circe.jsonDecoder
 import org.http4s.{HttpApp, HttpRoutes}
-import org.http4s.dsl.io._
-import org.http4s.implicits._
+import org.http4s.dsl.io.*
+import org.http4s.implicits.*
 
-class JokeRouter(jokeService: JokeService) {
+class JokeRouter(jokeService: JokeService):
   def jokeRoutes: HttpRoutes[IO] = HttpRoutes.of[IO] {
     case GET -> Root / "joke" =>
       jokeService.getJoke.flatMap(Ok(_))
@@ -17,4 +17,3 @@ class JokeRouter(jokeService: JokeService) {
   }
 
   def httpApp: HttpApp[IO] = jokeRoutes.orNotFound
-}

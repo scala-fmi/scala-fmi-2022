@@ -249,6 +249,42 @@
     * Пример за функционално описване на план чрез всеки от type class-овете. Изпълнение на плана – изпълнение на страничните ефекти (чрез `unsafeRun*` методите).
   - Безопасен достъп до ресурси, изискващи затваряне. `Resource` ефект
   - [Всички примери за Cats Effect](lectures/examples/11-cats-and-cats-effects/src/main/scala/io)
+* [12 – Изграждане на Scala приложение](https://scala-fmi.github.io/scala-fmi-2022/lectures/12-building-a-scala-app.html) \[[код](lectures/examples/12-building-a-scala-app)\]
+  - Какво постигнахме досега? Как можем да използваме ФП при моделиране на конкретни домейни?
+  - Избор на IO ефект
+  - Структуриране на кода
+    * зависимости и dependency injection. Реализация чрез параметри (на функции или конструктор на клас). Ползи
+    * навързване на зависимостите. Thin Cake Pattern. Модули като обекти
+    * Ефектни компоненти и модули чрез `Resource`. Безопасни инициализация и затваряне на глобални и локални ресурси
+  - Kак да разделим програмата ни на модули? Разделение по домейн вместо по слоеве. Ползи
+  - Връзка със SQL база от данни чрез Doobie
+    * `ConnectionIO` ефект и пробразуване до `IO.` Транзакции
+    * [примери с Doobie](lectures/examples/12-building-a-scala-app/src/main/scala/sql).
+      - заявки
+      - сериализация на данните към и от заявка
+      - фрагменти
+      - Въвеждане и обновяване на данни – единично и на куп
+  - JSON сериализация и десериализация чрез Circe
+    * Encoder-и и decoder-и
+    * Полуавтоматична деривация encoder-и и decoder-и чрез макроси
+    * [Примери със Circe](lectures/examples/12-building-a-scala-app/src/main/scala/json)
+  - HTTP приложения чрез http4s
+    * HTTP като ефектна функция от `Request` към `Response`
+    * HTTP server чрез http4s. Стартиране като `IOApp`
+    * HTTP routes – pattern matching по `Request`-а
+    * Сериализация и десериализация на entity-та. Връщане и четене на JSON чрез Circe
+    * Добавяне на обща функционалност чрез middlewares
+    * HTTP клиент
+    * [Примери с http4s](lectures/examples/12-building-a-scala-app/src/main/scala/http)
+  - Функционални конкурентни потоци чрез Fs2
+    * От `LazyList` до ефектен `Stream`
+    * Функционални трансфомрации на потоци
+    * Връзка с вход/изход – файловата система, TCP, UDP, ...
+    * Поточно генериране на резултат от HTTP резултат. Поток от Doobie през http4s сървър до клиент
+    * Web socket-и чрез Fs2 и http4s
+    * [Примери с Fs2](lectures/examples/12-building-a-scala-app/src/main/scala/streams)
+  - [Примерно приложение със сървър и клиент за библиотека](lectures/examples/12-library-app)
+  - [Цялостно примерно приложение за уеб магазин](lectures/examples/12-shopping-app)
 
 ## Допълнителни ресурси
 

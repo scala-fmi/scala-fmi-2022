@@ -1,12 +1,12 @@
 package sql
 
-import doobie._
-import doobie.implicits._
+import doobie.*
+import doobie.implicits.*
 
 case class Code(code: String)
 case class Country(code: Code, name: String, pop: Int, gnp: Option[Double])
 
-object Doobie02Querying {
+object Doobie02Querying:
   val ex =
     sql"""
          SELECT code, name, population, gnp
@@ -25,10 +25,8 @@ object Doobie02Querying {
 
   case class Email(name: String, domain: String)
 
-  implicit val emailMeta = Meta[String]
-    .imap(_.split("@") match {
-      case Array(name, domain) => Email(name, domain)
-    })(e => s"${e.name}@${e.domain}")
+  given Meta[Email] = Meta[String].imap(_.split("@") match
+    case Array(name, domain) => Email(name, domain)
+  )(e => s"${e.name}@${e.domain}")
 
   val ex3 = sql"SELECT 'viktor@gmail.com'".query[Email].unique
-}
